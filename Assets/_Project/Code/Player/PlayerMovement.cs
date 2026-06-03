@@ -55,7 +55,9 @@ public class PlayerMovement : MonoBehaviour
         
         if (currentSpace != null)
         {
+            //Debug.Log($"{gameObject.name} snapping to {currentSpace.name}");
             transform.position = currentSpace.transform.position;
+            Debug.Log($"{gameObject.name} snapping to {currentSpace.name}");
         }
     }
 
@@ -125,6 +127,7 @@ public class PlayerMovement : MonoBehaviour
             
         }
 
+        AssignTeamColor();
         movementState = MovementState.Idle;
         OnMovementFinished?.Invoke();
     }
@@ -247,5 +250,17 @@ public class PlayerMovement : MonoBehaviour
         
         movementState = MovementState.Moving;
         StartCoroutine(ContinueMovement());
+    }
+
+    private void AssignTeamColor()
+    {
+        PlayerMinigameTeams minigameTeam =  GetComponent<PlayerMinigameTeams>();
+
+        if (minigameTeam == null)
+            return;
+
+        minigameTeam.CurrentTeam = currentSpace.TeamColor;
+        
+        Debug.Log($"{gameObject.name} assigned to {minigameTeam.CurrentTeam}");
     }
 }

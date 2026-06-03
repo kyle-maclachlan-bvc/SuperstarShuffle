@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 996298056298105165}
   - component: {fileID: 1068303613273696025}
   - component: {fileID: 6564418182023230892}
+  - component: {fileID: 6553891777068587764}
   m_Layer: 0
   m_Name: Player4
   m_TagString: Untagged
@@ -62,7 +63,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c607d9e1217bd4a846e5c0569511af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  currentSpaceIndex: 0
+  currentSpace: {fileID: 0}
+  movementState: 0
+  moveSpeed: 5
 --- !u!114 &275933894749712193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,6 +119,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   playerID: 0
+--- !u!114 &6553891777068587764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4379656958025067816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7cc0680352f7f4eba999a72c476930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMinigameTeams
+  currentTeam: 0
 --- !u!1 &4399419246591176702
 GameObject:
   m_ObjectHideFlags: 0

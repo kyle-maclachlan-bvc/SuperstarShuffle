@@ -24,6 +24,9 @@ public class Player : MonoBehaviour
     
     public PlayerTurnState TurnState { get;  private set; }
     // Tracks the player's current turn state.
+    
+    public PlayerMinigameTeams MinigameTeams { get;  private set; }
+    // Tracks the player's Minigame Team state
 
     private void Awake()
     {
@@ -34,5 +37,17 @@ public class Player : MonoBehaviour
         Movement = GetComponent<PlayerMovement>();
         Currency = GetComponent<PlayerCurrency>();
         TurnState = GetComponent<PlayerTurnState>();
+        MinigameTeams = GetComponent<PlayerMinigameTeams>();
+        
+        //Debug.Log($"{gameObject.name} Controller = {Controller}");
+        //Debug.Log($"{gameObject.name} Movement = {Movement}");
+        //Debug.Log($"{gameObject.name} Currency = {Currency}");
+        //Debug.Log($"{gameObject.name} TurnState = {TurnState}");
+        //Debug.Log($"{gameObject.name} MinigameTeams = {MinigameTeams}");
+    }
+
+    private void Start()
+    {
+        Debug.Log($"{gameObject.name} Start - Movement = {Movement}");
     }
 }

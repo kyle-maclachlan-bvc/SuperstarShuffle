@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -18,11 +19,20 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance; // Global reference to the active GameManager. Singleton.
 
+    [SerializeField] private GameSetupManager gameSetupManager;
+    
     [Header("Game State")]
     [SerializeField] private GameState currentGameState; // The current phase of the game.
+
+    [Header("Players")]
+    [SerializeField] private List<Player> players; //Moving Players to be accessed from GameManager, not just TurnManager
+
+    [SerializeField] private List<Player> turnOrder = new();
     
     public GameState CurrentGameState => currentGameState; // Provides read-only access to the current game state
-
+    public List<Player> Players => players; // Provides read-only access to the Players
+    public List<Player> TurnOrder => turnOrder; // Provides read-only access
+    
     [Header("Match Settings")]
     [SerializeField] private int currentTurn = 1; // Tracks the current turn of the match. Turn is completed when every player has taken their movement
     [SerializeField] private int maxTurns = 10; // The total number of turns that will be played before the game ends.
@@ -39,18 +49,23 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        turnOrder = new List<Player>(players);
     }
 
     // Starts the first gameplay phase when the scene loads
     private void Start()
     {
-        ChangeGameState(GameState.PlayerTurn);
+        ChangeGameState(GameState.GameSetup);
+        gameSetupManager.StartGameSetup();
     }
 
     // Changes the current game state and notifies any subscribers.
     public void ChangeGameState(GameState newState)
     {
         currentGameState = newState;
+        
+        Debug.Log($"GameState changed to {currentGameState}");
         
         // Notify any systems listening for GameState changes.
         GameEvents.OnGameStateChange?.Invoke(newState);
