@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 7784806000656921692}
   - component: {fileID: 4216979606488517638}
   - component: {fileID: 602219631837375195}
+  - component: {fileID: 1608193478391026067}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -289,7 +290,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c607d9e1217bd4a846e5c0569511af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  currentSpaceIndex: 0
+  currentSpace: {fileID: 0}
+  movementState: 0
+  moveSpeed: 5
 --- !u!114 &2919085878945489596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,3 +346,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   playerID: 0
+--- !u!114 &1608193478391026067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2700490108208913133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7cc0680352f7f4eba999a72c476930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMinigameTeams
+  currentTeam: 0

@@ -322,6 +322,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 652698940}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &1647570
@@ -557,6 +558,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 999470776}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &5259705
@@ -949,6 +951,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 719039645}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1 &19892494
@@ -999,6 +1002,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 237124391}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &21580403
@@ -1182,6 +1186,7 @@ MonoBehaviour:
   nextSpaces:
   - {fileID: 851968259}
   - {fileID: 1507779016}
+  teamColor: 0
   optionOneDirection: 3
   optionTwoDirection: 1
 --- !u!1001 &23695773
@@ -2770,6 +2775,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1566376561}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &56296277
@@ -6167,6 +6173,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 377770282}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &97058715
@@ -6943,6 +6950,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1945515787}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &111919572
@@ -8257,6 +8265,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1108471396}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &135210681
@@ -10769,6 +10778,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1615317381}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1 &175307549
@@ -13313,6 +13323,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 288617602}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &241040639
@@ -14541,6 +14552,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1316698088}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &266226851
@@ -15785,6 +15797,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 413530809}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &294386036
@@ -17606,6 +17619,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 647961593}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &324778970
@@ -19459,6 +19473,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 94896901}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &371482831
@@ -19928,6 +19943,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 928220611}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &379058142
@@ -23164,6 +23180,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1815187661}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1 &413612018
@@ -23199,6 +23216,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 1996003679}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &413612020
@@ -25166,6 +25184,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 713881560}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &469450171
@@ -25444,6 +25463,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 2115889921}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &473401544
@@ -26384,6 +26404,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 642548599}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &497027486
@@ -32668,6 +32689,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 19492683}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &590996589
@@ -33551,6 +33573,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 1390009907}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &612739507
@@ -34924,6 +34947,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 324778969}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &642548600
@@ -35103,6 +35127,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1461763089}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &645022641
@@ -35447,6 +35472,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1247045097}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1 &648134406
@@ -35497,6 +35523,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1984866283}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &649474821
@@ -36181,6 +36208,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1128105612}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &655913874
@@ -38833,6 +38861,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 643056398}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &676637987
@@ -39963,6 +39992,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 924703100}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &692371176
@@ -41403,6 +41433,7 @@ MonoBehaviour:
   spaceType: 0
   nextSpaces:
   - {fileID: 413530809}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &710908268
@@ -41751,6 +41782,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 132402490}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &715523453
@@ -42305,6 +42337,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 690567098}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &719301983
@@ -45056,6 +45089,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1033084073}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &760463419
@@ -46387,6 +46421,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 1647569}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &778513103
@@ -47200,6 +47235,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 4042792}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &800188403
@@ -50077,6 +50113,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 648134408}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &840678142
@@ -50725,6 +50762,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 798715775}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &852013579
@@ -50826,6 +50864,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 1079929019}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &852711807
@@ -52511,6 +52550,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1137466249}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &874930337
@@ -55381,6 +55421,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 1577804054}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &924703101
@@ -55446,6 +55487,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 676144308}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &926871415
@@ -55716,6 +55758,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1008505411}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &930082736
@@ -59840,6 +59883,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 2124538031}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &998176778
@@ -60093,6 +60137,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 852711806}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &999470777
@@ -60673,6 +60718,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 759684870}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1012810589
@@ -61661,6 +61707,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 472054985}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1033451850
@@ -64240,6 +64287,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 778513102}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1080204004
@@ -66218,6 +66266,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1990782096}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1109311519
@@ -68145,6 +68194,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 612739506}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1129052391
@@ -68328,6 +68378,7 @@ MonoBehaviour:
   nextSpaces:
   - {fileID: 590884017}
   - {fileID: 50910104}
+  teamColor: 0
   optionOneDirection: 2
   optionTwoDirection: 0
 --- !u!1001 &1141206730
@@ -70329,6 +70380,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 925489551}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1175621799
@@ -73720,6 +73772,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 495993794}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1235289555
@@ -74503,6 +74556,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 1330816735}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &1247045098
@@ -75052,6 +75106,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 925489551}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1253659488
@@ -75396,6 +75451,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 997197966}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1257043880
@@ -75994,6 +76050,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1323823277}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1264294057
@@ -76905,6 +76962,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 19892496}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &1279914871
@@ -79159,6 +79217,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1253261729}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1318690782
@@ -79977,6 +80036,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 759684870}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1324356509
@@ -80306,6 +80366,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 1472867629}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &1330816736
@@ -80897,6 +80958,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1233703248}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1336973685
@@ -84767,6 +84829,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 108579689}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &1390009908
@@ -87865,6 +87928,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 468824727}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1449649118
@@ -88380,6 +88444,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 1279914870}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &1461763090
@@ -88909,6 +88974,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 108579689}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1479272012
@@ -90808,6 +90874,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 1959403096}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &1507779017
@@ -95327,6 +95394,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1868385450}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1567000898
@@ -95679,6 +95747,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 371482830}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1571867277
@@ -96356,6 +96425,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 837969973}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &1577804055
@@ -97024,7 +97094,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 5418245611055072535}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97c607d9e1217bd4a846e5c0569511af, type: 3}
   m_Name: 
@@ -97797,6 +97867,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1769343805}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1615560097
@@ -106811,6 +106882,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 413612019}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &1769343806
@@ -110218,6 +110290,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 23116867}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1816269269
@@ -110690,7 +110763,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 8519772906278547054}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97c607d9e1217bd4a846e5c0569511af, type: 3}
   m_Name: 
@@ -113529,6 +113602,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 174647647}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1868421677
@@ -118363,7 +118437,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 4743338810944765186}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97c607d9e1217bd4a846e5c0569511af, type: 3}
   m_Name: 
@@ -118719,6 +118793,7 @@ MonoBehaviour:
   nextSpaces:
   - {fileID: 1449012601}
   - {fileID: 1256445411}
+  teamColor: 3
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1948984051
@@ -119568,6 +119643,7 @@ MonoBehaviour:
   spaceType: 5
   nextSpaces:
   - {fileID: 1336741411}
+  teamColor: 0
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!4 &1959403097
@@ -120389,7 +120465,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 2842291887789317003}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97c607d9e1217bd4a846e5c0569511af, type: 3}
   m_Name: 
@@ -120758,6 +120834,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 265478705}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1987693858
@@ -120922,6 +120999,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1568544623}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &1994976796
@@ -121046,6 +121124,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1175031292}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &2001731179
@@ -127472,6 +127551,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 872712211}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &2116081371
@@ -128536,6 +128616,7 @@ MonoBehaviour:
   spaceType: 1
   nextSpaces:
   - {fileID: 1264246229}
+  teamColor: 1
   optionOneDirection: 0
   optionTwoDirection: 0
 --- !u!1001 &2124689096
@@ -130504,7 +130585,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8882282311344192978, guid: 9808c823f4ba7a74499185bb7b4773b9, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8882282311344192978, guid: 9808c823f4ba7a74499185bb7b4773b9, type: 3}
       propertyPath: currentSpace
@@ -130979,7 +131060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3182221951694178715, guid: bf638acbaf037c54a9be4da8a503e5b9, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3182221951694178715, guid: bf638acbaf037c54a9be4da8a503e5b9, type: 3}
       propertyPath: currentSpace
@@ -131348,7 +131429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8221750117817634109, guid: f69a0c16c9afc8c408d442caa9ecbc52, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8221750117817634109, guid: f69a0c16c9afc8c408d442caa9ecbc52, type: 3}
       propertyPath: currentSpace
@@ -132009,7 +132090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5372685097800722293, guid: 0994d44005a327741b688954bc5e7011, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5372685097800722293, guid: 0994d44005a327741b688954bc5e7011, type: 3}
       propertyPath: currentSpace

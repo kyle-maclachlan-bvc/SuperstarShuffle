@@ -125,6 +125,11 @@ public class PlayerMovement : MonoBehaviour
             
         }
 
+        PlayerMinigameTeams playerTeam = GetComponent<PlayerMinigameTeams>();
+        if (playerTeam != null)
+        {
+            playerTeam.CurrentTeam = currentSpace.TeamColor;
+        }
         movementState = MovementState.Idle;
         OnMovementFinished?.Invoke();
     }
