@@ -30,6 +30,9 @@ public class TurnManager : MonoBehaviour
 
     private void Start()
     {
+        foreach (PlayerMovement player in players)
+            player.OnMovementFinished += EndPlayerTurn;
+        
         BeginTurn();
     }
 
@@ -42,7 +45,7 @@ public class TurnManager : MonoBehaviour
     {
         // only process input for the active player.
         if (playerStates[currentPlayerIndex].CurrentState
-            != PlayerState.TakingTurn)
+            == PlayerState.Waiting || playerStates[currentPlayerIndex].CurrentState == PlayerState.Disabled)
             return;
         
         PlayerMovement currentPlayer = players[currentPlayerIndex];
@@ -90,8 +93,7 @@ public class TurnManager : MonoBehaviour
             cameraController.FocusPlayer(
                 players[currentPlayerIndex].transform);
             
-            Debug.Log(
-                $"Player {currentPlayerIndex + 1} Turn Started");
+            //Debug.Log($"Player {currentPlayerIndex + 1} Turn Started");
         }
 
         // Rolls the dice and begins player movement
@@ -159,7 +161,7 @@ public class TurnManager : MonoBehaviour
         
 // Ends the current player's turn and advances to the next player.
         // If the final player has completed their turn, GameManager is notified that the round has ended.
-        private void EndTurn()
+        private void EndPlayerTurn()
         {
             playerStates[currentPlayerIndex].CurrentState =
                 PlayerState.Waiting;
@@ -171,9 +173,6 @@ public class TurnManager : MonoBehaviour
                 currentPlayerIndex = 0;
 
                 GameManager.Instance.RoundCompleted();
-
-                // future
-                // Start Minigame Phase
             }
 
             BeginTurn();

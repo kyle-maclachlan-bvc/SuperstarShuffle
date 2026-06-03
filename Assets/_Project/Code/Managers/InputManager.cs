@@ -44,6 +44,7 @@ public class InputManager : MonoBehaviour
     // Disables all input action maps when the InputManager becomes inactive
     private void OnDisable()
     {
-        controls.Disable();
+        if (controls != null)
+            controls.Disable();
     }
 }

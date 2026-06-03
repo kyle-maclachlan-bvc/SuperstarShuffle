@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         
         // Notify any systems listening for GameState changes.
         GameEvents.OnGameStateChange?.Invoke(newState);
-        Debug.Log(currentGameState.ToString());
+        //Debug.Log(currentGameState.ToString());
     }
 
     // Called when all players have completed a round of board play.

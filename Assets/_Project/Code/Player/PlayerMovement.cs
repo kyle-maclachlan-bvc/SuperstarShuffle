@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,15 +22,18 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private BoardSpace currentSpace; // The board node currently occupied by the player.
     [SerializeField] private MovementState movementState = MovementState.Idle; // Tracks the player's current Movement State.
-
+    [SerializeField] private float moveSpeed = 5f; // movement speed for the Coroutine to move players between spaces.
+    
     private int remainingSpaces; // Number of spaces remaining from the current dice roll.
     // This value decreases as the player moves across the board.
     
-    private BoardSpace pendingIntersection; // Stores the intersection currently awaiting a route choice.
-
+    private BoardSpace intersectionSpace; // Stores the intersection currently awaiting a route choice.
+    
     private PathDirection selectedDirection; // Route currently selected by player.
     private bool waitingForConfirmation; // Tracks whether a route has been selected and is waiting for player confirmation.
 
+    public Action OnMovementFinished;
+    
     public bool IsWaitingForDirection()
     {
         // Returns true when the player has reached an intersection and is waiting for a route choice.
@@ -71,60 +76,79 @@ public class PlayerMovement : MonoBehaviour
 
         remainingSpaces = spaces;
 
-        ContinueMovement();
+        StartCoroutine(ContinueMovement());
     }
 
     // continues movement along the board graph until:
     // - movement is exhausted.
     // - an intersection is reached.
     // - A dead end is encountered.
-    public void ContinueMovement()
+    private IEnumerator ContinueMovement()
     {
-        BoardSpace targetSpace = currentSpace;
-
         while (remainingSpaces > 0)
         {
-            if (targetSpace.NextSpaces.Count == 0)
+            if (currentSpace.NextSpaces.Count == 0)
             {
-                Debug.LogWarning(
-                    $"Space {targetSpace.SpaceIndex} has no Next Spaces assigned");
-
+                Debug.LogWarning($"Space {currentSpace.SpaceIndex} has no Next Space assigned");
                 break;
             }
+
+
+            BoardSpace destinationSpace = currentSpace.NextSpaces[0];
+            yield return StartCoroutine(MoveToSpace(destinationSpace));
+
+            currentSpace = destinationSpace;
             
-            targetSpace = targetSpace.NextSpaces[0]; // move to the next connected node
-
-            remainingSpaces--;
-
-            currentSpace = targetSpace;
-
-            transform.position =
-                currentSpace.transform.position;
-
-            Debug.Log(
-                $"Moved to Space {currentSpace.SpaceIndex}");
-
-            // Stop movement when an intersection is reached.
-            if (currentSpace.SpaceType ==
-                SpaceType.Intersection)
+            if (currentSpace.SpaceType != SpaceType.Transit && currentSpace.SpaceType != SpaceType.Intersection)
             {
-                pendingIntersection = currentSpace;
-
-                movementState =
-                    MovementState.WaitingForDirection;
-
-                Debug.Log(
-                    $"Reached Intersection {currentSpace.SpaceIndex}");
-
-                Debug.Log(
-                    $"Remaining Spaces: {remainingSpaces}");
-
-                return;
+                remainingSpaces--;
             }
+
+            Debug.Log($"Space: {currentSpace.SpaceIndex} | Type: {currentSpace.SpaceType} | Remaining: {remainingSpaces}");
+
+            if (currentSpace.SpaceType == SpaceType.Intersection)
+            {
+                intersectionSpace = currentSpace;
+                movementState = MovementState.WaitingForDirection;
+
+                //Debug.Log($"Reached Intersection {currentSpace.SpaceIndex}");
+                //Debug.Log($"Remaining Spaces: {remainingSpaces}");
+
+                yield break;
+            }
+
+            if (currentSpace.SpaceType == SpaceType.Transit)
+            {
+                Debug.Log($"Reached Transit Node {currentSpace.SpaceIndex}");
+                continue;
+            }
+            
         }
 
-        // movement has completed successfully.
         movementState = MovementState.Idle;
+        OnMovementFinished?.Invoke();
+    }
+
+    private IEnumerator MoveToSpace(BoardSpace targetSpace)
+    {
+        Vector3 startPosition = transform.position;
+        Vector3 targetPosition = targetSpace.transform.position;
+        
+        float journeyLength = Vector3.Distance(startPosition, targetPosition);
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < journeyLength / moveSpeed)
+        {
+            elapsedTime += Time.deltaTime;
+            
+            float t = elapsedTime / (journeyLength / moveSpeed);
+            transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+
+            yield return null;
+        }
+
+        transform.position = targetPosition;
     }
 
     // Temporary keyboard-based route selection system.
@@ -134,10 +158,9 @@ public class PlayerMovement : MonoBehaviour
         if (Keyboard.current.rightArrowKey.wasPressedThisFrame)
         {
             selectedDirection =
-                pendingIntersection.OptionOneDirection;
+                intersectionSpace.OptionOneDirection;
 
-            Debug.Log(
-                $"Selected {selectedDirection}");
+            //Debug.Log($"Selected {selectedDirection}");
 
             waitingForConfirmation = true;
         }
@@ -145,10 +168,9 @@ public class PlayerMovement : MonoBehaviour
         if (Keyboard.current.downArrowKey.wasPressedThisFrame)
         {
             selectedDirection =
-                pendingIntersection.OptionTwoDirection;
+                intersectionSpace.OptionTwoDirection;
 
-            Debug.Log(
-                $"Selected {selectedDirection}");
+            //Debug.Log($"Selected {selectedDirection}");
 
             waitingForConfirmation = true;
         }
@@ -165,50 +187,65 @@ public class PlayerMovement : MonoBehaviour
     {
         selectedDirection = direction;
         
-        Debug.Log($"Selected Direction: {selectedDirection}");
+        //Debug.Log($"Selected Direction: {selectedDirection}");
     }
     
     // Checks whether the specified direction is available at the current intersection
     public bool IsDirectionAvailable(
         PathDirection direction)
     {
-        if (pendingIntersection == null)
+        if (intersectionSpace == null)
             return false;
 
         return direction ==
-               pendingIntersection.OptionOneDirection
+               intersectionSpace.OptionOneDirection
                ||
                direction ==
-               pendingIntersection.OptionTwoDirection;
+               intersectionSpace.OptionTwoDirection;
     }
     
     
     // Applies the selected route and resumes movement.
     public void ConfirmDirection()
     {
-        Debug.Log(
-            $"Confirmed {selectedDirection}");
+        //Debug.Log($"Confirmed {selectedDirection}");
+
+        BoardSpace selectedSpace;
 
         if (selectedDirection ==
-            pendingIntersection.OptionOneDirection)
+            intersectionSpace.OptionOneDirection)
         {
-            currentSpace =
-                pendingIntersection.NextSpaces[0];
+            selectedSpace =
+                intersectionSpace.NextSpaces[0];
         }
         else
         {
-            currentSpace =
-                pendingIntersection.NextSpaces[1];
+            selectedSpace =
+                intersectionSpace.NextSpaces[1];
         }
 
-        transform.position =
-            currentSpace.transform.position;
+        currentSpace = intersectionSpace;
 
         movementState =
             MovementState.Moving;
 
         waitingForConfirmation = false;
 
-        ContinueMovement();
+        StartCoroutine(ContinueMovementFromIntersection(selectedSpace));
+    }
+
+    private IEnumerator ContinueMovementFromIntersection(BoardSpace selectedSpace)
+    {
+        yield return StartCoroutine(MoveToSpace(selectedSpace));
+
+        currentSpace = selectedSpace;
+
+        if (currentSpace.SpaceType != SpaceType.Transit && currentSpace.SpaceType != SpaceType.Intersection)
+        {
+            remainingSpaces--;
+        }
+        
+        movementState = MovementState.Moving;
+        StartCoroutine(ContinueMovement());
     }
 }

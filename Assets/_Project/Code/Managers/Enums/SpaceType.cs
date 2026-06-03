@@ -18,7 +18,9 @@ public enum SpaceType
     Blue,
     Red,
     Happening,
-    Intersection
+    Intersection,
+    Transit,
+    Star
 }
 
 // Start; the starting location of the board
@@ -34,7 +36,7 @@ public enum SpaceType
     // Remove coins from player
     // Create risk during board traversal
 
-// Happening; a specail event space
+// Happening; a special event space
 // Planned behaviors:
     // Trigger unique board events
     // Warp players
@@ -43,3 +45,10 @@ public enum SpaceType
 // Intersection; A branching path space
 // Players must choose a route before movement can continue.
 // This space type pauses movement and transitions the player into the Waiting for Direction movement state.
+
+// Transit; a blank node used for navigation between spaces
+// Players will automatically connect to these nodes between spaces so that they can move in more accurate directions.
+
+// Star; the Star Space where players can buy stars.
+// This is a blank node so players don't use up a space to walk on this space.
+// Once the star is bought, it will move locations.
