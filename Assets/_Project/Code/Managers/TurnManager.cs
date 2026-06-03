@@ -33,7 +33,9 @@ public class TurnManager : MonoBehaviour
         foreach (PlayerMovement player in players)
             player.OnMovementFinished += EndPlayerTurn;
         
-        BeginTurn();
+        Debug.Log("TurnManager Waiting for GameSetup");
+        
+        //BeginTurn();
     }
 
     // Processes turn-related input each frame
@@ -43,6 +45,9 @@ public class TurnManager : MonoBehaviour
         // ignore input from inactive players
     private void Update()
     {
+        if (GameManager.Instance.CurrentGameState != GameState.PlayerTurn)
+            return;
+        
         // only process input for the active player.
         if (playerStates[currentPlayerIndex].CurrentState
             == PlayerState.Waiting || playerStates[currentPlayerIndex].CurrentState == PlayerState.Disabled)
@@ -73,7 +78,7 @@ public class TurnManager : MonoBehaviour
         // disable inactive player controls
         // enable the active player's controls
         // focus the camera on the active player.
-    private void BeginTurn()
+    public void BeginTurn()
     {
         //Debug.Log("BeginTurn Called");
             

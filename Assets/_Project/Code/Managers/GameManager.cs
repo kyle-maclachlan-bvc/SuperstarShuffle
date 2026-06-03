@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int maxTurns = 10; // The total number of turns that will be played before the game ends.
     // FUTURE, Turns can be adjusted to 15, 20, and 30.
     
+    [Header("Game Managers")]
+    [SerializeField] private GameSetupManager GameSetupManager;
+    
     // Initializes the GameManager Singleton, and ensures only one exists
     private void Awake()
     {
@@ -44,7 +47,9 @@ public class GameManager : MonoBehaviour
     // Starts the first gameplay phase when the scene loads
     private void Start()
     {
-        ChangeGameState(GameState.PlayerTurn);
+        ChangeGameState(GameState.GameSetup);
+        GameSetupManager.StartGameSetup();
+        Debug.Log("Game Setup Started");
     }
 
     // Changes the current game state and notifies any subscribers.

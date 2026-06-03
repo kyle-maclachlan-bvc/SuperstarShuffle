@@ -129,6 +129,7 @@ public class PlayerMovement : MonoBehaviour
         if (playerTeam != null)
         {
             playerTeam.CurrentTeam = currentSpace.TeamColor;
+            Debug.Log("Current Team: " + currentSpace.TeamColor);
         }
         movementState = MovementState.Idle;
         OnMovementFinished?.Invoke();

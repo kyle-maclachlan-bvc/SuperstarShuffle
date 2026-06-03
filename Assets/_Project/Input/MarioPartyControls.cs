@@ -384,6 +384,109 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
             ]
         },
         {
+            ""name"": ""GameSetup"",
+            ""id"": ""3618a8ba-6906-4408-9d9e-2b6b8ee62d16"",
+            ""actions"": [
+                {
+                    ""name"": ""Confirm"",
+                    ""type"": ""Button"",
+                    ""id"": ""701a51aa-20ee-46b2-88f4-07afbd10f542"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Roll"",
+                    ""type"": ""Button"",
+                    ""id"": ""2928e410-652f-45c8-95b2-2caa78ba50e7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""ea2e9753-7509-4c71-b053-ff4ea4cf6642"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dfe891e5-7cd1-4d9c-bafb-c4a6f064e481"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b7431d3-b05d-4f9f-89cc-270da1cef64a"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""63822200-8951-4d15-885c-3cb475c74d30"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""966395c7-7d74-44a2-b1a2-f029ba697170"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1dab0874-16d4-413d-abf2-37f38c0bd00b"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""41beef98-2239-494b-a8b6-72f84d2a9420"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
             ""name"": ""Minigame - Pickaxe Panic"",
             ""id"": ""5fefd6e7-ceac-4416-bfbe-029991b5d9fe"",
             ""actions"": [
@@ -505,6 +608,10 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
         m_BoardGame_Cancel = m_BoardGame.FindAction("Cancel", throwIfNotFound: true);
         m_BoardGame_RouteSelect = m_BoardGame.FindAction("RouteSelect", throwIfNotFound: true);
         m_BoardGame_Pause = m_BoardGame.FindAction("Pause", throwIfNotFound: true);
+        // GameSetup
+        m_GameSetup = asset.FindActionMap("GameSetup", throwIfNotFound: true);
+        m_GameSetup_Confirm = m_GameSetup.FindAction("Confirm", throwIfNotFound: true);
+        m_GameSetup_Roll = m_GameSetup.FindAction("Roll", throwIfNotFound: true);
         // Minigame - Pickaxe Panic
         m_MinigamePickaxePanic = asset.FindActionMap("Minigame - Pickaxe Panic", throwIfNotFound: true);
         m_MinigamePickaxePanic_Newaction = m_MinigamePickaxePanic.FindAction("New action", throwIfNotFound: true);
@@ -522,6 +629,7 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
     ~@MarioPartyControls()
     {
         UnityEngine.Debug.Assert(!m_BoardGame.enabled, "This will cause a leak and performance issues, MarioPartyControls.BoardGame.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_GameSetup.enabled, "This will cause a leak and performance issues, MarioPartyControls.GameSetup.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_MinigamePickaxePanic.enabled, "This will cause a leak and performance issues, MarioPartyControls.MinigamePickaxePanic.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_MinigameMailCall.enabled, "This will cause a leak and performance issues, MarioPartyControls.MinigameMailCall.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_MinigameCopyCat.enabled, "This will cause a leak and performance issues, MarioPartyControls.MinigameCopyCat.Disable() has not been called.");
@@ -737,6 +845,113 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="BoardGameActions" /> instance referencing this action map.
     /// </summary>
     public BoardGameActions @BoardGame => new BoardGameActions(this);
+
+    // GameSetup
+    private readonly InputActionMap m_GameSetup;
+    private List<IGameSetupActions> m_GameSetupActionsCallbackInterfaces = new List<IGameSetupActions>();
+    private readonly InputAction m_GameSetup_Confirm;
+    private readonly InputAction m_GameSetup_Roll;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "GameSetup".
+    /// </summary>
+    public struct GameSetupActions
+    {
+        private @MarioPartyControls m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public GameSetupActions(@MarioPartyControls wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "GameSetup/Confirm".
+        /// </summary>
+        public InputAction @Confirm => m_Wrapper.m_GameSetup_Confirm;
+        /// <summary>
+        /// Provides access to the underlying input action "GameSetup/Roll".
+        /// </summary>
+        public InputAction @Roll => m_Wrapper.m_GameSetup_Roll;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_GameSetup; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="GameSetupActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(GameSetupActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="GameSetupActions" />
+        public void AddCallbacks(IGameSetupActions instance)
+        {
+            if (instance == null || m_Wrapper.m_GameSetupActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_GameSetupActionsCallbackInterfaces.Add(instance);
+            @Confirm.started += instance.OnConfirm;
+            @Confirm.performed += instance.OnConfirm;
+            @Confirm.canceled += instance.OnConfirm;
+            @Roll.started += instance.OnRoll;
+            @Roll.performed += instance.OnRoll;
+            @Roll.canceled += instance.OnRoll;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="GameSetupActions" />
+        private void UnregisterCallbacks(IGameSetupActions instance)
+        {
+            @Confirm.started -= instance.OnConfirm;
+            @Confirm.performed -= instance.OnConfirm;
+            @Confirm.canceled -= instance.OnConfirm;
+            @Roll.started -= instance.OnRoll;
+            @Roll.performed -= instance.OnRoll;
+            @Roll.canceled -= instance.OnRoll;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="GameSetupActions.UnregisterCallbacks(IGameSetupActions)" />.
+        /// </summary>
+        /// <seealso cref="GameSetupActions.UnregisterCallbacks(IGameSetupActions)" />
+        public void RemoveCallbacks(IGameSetupActions instance)
+        {
+            if (m_Wrapper.m_GameSetupActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="GameSetupActions.AddCallbacks(IGameSetupActions)" />
+        /// <seealso cref="GameSetupActions.RemoveCallbacks(IGameSetupActions)" />
+        /// <seealso cref="GameSetupActions.UnregisterCallbacks(IGameSetupActions)" />
+        public void SetCallbacks(IGameSetupActions instance)
+        {
+            foreach (var item in m_Wrapper.m_GameSetupActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_GameSetupActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="GameSetupActions" /> instance referencing this action map.
+    /// </summary>
+    public GameSetupActions @GameSetup => new GameSetupActions(this);
 
     // Minigame - Pickaxe Panic
     private readonly InputActionMap m_MinigamePickaxePanic;
@@ -1163,6 +1378,28 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPause(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "GameSetup" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="GameSetupActions.AddCallbacks(IGameSetupActions)" />
+    /// <seealso cref="GameSetupActions.RemoveCallbacks(IGameSetupActions)" />
+    public interface IGameSetupActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Confirm" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnConfirm(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Roll" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRoll(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Minigame - Pickaxe Panic" which allows adding and removing callbacks.
