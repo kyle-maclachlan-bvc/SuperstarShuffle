@@ -1,25 +1,31 @@
+using System;
 using UnityEngine;
 
 public class PlayerCurrency : MonoBehaviour
 {
-    [SerializeField] private int coins;
-    [SerializeField] private int stars;
+    [SerializeField] private int coins = 0;
 
     public int Coins => coins;
-    public int Stars => stars;
 
     public void AddCoins(int amount)
     {
         coins += amount;
     }
 
-    public void RemoveCoins(int amount)
+    /*public void RemoveCoins(int amount)
     {
         coins -= amount;
+        Debug.Log($"{gameObject.name} now has {coins} coins");
+    }*/
+
+    public int RemoveCoins(int amount)
+    {
+        int coinsRemoved = Mathf.Min(coins, amount);
+
+        coins -= coinsRemoved;
+
+        return coinsRemoved;
     }
 
-    public void AddStar()
-    {
-        stars++;
-    }
+
 }

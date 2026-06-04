@@ -85,7 +85,10 @@ public class GameManager : MonoBehaviour
 
         currentTurn++;
         
+        //Temporary playtest loop
+        ChangeGameState(GameState.PlayerTurn);
+
         // Transitions into the minigame phase.
-        ChangeGameState(GameState.MinigameTutorial);
+        //ChangeGameState(GameState.MinigameTutorial);
     }
 }

@@ -174,6 +174,9 @@ public class GameSetupManager : MonoBehaviour
     private void GiveStartingCoins()
     {
         Debug.Log("Give Starting 10 Coins");
+
+        foreach (Player player in GameManager.Instance.Players)
+            player.Currency.AddCoins(10);
     }
 
     private void BeginGameplay()

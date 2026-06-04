@@ -16,7 +16,8 @@ public enum MovementState
 {
     Idle,
     Moving,
-    WaitingForDirection
+    WaitingForDirection,
+    WaitingForPropertyDecision
 }
 
 // Idle; the player is currently not moving

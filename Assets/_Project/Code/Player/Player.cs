@@ -25,6 +25,9 @@ public class Player : MonoBehaviour
     public PlayerTurnState TurnState { get;  private set; }
     // Tracks the player's current turn state.
 
+    [SerializeField] private PropertyOwner propertyOwner;
+    public PropertyOwner PropertyOwner => propertyOwner;
+
     private void Awake()
     {
         // Caches references to all player-related components attached to this game object.

@@ -21,17 +21,20 @@ using System.Collections.Generic;
 public class TurnManager : MonoBehaviour
 {
     [SerializeField] private DiceBlock diceBlock; // Generates movement value used for board traversal
-    [SerializeField] private List<PlayerMovement> players; // Collection of player movement components. Used to move the players across the board.
-    [SerializeField] private List<PlayerTurnState> playerStates; // Collection of player state components. Used to determine whose turn is active.
-    [SerializeField] private List<PlayerController> playerControllers; // Collection of player controller components. Used to enable and disable player input.
+    //[SerializeField] private List<PlayerMovement> players; // Collection of player movement components. Used to move the players across the board.
+    //[SerializeField] private List<PlayerTurnState> playerStates; // Collection of player state components. Used to determine whose turn is active.
+    //[SerializeField] private List<PlayerController> playerControllers; // Collection of player controller components. Used to enable and disable player input.
     [SerializeField] private CameraController cameraController; // Controls which player the camera follows.
+    [SerializeField] private List<Player> players;
     
     private int currentPlayerIndex = 0; // Index of the player whose turn is currently active.
 
     private void Start()
     {
-        foreach (PlayerMovement player in players)
-            player.OnMovementFinished += EndPlayerTurn;
+        Debug.Log("TurnManager Waiting for GameSetup");
+        
+        //foreach (PlayerMovement player in players)
+            //player.OnMovementFinished += EndPlayerTurn;
     }
 
     private void OnEnable()
@@ -54,25 +57,34 @@ public class TurnManager : MonoBehaviour
         if (GameManager.Instance.CurrentGameState != GameState.PlayerTurn)
             return;
         
-        // only process input for the active player.
+        Player currentPlayer = players[currentPlayerIndex];
+        
+        if (currentPlayer.TurnState.CurrentState == PlayerState.Waiting ||
+            currentPlayer.TurnState.CurrentState == PlayerState.Disabled)
+            return;
+
+        PlayerMovement movement = currentPlayer.Movement;
+        PlayerController controller = currentPlayer.Controller;
+        
+        /*// only process input for the active player.
         if (playerStates[currentPlayerIndex].CurrentState
             == PlayerState.Waiting || playerStates[currentPlayerIndex].CurrentState == PlayerState.Disabled)
             return;
         
         PlayerMovement currentPlayer = players[currentPlayerIndex];
         PlayerController currentController = playerControllers[currentPlayerIndex];
+        */
+
 
         // if movement is paused at an intersection, process route selection input
-        if (currentPlayer.IsWaitingForDirection())
+        if (movement.IsWaitingForDirection())
         {
-            HandleIntersectionInput(
-                currentPlayer, currentController);
-
+            HandleIntersectionInput(movement, controller);
             return;
         }
         
         // detect dice roll input.
-        if (playerControllers[currentPlayerIndex].RollPressed())
+        if (controller.RollPressed())
         {
             RollDice();
         }
@@ -86,8 +98,22 @@ public class TurnManager : MonoBehaviour
         // focus the camera on the active player.
     public void BeginTurn()
     {
-        Debug.Log($"Player {currentPlayerIndex + 1} Turn Started"); 
+        foreach (Player player in players)
+        {
+            player.TurnState.CurrentState = PlayerState.Waiting;
+
+            player.Controller.DisableControls();
+        }
         
+        Player currentPlayer = players[currentPlayerIndex];
+        currentPlayer.TurnState.CurrentState = PlayerState.TakingTurn;
+        currentPlayer.Controller.EnableControls();
+        cameraController.FocusPlayer(currentPlayer.transform);
+        
+        Debug.Log($"{currentPlayer.name} Turn Started.");
+
+        /*Debug.Log($"Player {currentPlayerIndex + 1} Turn Started");
+
         for (int i = 0; i < playerStates.Count; i++)
         {
             playerStates[i].CurrentState = PlayerState.Waiting;
@@ -97,9 +123,9 @@ public class TurnManager : MonoBehaviour
 
         playerStates[currentPlayerIndex].CurrentState = PlayerState.TakingTurn;
         playerControllers[currentPlayerIndex].EnableControls();
-        
+
         cameraController.FocusPlayer(players[currentPlayerIndex].transform);
-        
+        */
     }
 
         // Rolls the dice and begins player movement
@@ -110,9 +136,9 @@ public class TurnManager : MonoBehaviour
 
             Debug.Log($"Rolled: {rollValue}");
 
-            playerStates[currentPlayerIndex].CurrentState = PlayerState.Moving;
+            players[currentPlayerIndex].TurnState.CurrentState = PlayerState.Moving;
 
-            players[currentPlayerIndex].StartMovingSpaces(rollValue);
+            players[currentPlayerIndex].Movement.StartMovingSpaces(rollValue);
         }
 
         // Processes player input while waiting at an intersection.
@@ -169,9 +195,12 @@ public class TurnManager : MonoBehaviour
         // If the final player has completed their turn, GameManager is notified that the round has ended.
         private void EndPlayerTurn()
         {
-            playerStates[currentPlayerIndex].CurrentState =
+            players[currentPlayerIndex].TurnState.CurrentState =
                 PlayerState.Waiting;
 
+            Player currentPlayer = players[currentPlayerIndex];
+            Debug.Log($"{currentPlayer.name} finished their turn with {currentPlayer.Currency.Coins} coins");
+            
             currentPlayerIndex++;
 
             if (currentPlayerIndex >= players.Count)
@@ -188,7 +217,20 @@ public class TurnManager : MonoBehaviour
         {
             if (newState == GameState.PlayerTurn)
                 BeginTurn();
+
+            players = GameManager.Instance.TurnOrder;
+
+            foreach (Player player in players)
+            {
+                player.Movement.OnMovementFinished -= EndPlayerTurn;
+                player.Movement.OnMovementFinished += EndPlayerTurn;
+            }
+
+            currentPlayerIndex = 0;
+
+            BeginTurn();
             
-            Debug.Log($"Game State Changed: {GameManager.Instance.CurrentGameState}");
+            Debug.Log("TurnManager Loaded Turn Order");
+            //Debug.Log($"Game State Changed: {GameManager.Instance.CurrentGameState}");
         }
 }
