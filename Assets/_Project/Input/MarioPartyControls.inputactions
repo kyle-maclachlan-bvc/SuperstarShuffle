@@ -311,9 +311,36 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Roll",
+                    "name": "PlayerOneRoll",
                     "type": "Button",
                     "id": "2928e410-652f-45c8-95b2-2caa78ba50e7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PlayerTwoRoll",
+                    "type": "Button",
+                    "id": "1b2256ee-af80-4cc7-bcb3-fc5e84e31aa3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PlayerThreeRoll",
+                    "type": "Button",
+                    "id": "d14ec916-fac6-47e1-ac06-665e1abe3130",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PlayerFourRoll",
+                    "type": "Button",
+                    "id": "e602eae1-32b3-4de1-89bc-040ef885c466",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -350,40 +377,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "63822200-8951-4d15-885c-3cb475c74d30",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Roll",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "966395c7-7d74-44a2-b1a2-f029ba697170",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Roll",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1dab0874-16d4-413d-abf2-37f38c0bd00b",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Roll",
+                    "action": "PlayerOneRoll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -394,7 +388,40 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "PlayerOneRoll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9b8c0248-0ee8-4cfd-99ab-9f6557b6412b",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerTwoRoll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe59e558-1fa5-423f-961b-b0a5921fa639",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerThreeRoll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9af1a541-3857-475b-bcf1-595c03914fdf",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerFourRoll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

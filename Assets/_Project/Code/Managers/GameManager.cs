@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -31,6 +32,12 @@ public class GameManager : MonoBehaviour
     [Header("Game Managers")]
     [SerializeField] private GameSetupManager GameSetupManager;
     
+    [Header("Turn Order")]
+    [SerializeField] private List<Player> players;
+    [SerializeField] private List<Player> turnOrder = new();
+    public List<Player> Players => players;
+    public List<Player> TurnOrder => turnOrder;
+    
     // Initializes the GameManager Singleton, and ensures only one exists
     private void Awake()
     {
@@ -49,7 +56,6 @@ public class GameManager : MonoBehaviour
     {
         ChangeGameState(GameState.GameSetup);
         GameSetupManager.StartGameSetup();
-        Debug.Log("Game Setup Started");
     }
 
     // Changes the current game state and notifies any subscribers.

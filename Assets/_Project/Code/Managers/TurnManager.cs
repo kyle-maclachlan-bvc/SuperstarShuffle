@@ -32,12 +32,18 @@ public class TurnManager : MonoBehaviour
     {
         foreach (PlayerMovement player in players)
             player.OnMovementFinished += EndPlayerTurn;
-        
-        Debug.Log("TurnManager Waiting for GameSetup");
-        
-        //BeginTurn();
     }
 
+    private void OnEnable()
+    {
+        GameEvents.OnGameStateChange += HandleGameStateChanged;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnGameStateChange -= HandleGameStateChanged;
+    }
+    
     // Processes turn-related input each frame
     // Responsibilities:
         // Detect die rolls
@@ -80,26 +86,21 @@ public class TurnManager : MonoBehaviour
         // focus the camera on the active player.
     public void BeginTurn()
     {
-        //Debug.Log("BeginTurn Called");
-            
-            for (int i = 0; i < playerStates.Count; i++)
-            {
-                playerStates[i].CurrentState =
-                    PlayerState.Waiting;
+        Debug.Log($"Player {currentPlayerIndex + 1} Turn Started"); 
+        
+        for (int i = 0; i < playerStates.Count; i++)
+        {
+            playerStates[i].CurrentState = PlayerState.Waiting;
 
-                playerControllers[i].DisableControls();
-            }
-
-            playerStates[currentPlayerIndex].CurrentState =
-                PlayerState.TakingTurn;
-            
-            playerControllers[currentPlayerIndex].EnableControls();
-
-            cameraController.FocusPlayer(
-                players[currentPlayerIndex].transform);
-            
-            //Debug.Log($"Player {currentPlayerIndex + 1} Turn Started");
+            playerControllers[i].DisableControls();
         }
+
+        playerStates[currentPlayerIndex].CurrentState = PlayerState.TakingTurn;
+        playerControllers[currentPlayerIndex].EnableControls();
+        
+        cameraController.FocusPlayer(players[currentPlayerIndex].transform);
+        
+    }
 
         // Rolls the dice and begins player movement
         // The active player transitions from TakingTurn to Moving
@@ -181,5 +182,13 @@ public class TurnManager : MonoBehaviour
             }
 
             BeginTurn();
+        }
+
+        private void HandleGameStateChanged(GameState newState)
+        {
+            if (newState == GameState.PlayerTurn)
+                BeginTurn();
+            
+            Debug.Log($"Game State Changed: {GameManager.Instance.CurrentGameState}");
         }
 }

@@ -397,9 +397,36 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Roll"",
+                    ""name"": ""PlayerOneRoll"",
                     ""type"": ""Button"",
                     ""id"": ""2928e410-652f-45c8-95b2-2caa78ba50e7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlayerTwoRoll"",
+                    ""type"": ""Button"",
+                    ""id"": ""1b2256ee-af80-4cc7-bcb3-fc5e84e31aa3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlayerThreeRoll"",
+                    ""type"": ""Button"",
+                    ""id"": ""d14ec916-fac6-47e1-ac06-665e1abe3130"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlayerFourRoll"",
+                    ""type"": ""Button"",
+                    ""id"": ""e602eae1-32b3-4de1-89bc-040ef885c466"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -436,40 +463,7 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Roll"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""63822200-8951-4d15-885c-3cb475c74d30"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Roll"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""966395c7-7d74-44a2-b1a2-f029ba697170"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Roll"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1dab0874-16d4-413d-abf2-37f38c0bd00b"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Roll"",
+                    ""action"": ""PlayerOneRoll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -480,7 +474,40 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Roll"",
+                    ""action"": ""PlayerOneRoll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9b8c0248-0ee8-4cfd-99ab-9f6557b6412b"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerTwoRoll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe59e558-1fa5-423f-961b-b0a5921fa639"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerThreeRoll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9af1a541-3857-475b-bcf1-595c03914fdf"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerFourRoll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -611,7 +638,10 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
         // GameSetup
         m_GameSetup = asset.FindActionMap("GameSetup", throwIfNotFound: true);
         m_GameSetup_Confirm = m_GameSetup.FindAction("Confirm", throwIfNotFound: true);
-        m_GameSetup_Roll = m_GameSetup.FindAction("Roll", throwIfNotFound: true);
+        m_GameSetup_PlayerOneRoll = m_GameSetup.FindAction("PlayerOneRoll", throwIfNotFound: true);
+        m_GameSetup_PlayerTwoRoll = m_GameSetup.FindAction("PlayerTwoRoll", throwIfNotFound: true);
+        m_GameSetup_PlayerThreeRoll = m_GameSetup.FindAction("PlayerThreeRoll", throwIfNotFound: true);
+        m_GameSetup_PlayerFourRoll = m_GameSetup.FindAction("PlayerFourRoll", throwIfNotFound: true);
         // Minigame - Pickaxe Panic
         m_MinigamePickaxePanic = asset.FindActionMap("Minigame - Pickaxe Panic", throwIfNotFound: true);
         m_MinigamePickaxePanic_Newaction = m_MinigamePickaxePanic.FindAction("New action", throwIfNotFound: true);
@@ -850,7 +880,10 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_GameSetup;
     private List<IGameSetupActions> m_GameSetupActionsCallbackInterfaces = new List<IGameSetupActions>();
     private readonly InputAction m_GameSetup_Confirm;
-    private readonly InputAction m_GameSetup_Roll;
+    private readonly InputAction m_GameSetup_PlayerOneRoll;
+    private readonly InputAction m_GameSetup_PlayerTwoRoll;
+    private readonly InputAction m_GameSetup_PlayerThreeRoll;
+    private readonly InputAction m_GameSetup_PlayerFourRoll;
     /// <summary>
     /// Provides access to input actions defined in input action map "GameSetup".
     /// </summary>
@@ -867,9 +900,21 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Confirm => m_Wrapper.m_GameSetup_Confirm;
         /// <summary>
-        /// Provides access to the underlying input action "GameSetup/Roll".
+        /// Provides access to the underlying input action "GameSetup/PlayerOneRoll".
         /// </summary>
-        public InputAction @Roll => m_Wrapper.m_GameSetup_Roll;
+        public InputAction @PlayerOneRoll => m_Wrapper.m_GameSetup_PlayerOneRoll;
+        /// <summary>
+        /// Provides access to the underlying input action "GameSetup/PlayerTwoRoll".
+        /// </summary>
+        public InputAction @PlayerTwoRoll => m_Wrapper.m_GameSetup_PlayerTwoRoll;
+        /// <summary>
+        /// Provides access to the underlying input action "GameSetup/PlayerThreeRoll".
+        /// </summary>
+        public InputAction @PlayerThreeRoll => m_Wrapper.m_GameSetup_PlayerThreeRoll;
+        /// <summary>
+        /// Provides access to the underlying input action "GameSetup/PlayerFourRoll".
+        /// </summary>
+        public InputAction @PlayerFourRoll => m_Wrapper.m_GameSetup_PlayerFourRoll;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -899,9 +944,18 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
             @Confirm.started += instance.OnConfirm;
             @Confirm.performed += instance.OnConfirm;
             @Confirm.canceled += instance.OnConfirm;
-            @Roll.started += instance.OnRoll;
-            @Roll.performed += instance.OnRoll;
-            @Roll.canceled += instance.OnRoll;
+            @PlayerOneRoll.started += instance.OnPlayerOneRoll;
+            @PlayerOneRoll.performed += instance.OnPlayerOneRoll;
+            @PlayerOneRoll.canceled += instance.OnPlayerOneRoll;
+            @PlayerTwoRoll.started += instance.OnPlayerTwoRoll;
+            @PlayerTwoRoll.performed += instance.OnPlayerTwoRoll;
+            @PlayerTwoRoll.canceled += instance.OnPlayerTwoRoll;
+            @PlayerThreeRoll.started += instance.OnPlayerThreeRoll;
+            @PlayerThreeRoll.performed += instance.OnPlayerThreeRoll;
+            @PlayerThreeRoll.canceled += instance.OnPlayerThreeRoll;
+            @PlayerFourRoll.started += instance.OnPlayerFourRoll;
+            @PlayerFourRoll.performed += instance.OnPlayerFourRoll;
+            @PlayerFourRoll.canceled += instance.OnPlayerFourRoll;
         }
 
         /// <summary>
@@ -916,9 +970,18 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
             @Confirm.started -= instance.OnConfirm;
             @Confirm.performed -= instance.OnConfirm;
             @Confirm.canceled -= instance.OnConfirm;
-            @Roll.started -= instance.OnRoll;
-            @Roll.performed -= instance.OnRoll;
-            @Roll.canceled -= instance.OnRoll;
+            @PlayerOneRoll.started -= instance.OnPlayerOneRoll;
+            @PlayerOneRoll.performed -= instance.OnPlayerOneRoll;
+            @PlayerOneRoll.canceled -= instance.OnPlayerOneRoll;
+            @PlayerTwoRoll.started -= instance.OnPlayerTwoRoll;
+            @PlayerTwoRoll.performed -= instance.OnPlayerTwoRoll;
+            @PlayerTwoRoll.canceled -= instance.OnPlayerTwoRoll;
+            @PlayerThreeRoll.started -= instance.OnPlayerThreeRoll;
+            @PlayerThreeRoll.performed -= instance.OnPlayerThreeRoll;
+            @PlayerThreeRoll.canceled -= instance.OnPlayerThreeRoll;
+            @PlayerFourRoll.started -= instance.OnPlayerFourRoll;
+            @PlayerFourRoll.performed -= instance.OnPlayerFourRoll;
+            @PlayerFourRoll.canceled -= instance.OnPlayerFourRoll;
         }
 
         /// <summary>
@@ -1394,12 +1457,33 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnConfirm(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Roll" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "PlayerOneRoll" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnRoll(InputAction.CallbackContext context);
+        void OnPlayerOneRoll(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PlayerTwoRoll" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPlayerTwoRoll(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PlayerThreeRoll" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPlayerThreeRoll(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PlayerFourRoll" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPlayerFourRoll(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Minigame - Pickaxe Panic" which allows adding and removing callbacks.

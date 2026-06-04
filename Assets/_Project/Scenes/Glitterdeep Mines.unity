@@ -18122,13 +18122,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.36351296, y: -0, z: -0, w: 0.9315891}
-  m_LocalPosition: {x: -29.49, y: 8.41, z: 12.66}
+  m_LocalRotation: {x: 0.010936232, y: -0.41683343, z: 0.014005123, w: 0.9088092}
+  m_LocalPosition: {x: -26.08, y: 4.38, z: 16.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 42.632, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.808, y: -49.263, z: 0.937}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79166,9 +79166,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf7a868266950c48b631a47318bc099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  currentGameState: 3
+  currentGameState: 2
   currentTurn: 1
   maxTurns: 10
+  GameSetupManager: {fileID: 1325239269}
+  players: []
+  turnOrder: []
 --- !u!1 &1316698086
 GameObject:
   m_ObjectHideFlags: 0
@@ -80219,6 +80222,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 62310470615039689, guid: 9b1391154b587a14a943fa26ecb74024, type: 3}
   m_PrefabInstance: {fileID: 1325042837}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1325239267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1325239268}
+  - component: {fileID: 1325239269}
+  m_Layer: 0
+  m_Name: GameSetupManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1325239268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325239267}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1729662895}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1325239269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325239267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de04b49af52a3354b84cfc925f75cc19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameSetupManager
+  turnManager: {fileID: 1111843271}
+  currentSetupStep: 0
+  PlayerOneRoll: 0
+  PlayerTwoRoll: 0
+  PlayerThreeRoll: 0
+  PlayerFourRoll: 0
 --- !u!1001 &1327444566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104983,6 +105036,7 @@ Transform:
   - {fileID: 1051259435}
   - {fileID: 1935310027}
   - {fileID: 1877736101}
+  - {fileID: 1325239268}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1729981632
