@@ -24,6 +24,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int playerID;
     // Identifies which player this controller belongs to.
     // Used to determine which debug input key should be read.
+
+    private PlayerInput playerInput;
+    private InputAction rollAction;
+    private InputAction confirmAction;
+    private InputAction cancelAction;
+    private InputAction routeSelectAction;
     
     public bool ControlsEnabled { get; private set; }
     // Determines whether this player is currently allows to provide input; controlled by TurnManager.
@@ -31,6 +37,21 @@ public class PlayerController : MonoBehaviour
     public int PlayerID => playerID;
     // Public read-only access to the playerID.
 
+    private void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+        
+        rollAction = playerInput.actions["Roll"];
+        confirmAction = playerInput.actions["Confirm"];
+        cancelAction = playerInput.actions["Cancel"];
+        routeSelectAction = playerInput.actions["RouteSelect"];
+    }
+
+    private void Start()
+    {
+        Debug.Log($"{gameObject.name} PlayerInputFound = {playerInput != null}");
+    }
+    
     public void EnableControls()
     {
         // Enables player input. Called when the player's turn begins.
@@ -119,6 +140,7 @@ public class PlayerController : MonoBehaviour
         if (!ControlsEnabled)
             return false;
 
-        return Keyboard.current.enterKey.wasPressedThisFrame;
+        //return Keyboard.current.enterKey.wasPressedThisFrame;
+        return confirmAction.WasPressedThisFrame();
     }
 }
