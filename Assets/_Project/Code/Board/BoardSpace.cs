@@ -41,7 +41,6 @@ public class BoardSpace : MonoBehaviour
         get => owner;
         set => owner = value;
     }
-
     public bool IsPurchaseable =>
         spaceType != SpaceType.Happening &&
         spaceType != SpaceType.Transit &&
