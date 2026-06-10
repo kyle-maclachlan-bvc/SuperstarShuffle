@@ -103,37 +103,38 @@ public class GameSetupManager : MonoBehaviour
 
     private void HandleTurnOrderInput()
     {
-        if (!playerOneRolled && InputManager.Instance.Controls.GameSetup.PlayerOneRoll.WasPressedThisFrame())
+        Player player1 = GameManager.Instance.Players[0];
+        Player player2 = GameManager.Instance.Players[1];
+        Player player3 = GameManager.Instance.Players[2];
+        Player player4 = GameManager.Instance.Players[3];
+        
+        if (!playerOneRolled && InputManager.Instance.PlayerRollPressed(1))
         {
             PlayerOneRoll = RollUniqueNumber();
-
             playerOneRolled = true;
             
             Debug.Log($"Player 1 Rolled {PlayerOneRoll}");
         }
         
-        if (!playerTwoRolled && InputManager.Instance.Controls.GameSetup.PlayerTwoRoll.WasPressedThisFrame())
+        if (!playerTwoRolled && InputManager.Instance.PlayerRollPressed(2))
         {
             PlayerTwoRoll = RollUniqueNumber();
-
             playerTwoRolled = true;
             
             Debug.Log($"Player 2 Rolled {PlayerTwoRoll}");
         }
         
-        if (!playerThreeRolled && InputManager.Instance.Controls.GameSetup.PlayerThreeRoll.WasPressedThisFrame())
+        if (!playerThreeRolled && InputManager.Instance.PlayerRollPressed(3))
         {
             PlayerThreeRoll = RollUniqueNumber();
-
             playerThreeRolled = true;
             
             Debug.Log($"Player 3 Rolled {PlayerThreeRoll}");
         }
         
-        if (!playerFourRolled && InputManager.Instance.Controls.GameSetup.PlayerFourRoll.WasPressedThisFrame())
+        if (!playerFourRolled && InputManager.Instance.PlayerRollPressed(4))
         {
             PlayerFourRoll = RollUniqueNumber();
-
             playerFourRolled = true;
             
             Debug.Log($"Player 4 Rolled {PlayerFourRoll}");

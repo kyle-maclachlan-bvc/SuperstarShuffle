@@ -192,8 +192,8 @@ public class TurnManager : MonoBehaviour
 
         private void HandleGameStateChanged(GameState newState)
         {
-            if (newState == GameState.PlayerTurn)
-                BeginTurn();
+            if (newState != GameState.PlayerTurn)
+                return;
 
             players = GameManager.Instance.TurnOrder;
 
@@ -206,8 +206,8 @@ public class TurnManager : MonoBehaviour
             currentPlayerIndex = 0;
 
             BeginTurn();
-            
-           //Debug.Log("TurnManager Loaded Turn Order");
+
+            //Debug.Log("TurnManager Loaded Turn Order");
             //Debug.Log($"Game State Changed: {GameManager.Instance.CurrentGameState}");
         }
 }

@@ -75,4 +75,25 @@ public class InputManager : MonoBehaviour
         if (controls != null)
             controls.Disable();
     }
+
+    public bool PlayerRollPressed(int playerID)
+    {
+        Gamepad gamepad = GetGamepad(playerID);
+        bool controllerPressed = gamepad != null && gamepad.buttonSouth.wasPressedThisFrame;
+
+        switch (playerID)
+        {
+            case 1:
+                return Keyboard.current.qKey.wasPressedThisFrame || controllerPressed;
+            case 2:
+                return Keyboard.current.wKey.wasPressedThisFrame ||  controllerPressed;
+            case 3:
+                return Keyboard.current.eKey.wasPressedThisFrame || controllerPressed;
+            case 4:
+                return Keyboard.current.rKey.wasPressedThisFrame || controllerPressed;
+        }
+
+        return false;
+
+    }
 }
