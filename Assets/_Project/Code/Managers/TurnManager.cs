@@ -148,47 +148,24 @@ public class TurnManager : MonoBehaviour
             // resume movement
         private void HandleIntersectionInput(PlayerMovement player, PlayerController controller)
         {
-            if (controller.SelectRightPressed()
-                &&
-                player.IsDirectionAvailable(
-                    PathDirection.Right))
-            {
-                player.SelectDirection(
-                    PathDirection.Right);
-            }
+            Vector2 routeInput = controller.RouteSelection();
 
-            if (controller.SelectDownPressed()
-                &&
-                player.IsDirectionAvailable(
-                    PathDirection.Down))
-            {
-                player.SelectDirection(
-                    PathDirection.Down);
-            }
+            if (routeInput.x > 0.5f && player.IsDirectionAvailable(PathDirection.Right))
+                player.SelectDirection(PathDirection.Right);
+            
+            if (routeInput.x < -0.5 && player.IsDirectionAvailable(PathDirection.Left))
+                player.SelectDirection(PathDirection.Left);
+            
+            if (routeInput.y > 0.5f && player.IsDirectionAvailable(PathDirection.Up))
+                player.SelectDirection(PathDirection.Up);
+            
+            if (routeInput.y < -0.5 && player.IsDirectionAvailable(PathDirection.Down))
+                player.SelectDirection(PathDirection.Down);
 
-            if (controller.SelectLeftPressed()
-                &&
-                player.IsDirectionAvailable(
-                    PathDirection.Left))
-            {
-                player.SelectDirection(
-                    PathDirection.Left);
-            }
-
-            if (controller.SelectUpPressed()
-                &&
-                player.IsDirectionAvailable(
-                    PathDirection.Up))
-            {
-                player.SelectDirection(
-                    PathDirection.Up);
-            }
-
-            // apply the selected route and continue movement
             if (controller.ConfirmPressed())
-            {
                 player.ConfirmDirection();
-            }
+
+            
         }
         
 // Ends the current player's turn and advances to the next player.

@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Manages the project's Input Actions asset.
@@ -21,6 +23,8 @@ public class InputManager : MonoBehaviour
 
     public MarioPartyControls Controls => controls; // provides read-only access to the active Input Actions asset
 
+    private readonly Dictionary<int, Gamepad> playerGamepads = new();
+    
     // Initializes the Input Manager singleton and creates the Input Actions asset.
     private void Awake()
     {
@@ -35,6 +39,30 @@ public class InputManager : MonoBehaviour
         controls = new MarioPartyControls();
     }
 
+    private void Start()
+    {
+        AssignControllers();
+    }
+
+    private void AssignControllers()
+    {
+        playerGamepads.Clear();
+
+        for (int i = 0; i < Gamepad.all.Count && i < 4; i++)
+        {
+            playerGamepads.Add(i + 1, Gamepad.all[i]);
+            Debug.Log($"Player {i + 1} assigned to {Gamepad.all[i].displayName}");
+        }
+    }
+
+    public Gamepad GetGamepad(int playerID)
+    {
+        if (playerGamepads.TryGetValue(playerID, out Gamepad gamepad))
+            return gamepad;
+
+        return null;
+    }
+    
     // Enables all input action maps when InputManager becomes active.
     private void OnEnable()
     {

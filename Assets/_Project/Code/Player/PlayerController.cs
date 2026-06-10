@@ -74,84 +74,95 @@ public class PlayerController : MonoBehaviour
         // Ignore input when controls are disabled.
         if (!ControlsEnabled)
             return false;
+        
+        Gamepad gamepad = InputManager.Instance.GetGamepad(playerID);
+        bool controllerPressed = gamepad != null && gamepad.buttonSouth.wasPressedThisFrame;
 
         switch (playerID)
         {
             case 1:
-                return Keyboard.current.qKey.wasPressedThisFrame || Gamepad.current.buttonSouth.wasPressedThisFrame;
+                return Keyboard.current.qKey.wasPressedThisFrame || controllerPressed;
             
             case 2:
-                return Keyboard.current.wKey.wasPressedThisFrame;
+                return Keyboard.current.wKey.wasPressedThisFrame || controllerPressed;
             
             case 3:
-                return Keyboard.current.eKey.wasPressedThisFrame;
+                return Keyboard.current.eKey.wasPressedThisFrame || controllerPressed;
             
             case 4:
-                return Keyboard.current.rKey.wasPressedThisFrame;
+                return Keyboard.current.rKey.wasPressedThisFrame || controllerPressed;
         }
 
         return false;
     }
-    
-    public bool SelectRightPressed()
+
+    public Vector2 RouteSelection()
     {
-        // Checks if the player selected the right route at board intersection
-        
         if (!ControlsEnabled)
-            return false;
-
-        return Keyboard.current.rightArrowKey.wasPressedThisFrame;
-    }
-
-    public bool SelectDownPressed()
-    {
-        // Checks if the player selected the downward route at board intersection
+            return Vector2.zero;
         
-        if (!ControlsEnabled)
-            return false;
-
-        return Keyboard.current.downArrowKey.wasPressedThisFrame;
-    }
-    
-    public bool SelectLeftPressed()
-    {
-        // Checks if the player selected the left route at board intersection
+        Gamepad gamepad = InputManager.Instance.GetGamepad(playerID);
+        Vector2 input = Vector2.zero;
         
-        if (!ControlsEnabled)
-            return false;
+        // Keyboard Debugging
+        // Keyboard Debug
+        if (Keyboard.current.rightArrowKey.isPressed)
+            input.x = 1;
 
-        return Keyboard.current.leftArrowKey.wasPressedThisFrame;
-    }
+        if (Keyboard.current.leftArrowKey.isPressed)
+            input.x = -1;
 
-    public bool SelectUpPressed()
-    {
-        // Checks if the player selected the upward route at board intersection
+        if (Keyboard.current.upArrowKey.isPressed)
+            input.y = 1;
+
+        if (Keyboard.current.downArrowKey.isPressed)
+            input.y = -1;
         
-        if (!ControlsEnabled)
-            return false;
+        // Controllers
+        if (gamepad != null)
+        {
+            Vector2 stickInput = gamepad.leftStick.ReadValue();
 
-        return Keyboard.current.upArrowKey.wasPressedThisFrame;
+            if (stickInput.magnitude > 0.5f)
+                input = stickInput;
+
+            if (gamepad.dpad.right.isPressed)
+                input = Vector2.right;
+
+            if (gamepad.dpad.left.isPressed)
+                input = Vector2.left;
+
+            if (gamepad.dpad.up.isPressed)
+                input = Vector2.up;
+
+            if (gamepad.dpad.down.isPressed)
+                input = Vector2.down;
+        }
+
+        return input;
     }
 
     public bool ConfirmPressed()
     {
         if (!ControlsEnabled)
             return false;
+        
+        Gamepad gamepad = InputManager.Instance.GetGamepad(playerID);
+        bool controllerPressed = gamepad != null && gamepad.buttonSouth.wasPressedThisFrame;
 
         switch (playerID)
         {
             case 1:
-                return Keyboard.current.enterKey.wasPressedThisFrame
-                       || Gamepad.current.buttonSouth.wasPressedThisFrame;
+                return Keyboard.current.enterKey.wasPressedThisFrame || controllerPressed;
 
             case 2:
-                return Keyboard.current.enterKey.wasPressedThisFrame;
+                return Keyboard.current.enterKey.wasPressedThisFrame || controllerPressed;
 
             case 3:
-                return Keyboard.current.enterKey.wasPressedThisFrame;
+                return Keyboard.current.enterKey.wasPressedThisFrame || controllerPressed;
 
             case 4:
-                return Keyboard.current.enterKey.wasPressedThisFrame;
+                return Keyboard.current.enterKey.wasPressedThisFrame || controllerPressed;
         }
 
         return false;
@@ -162,12 +173,14 @@ public class PlayerController : MonoBehaviour
         if (!ControlsEnabled)
             return false;
 
+        Gamepad gamepad = InputManager.Instance.GetGamepad(playerID);
+        bool controllerPressed = gamepad != null && gamepad.buttonSouth.wasPressedThisFrame;
+        
         switch (playerID)
         {
             case 1:
                 return Keyboard.current.backspaceKey.wasPressedThisFrame
-                       || (Gamepad.current != null &&
-                           Gamepad.current.buttonEast.wasPressedThisFrame);
+                       || controllerPressed;
 
             case 2:
             case 3:

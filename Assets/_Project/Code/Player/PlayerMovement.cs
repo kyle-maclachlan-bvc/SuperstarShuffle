@@ -29,7 +29,8 @@ public class PlayerMovement : MonoBehaviour
     // This value decreases as the player moves across the board.
     
     private BoardSpace intersectionSpace; // Stores the intersection currently awaiting a route choice.
-    
+
+    private PlayerController playerController;
     private PathDirection selectedDirection; // Route currently selected by player.
     private bool waitingForConfirmation; // Tracks whether a route has been selected and is waiting for player confirmation.
     private BoardSpace pendingPropertySpace;
@@ -56,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         // Places the player on their assigned starting board space when the scene begins.
+        playerController = GetComponent<PlayerController>();
         
         if (currentSpace != null)
         {
@@ -67,11 +69,6 @@ public class PlayerMovement : MonoBehaviour
     // Route selection logic is gradually being moved into Turn Manager. This method may be removed during refactoring.
     private void Update()
     {
-        if (movementState == MovementState.WaitingForDirection)
-        {
-            HandleIntersectionInput();
-            return;
-        }
 
         if (movementState == MovementState.WaitingForPropertyDecision)
         {
@@ -171,37 +168,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         transform.position = targetPosition;
-    }
-
-    // Temporary keyboard-based route selection system.
-    // May be replaced by Input Actions in a future update.
-    private void HandleIntersectionInput()
-    {
-        if (Keyboard.current.rightArrowKey.wasPressedThisFrame)
-        {
-            selectedDirection =
-                intersectionSpace.OptionOneDirection;
-
-            //Debug.Log($"Selected {selectedDirection}");
-
-            waitingForConfirmation = true;
-        }
-
-        if (Keyboard.current.downArrowKey.wasPressedThisFrame)
-        {
-            selectedDirection =
-                intersectionSpace.OptionTwoDirection;
-
-            //Debug.Log($"Selected {selectedDirection}");
-
-            waitingForConfirmation = true;
-        }
-
-        if (waitingForConfirmation &&
-            Keyboard.current.enterKey.wasPressedThisFrame)
-        {
-            ConfirmDirection();
-        }
     }
 
     // Stores the player's chosen direction
@@ -309,13 +275,13 @@ public class PlayerMovement : MonoBehaviour
         if (!waitingForPropertyDecision)
             return;
 
-        if (InputManager.Instance.Controls.BoardGame.Confirm.WasPressedThisFrame())
+        if (playerController.ConfirmPressed())
         {
             AttemptPurchase(pendingPropertySpace, GetComponent<Player>());
             FinishPropertyDecision();
         }
 
-        if (InputManager.Instance.Controls.BoardGame.Cancel.WasPressedThisFrame())
+        if (playerController.CancelPressed())
         {
             Debug.Log("Property Purcahse Declined");
             FinishPropertyDecision();
