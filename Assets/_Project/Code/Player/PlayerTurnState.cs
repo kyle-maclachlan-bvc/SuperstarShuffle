@@ -15,11 +15,15 @@ using UnityEngine;
 public class PlayerTurnState : MonoBehaviour
 {
     [SerializeField] private PlayerState currentState; // The player's current gameplay state
+    
+    public PlayerState CurrentState => currentState;
 
+    
+    /*
     // Gets or sets the player's current state. Used by the TurnManager and other gameplay systems to determine what actions the player may perform
     public PlayerState CurrentState
     {
         get => currentState;
         set => currentState = value;
-    }
+    }*/
 }
