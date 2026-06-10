@@ -1,5 +1,7 @@
+using NUnit.Framework.Api;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Users;
 
 /// <summary>
 /// Handles player-specific input checks.
@@ -24,12 +26,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int playerID;
     // Identifies which player this controller belongs to.
     // Used to determine which debug input key should be read.
-
+    [SerializeField] private bool allowKeyboardDebug = true;
+    
     private PlayerInput playerInput;
-    private InputAction rollAction;
-    private InputAction confirmAction;
-    private InputAction cancelAction;
-    private InputAction routeSelectAction;
+    //private InputAction rollAction;
+    //private InputAction confirmAction;
+    //private InputAction cancelAction;
+    //private InputAction routeSelectAction;
+    
     
     public bool ControlsEnabled { get; private set; }
     // Determines whether this player is currently allows to provide input; controlled by TurnManager.
@@ -41,15 +45,25 @@ public class PlayerController : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         
-        rollAction = playerInput.actions["Roll"];
-        confirmAction = playerInput.actions["Confirm"];
-        cancelAction = playerInput.actions["Cancel"];
-        routeSelectAction = playerInput.actions["RouteSelect"];
+        Debug.Log($"{name} PlayerInput Found = {playerInput != null}");
+        
+        //rollAction = playerInput.actions["Roll"];
+        //confirmAction = playerInput.actions["Confirm"];
+        //cancelAction = playerInput.actions["Cancel"];
+        //routeSelectAction = playerInput.actions["RouteSelect"];
+        
+        //Debug.Log($"{name} Roll Action Hash = {rollAction.GetHashCode()}");
     }
-
+    
     private void Start()
     {
-        Debug.Log($"{gameObject.name} PlayerInputFound = {playerInput != null}");
+        Debug.Log($"{name} Player Index = {playerInput.playerIndex}");
+        Debug.Log($"{name} Device Count = {playerInput.devices.Count}");
+
+        foreach (var device in playerInput.devices)
+        {
+            Debug.Log($"{name} Device = {device.displayName}");
+        }
     }
     
     public void EnableControls()
@@ -57,6 +71,8 @@ public class PlayerController : MonoBehaviour
         // Enables player input. Called when the player's turn begins.
         
         ControlsEnabled = true;
+        
+        Debug.Log($"{gameObject.name} Controls Enabled");
     }
     
     public void DisableControls()
@@ -64,33 +80,76 @@ public class PlayerController : MonoBehaviour
         // Disables player input. Called when the player's turn ends or when another player becomes active.
         
         ControlsEnabled = false;
+        
+        Debug.Log($"{gameObject.name} Controls Disabled");
     }
 
     public bool RollPressed()
     {
-        // Checks whether this player has pressed their assigned dice roll button.
-        // Only returns true if controls are enabled.
+        var roll = playerInput.currentActionMap["Roll"];
+
+        Debug.Log(
+            $"{name} Roll ActiveControl = " +
+            $"{roll.activeControl?.device?.displayName}"
+        );
         
-        // Ignore input when controls are disabled.
         if (!ControlsEnabled)
             return false;
 
-        switch (playerID)
+        if (playerInput.currentActionMap["Roll"].WasPressedThisFrame())
         {
-            case 1:
-                return Keyboard.current.qKey.wasPressedThisFrame;
-            
-            case 2:
-                return Keyboard.current.wKey.wasPressedThisFrame;
-            
-            case 3:
-                return Keyboard.current.eKey.wasPressedThisFrame;
-            
-            case 4:
-                return Keyboard.current.rKey.wasPressedThisFrame;
+            Debug.Log($"{name} detected controller roll");
+            return true;
+        }
+
+        if (allowKeyboardDebug)
+        {
+            switch (playerID)
+            {
+                case 1:
+                    if (Keyboard.current.qKey.wasPressedThisFrame)
+                    {
+                        Debug.Log($"{name} detected keyboard roll");
+                        return true;
+                    }
+                    break;
+
+                case 2:
+                    if (Keyboard.current.wKey.wasPressedThisFrame)
+                    {
+                        Debug.Log($"{name} detected keyboard roll");
+                        return true;
+                    }
+                    break;
+
+                case 3:
+                    if (Keyboard.current.eKey.wasPressedThisFrame)
+                    {
+                        Debug.Log($"{name} detected keyboard roll");
+                        return true;
+                    }
+                    break;
+
+                case 4:
+                    if (Keyboard.current.rKey.wasPressedThisFrame)
+                    {
+                        Debug.Log($"{name} detected keyboard roll");
+                        return true;
+                    }
+                    break;
+            }
         }
 
         return false;
+    }
+
+    private Vector2 RouteInput()
+    {
+        return playerInput.currentActionMap["RouteSelect"].ReadValue<Vector2>();
+        
+        //return routeSelectAction.ReadValue<Vector2>();
+        
+        //return InputManager.Instance.Controls.BoardGame.RouteSelect.ReadValue<Vector2>();
     }
     
     public bool SelectRightPressed()
@@ -100,7 +159,7 @@ public class PlayerController : MonoBehaviour
         if (!ControlsEnabled)
             return false;
 
-        return Keyboard.current.rightArrowKey.wasPressedThisFrame;
+        return RouteInput().x > 0.5f;
     }
 
     public bool SelectDownPressed()
@@ -110,7 +169,7 @@ public class PlayerController : MonoBehaviour
         if (!ControlsEnabled)
             return false;
 
-        return Keyboard.current.downArrowKey.wasPressedThisFrame;
+        return RouteInput().y < -0.5f;
     }
     
     public bool SelectLeftPressed()
@@ -120,7 +179,7 @@ public class PlayerController : MonoBehaviour
         if (!ControlsEnabled)
             return false;
 
-        return Keyboard.current.leftArrowKey.wasPressedThisFrame;
+        return RouteInput().x < -0.5f;
     }
 
     public bool SelectUpPressed()
@@ -130,7 +189,7 @@ public class PlayerController : MonoBehaviour
         if (!ControlsEnabled)
             return false;
 
-        return Keyboard.current.upArrowKey.wasPressedThisFrame;
+        return RouteInput().y > 0.5f;
     }
 
     public bool ConfirmPressed()
@@ -139,8 +198,71 @@ public class PlayerController : MonoBehaviour
         
         if (!ControlsEnabled)
             return false;
+        
+        // Controller assigned to this player
+        if (playerInput.currentActionMap["Confirm"].WasPressedThisFrame())
+            return true;
+        
+        //if (confirmAction.WasPressedThisFrame())
+            //return true;
+        
+        // Keyboard debug controls
+        if (allowKeyboardDebug)
+            return Keyboard.current.enterKey.wasPressedThisFrame;
 
-        //return Keyboard.current.enterKey.wasPressedThisFrame;
-        return confirmAction.WasPressedThisFrame();
+        return false; ;
+    }
+
+    private bool CancelPressed()
+    {
+        if (!ControlsEnabled)
+            return false;
+        
+        // Controller assigned to this player
+        if (playerInput.currentActionMap["Cancel"].WasPressedThisFrame())
+            return true;
+        
+        //if (cancelAction.WasPressedThisFrame())
+            //return true;
+            
+        // Keyboard debug controls
+        if (allowKeyboardDebug)
+            return Keyboard.current.backspaceKey.wasPressedThisFrame;
+
+        return false;
+    }
+
+    public void PairDevice(InputDevice device)
+    {
+        Debug.Log($"{name} playerInput = {playerInput}");
+
+        if (playerInput == null)
+        {
+            Debug.LogError($"{name} PlayerInput is NULL");
+            return;
+        }
+
+        Debug.Log($"{name} user valid = {playerInput.user.valid}");
+
+        playerInput.user.UnpairDevices();
+
+        InputUser.PerformPairingWithDevice(device, playerInput.user);
+
+        Debug.Log($"{name} paired with {device.displayName}");
+    }
+    
+    public void LogDeviceInfo()
+    {
+        Debug.Log($"----- {name} Device Report -----");
+
+        Debug.Log($"{name} User ID = {playerInput.user.id}");
+        Debug.Log($"{name} Device Count = {playerInput.devices.Count}");
+
+        foreach (var device in playerInput.devices)
+        {
+            Debug.Log($"{name} Device = {device.displayName}");
+        }
+
+        Debug.Log($"----------------------------");
     }
 }

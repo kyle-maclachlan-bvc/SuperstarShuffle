@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
   m_Actions: {fileID: -944628639613478452, guid: b05ed849c0d311e4790926bd8e9922df, type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 3
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -291,7 +291,63 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7b980e5c-446a-4894-a7c9-b69b7dd9d2b0
+    m_ActionName: 'BoardGame/Roll[/Keyboard/q,/Keyboard/w,/Keyboard/e,/Keyboard/r,/DualSenseGamepadHID/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a9ee458e-5462-440d-be0c-e25879f3313b
+    m_ActionName: 'BoardGame/Confirm[/Keyboard/enter,/DualSenseGamepadHID/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1f4c41a2-210e-4581-9cea-dc11016cc94e
+    m_ActionName: 'BoardGame/Cancel[/Keyboard/backspace,/DualSenseGamepadHID/buttonEast]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 08a66dc4-0395-47ad-81cf-e9477bee26f8
+    m_ActionName: 'BoardGame/RouteSelect[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/DualSenseGamepadHID/dpad/up,/DualSenseGamepadHID/dpad/down,/DualSenseGamepadHID/dpad/left,/DualSenseGamepadHID/dpad/right,/DualSenseGamepadHID/leftStick]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f0dcbf62-a290-4589-9ad8-63632e36f165
+    m_ActionName: 'BoardGame/Pause[/Keyboard/p,/DualSenseGamepadHID/start]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 701a51aa-20ee-46b2-88f4-07afbd10f542
+    m_ActionName: 'GameSetup/Confirm[/Keyboard/enter,/DualSenseGamepadHID/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2928e410-652f-45c8-95b2-2caa78ba50e7
+    m_ActionName: 'GameSetup/PlayerOneRoll[/Keyboard/q,/DualSenseGamepadHID/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1b2256ee-af80-4cc7-bcb3-fc5e84e31aa3
+    m_ActionName: 'GameSetup/PlayerTwoRoll[/Keyboard/w]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d14ec916-fac6-47e1-ac06-665e1abe3130
+    m_ActionName: 'GameSetup/PlayerThreeRoll[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e602eae1-32b3-4de1-89bc-040ef885c466
+    m_ActionName: 'GameSetup/PlayerFourRoll[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f998454a-a80a-4136-a230-53cbfe57bb39
+    m_ActionName: Minigame - Pickaxe Panic/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d5f4cf27-aa19-44e8-a260-61c4978239c3
+    m_ActionName: Minigame - Mail Call/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 20002be3-2d86-4949-b06e-6f731fe6c54d
+    m_ActionName: Minigame - Copy Cat/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e0935891-1747-4347-91db-39b42a56341d
+    m_ActionName: UI/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: BoardGame
@@ -376,7 +432,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f56ebff18d7ac34bb2c0f5120e1971b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  playerID: 0
+  playerID: 2
+  allowKeyboardDebug: 1
 --- !u!114 &1608193478391026067
 MonoBehaviour:
   m_ObjectHideFlags: 0

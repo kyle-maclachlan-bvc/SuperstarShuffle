@@ -108,6 +108,8 @@ public class TurnManager : MonoBehaviour
         Player currentPlayer = players[currentPlayerIndex];
         currentPlayer.TurnState.CurrentState = PlayerState.TakingTurn;
         currentPlayer.Controller.EnableControls();
+        currentPlayer.Controller.LogDeviceInfo();
+        
         cameraController.FocusPlayer(currentPlayer.transform);
         
         Debug.Log($"{currentPlayer.name} Turn Started.");
@@ -215,8 +217,8 @@ public class TurnManager : MonoBehaviour
 
         private void HandleGameStateChanged(GameState newState)
         {
-            if (newState == GameState.PlayerTurn)
-                BeginTurn();
+            if (newState != GameState.PlayerTurn)
+                return;
 
             players = GameManager.Instance.TurnOrder;
 
@@ -228,9 +230,8 @@ public class TurnManager : MonoBehaviour
 
             currentPlayerIndex = 0;
 
-            BeginTurn();
-            
             Debug.Log("TurnManager Loaded Turn Order");
-            //Debug.Log($"Game State Changed: {GameManager.Instance.CurrentGameState}");
+
+            BeginTurn();
         }
 }
