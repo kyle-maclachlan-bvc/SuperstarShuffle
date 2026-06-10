@@ -31,7 +31,7 @@ public class TurnManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("TurnManager Waiting for GameSetup");
+        //Debug.Log("TurnManager Waiting for GameSetup");
         
         //foreach (PlayerMovement player in players)
             //player.OnMovementFinished += EndPlayerTurn;
@@ -110,7 +110,7 @@ public class TurnManager : MonoBehaviour
         currentPlayer.Controller.EnableControls();
         cameraController.FocusPlayer(currentPlayer.transform);
         
-        Debug.Log($"{currentPlayer.name} Turn Started.");
+        //Debug.Log($"{currentPlayer.name} Turn Started.");
 
         /*Debug.Log($"Player {currentPlayerIndex + 1} Turn Started");
 
@@ -230,7 +230,7 @@ public class TurnManager : MonoBehaviour
 
             BeginTurn();
             
-            Debug.Log("TurnManager Loaded Turn Order");
+           //Debug.Log("TurnManager Loaded Turn Order");
             //Debug.Log($"Game State Changed: {GameManager.Instance.CurrentGameState}");
         }
 }

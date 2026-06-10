@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log($"{gameObject.name} PlayerInputFound = {playerInput != null}");
+        //Debug.Log($"{gameObject.name} PlayerInputFound = {playerInput != null}");
     }
     
     public void EnableControls()
@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
         switch (playerID)
         {
             case 1:
-                return Keyboard.current.qKey.wasPressedThisFrame;
+                return Keyboard.current.qKey.wasPressedThisFrame || Gamepad.current.buttonSouth.wasPressedThisFrame;
             
             case 2:
                 return Keyboard.current.wKey.wasPressedThisFrame;
@@ -135,12 +135,46 @@ public class PlayerController : MonoBehaviour
 
     public bool ConfirmPressed()
     {
-        // Checks if the player has confirmed their current route selection
-        
         if (!ControlsEnabled)
             return false;
 
-        //return Keyboard.current.enterKey.wasPressedThisFrame;
-        return confirmAction.WasPressedThisFrame();
+        switch (playerID)
+        {
+            case 1:
+                return Keyboard.current.enterKey.wasPressedThisFrame
+                       || Gamepad.current.buttonSouth.wasPressedThisFrame;
+
+            case 2:
+                return Keyboard.current.enterKey.wasPressedThisFrame;
+
+            case 3:
+                return Keyboard.current.enterKey.wasPressedThisFrame;
+
+            case 4:
+                return Keyboard.current.enterKey.wasPressedThisFrame;
+        }
+
+        return false;
+    }
+    
+    public bool CancelPressed()
+    {
+        if (!ControlsEnabled)
+            return false;
+
+        switch (playerID)
+        {
+            case 1:
+                return Keyboard.current.backspaceKey.wasPressedThisFrame
+                       || (Gamepad.current != null &&
+                           Gamepad.current.buttonEast.wasPressedThisFrame);
+
+            case 2:
+            case 3:
+            case 4:
+                return Keyboard.current.backspaceKey.wasPressedThisFrame;
+        }
+
+        return false;
     }
 }
