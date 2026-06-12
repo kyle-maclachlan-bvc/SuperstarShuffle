@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5087105411380667188
+--- !u!1 &4961577488929358633
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8572951372578859692}
-  - component: {fileID: 1868524835509060410}
-  - component: {fileID: 2101981860899746718}
+  - component: {fileID: 5733294380316744083}
+  - component: {fileID: 8664674210939590198}
+  - component: {fileID: 6907373940387750652}
   m_Layer: 0
-  m_Name: MinecartTrack_180Split
+  m_Name: MinecartTracks_180Split
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8572951372578859692
+--- !u!4 &5733294380316744083
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5087105411380667188}
+  m_GameObject: {fileID: 4961577488929358633}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2982619556884050150}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1868524835509060410
+--- !u!33 &8664674210939590198
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5087105411380667188}
-  m_Mesh: {fileID: -8443786207518326538, guid: 81eb35c5192599741a093d193d2e0b40, type: 3}
---- !u!23 &2101981860899746718
+  m_GameObject: {fileID: 4961577488929358633}
+  m_Mesh: {fileID: 6306556152165214098, guid: 28ac8dfc3c30f8141a1e3e39e48f71e7, type: 3}
+--- !u!23 &6907373940387750652
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5087105411380667188}
+  m_GameObject: {fileID: 4961577488929358633}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -121,7 +121,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8572951372578859692}
+  - {fileID: 5733294380316744083}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7871921841454561928

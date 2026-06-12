@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2179551181811561160}
+  - {fileID: 9169374303573832536}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-6650899666189806528
@@ -69,7 +69,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1535591041397719591, guid: 747c1a49dd2879e4a80cb658e22c97b9, type: 3}
---- !u!1 &8162805573716385462
+--- !u!1 &8362051966417545698
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,46 +77,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2179551181811561160}
-  - component: {fileID: 4085834489463628124}
-  - component: {fileID: 8056129660375945085}
+  - component: {fileID: 9169374303573832536}
+  - component: {fileID: 5255686249344400637}
+  - component: {fileID: 8001495234645264439}
   m_Layer: 0
-  m_Name: MinecartTrack_120degree
+  m_Name: MinecartTracks_120Degree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2179551181811561160
+--- !u!4 &9169374303573832536
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8162805573716385462}
+  m_GameObject: {fileID: 8362051966417545698}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4120254584844336529}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4085834489463628124
+--- !u!33 &5255686249344400637
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8162805573716385462}
-  m_Mesh: {fileID: 1535591041397719591, guid: 747c1a49dd2879e4a80cb658e22c97b9, type: 3}
---- !u!23 &8056129660375945085
+  m_GameObject: {fileID: 8362051966417545698}
+  m_Mesh: {fileID: 2155083173677239850, guid: 91cd14ff3767e3a4cbc9916ce493a74b, type: 3}
+--- !u!23 &8001495234645264439
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8162805573716385462}
+  m_GameObject: {fileID: 8362051966417545698}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
