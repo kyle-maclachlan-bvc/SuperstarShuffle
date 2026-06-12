@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     {
         // Caches references to all player-related components attached to this game object.
         // Awake is sued so references are available before other systems begin interacting with the player.
+        DontDestroyOnLoad(gameObject);
         
         Controller = GetComponent<PlayerController>();
         Movement = GetComponent<PlayerMovement>();

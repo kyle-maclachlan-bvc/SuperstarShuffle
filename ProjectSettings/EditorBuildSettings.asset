@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Scenes/MG_PickaxePanic.unity
     guid: fe0d2f3b4ab918c4ab41d2e12bff35fb
+  - enabled: 1
+    path: Assets/_Project/Scenes/MG_Results.unity
+    guid: 504aadbeb7c8e43429f1e471231c0d5b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

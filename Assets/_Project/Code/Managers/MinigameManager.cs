@@ -18,6 +18,7 @@ public class MinigameManager : MonoBehaviour
         }
         
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private MinigameTypes DetermineMinigameType()

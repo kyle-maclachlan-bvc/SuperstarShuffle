@@ -41,6 +41,14 @@ public class GameManager : MonoBehaviour
 
     [Header("Minigame Settings")]
     [SerializeField] private MinigameData currentMinigame;
+
+    [SerializeField] private Player minigameWinner;
+
+    public Player MinigameWinner
+    {
+        get => minigameWinner;
+        set => minigameWinner = value;
+    }
     
     public MinigameData CurrentMinigame
     {
@@ -58,11 +66,15 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     // Starts the first gameplay phase when the scene loads
     private void Start()
     {
+        if (GameSetupManager == null)
+            return;
+        
         ChangeGameState(GameState.GameSetup);
         GameSetupManager.StartGameSetup();
     }

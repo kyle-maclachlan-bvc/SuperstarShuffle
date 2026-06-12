@@ -35,6 +35,7 @@ public class InputManager : MonoBehaviour
         }
 
         Instance = this;
+        DontDestroyOnLoad(gameObject);
         
         controls = new MarioPartyControls();
     }
@@ -84,13 +85,33 @@ public class InputManager : MonoBehaviour
         switch (playerID)
         {
             case 1:
-                return Keyboard.current.qKey.wasPressedThisFrame || controllerPressed;
+            {
+                bool pressed = Keyboard.current.qKey.wasPressedThisFrame || controllerPressed;
+                if (pressed)
+                    Debug.Log("Player 1 Pressed");
+                return pressed;
+            }
             case 2:
-                return Keyboard.current.wKey.wasPressedThisFrame ||  controllerPressed;
+            {
+                bool pressed = Keyboard.current.wKey.wasPressedThisFrame || controllerPressed;
+                if (pressed)
+                    Debug.Log("Player 2 Pressed");
+                return pressed;
+            }
             case 3:
-                return Keyboard.current.eKey.wasPressedThisFrame || controllerPressed;
+            {
+                bool pressed = Keyboard.current.eKey.wasPressedThisFrame || controllerPressed;
+                if (pressed)
+                    Debug.Log("Player 3 Pressed");
+                return pressed;
+            }
             case 4:
-                return Keyboard.current.rKey.wasPressedThisFrame || controllerPressed;
+            {
+                bool pressed = Keyboard.current.rKey.wasPressedThisFrame || controllerPressed;
+                if (pressed)
+                    Debug.Log("Player 4 Pressed");
+                return pressed;
+            }
         }
 
         return false;

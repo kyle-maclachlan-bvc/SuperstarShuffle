@@ -49,13 +49,14 @@ MonoBehaviour:
   maxTurns: 10
   GameSetupManager: {fileID: 0}
   players:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: -4401707054129306324, guid: 9808c823f4ba7a74499185bb7b4773b9, type: 3}
+  - {fileID: 8625631186422170066, guid: bf638acbaf037c54a9be4da8a503e5b9, type: 3}
+  - {fileID: 6449729635640151666, guid: f69a0c16c9afc8c408d442caa9ecbc52, type: 3}
+  - {fileID: 8012500487493777830, guid: 0994d44005a327741b688954bc5e7011, type: 3}
   turnOrder:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: -4401707054129306324, guid: 9808c823f4ba7a74499185bb7b4773b9, type: 3}
+  - {fileID: 8625631186422170066, guid: bf638acbaf037c54a9be4da8a503e5b9, type: 3}
+  - {fileID: 6449729635640151666, guid: f69a0c16c9afc8c408d442caa9ecbc52, type: 3}
+  - {fileID: 8012500487493777830, guid: 0994d44005a327741b688954bc5e7011, type: 3}
   currentMinigame: {fileID: 0}
+  minigameWinner: {fileID: 0}
