@@ -172,8 +172,7 @@ public class TurnManager : MonoBehaviour
         // If the final player has completed their turn, GameManager is notified that the round has ended.
         private void EndPlayerTurn()
         {
-            players[currentPlayerIndex].TurnState.CurrentState =
-                PlayerState.Waiting;
+            players[currentPlayerIndex].TurnState.CurrentState = PlayerState.Waiting;
 
             Player currentPlayer = players[currentPlayerIndex];
             Debug.Log($"{currentPlayer.name} finished their turn with {currentPlayer.Currency.Coins} coins");
@@ -183,8 +182,13 @@ public class TurnManager : MonoBehaviour
             if (currentPlayerIndex >= players.Count)
             {
                 currentPlayerIndex = 0;
+                
+                foreach(Player player in players)
+                    player.Controller.DisableControls();
 
                 GameManager.Instance.RoundCompleted();
+
+                return;
             }
 
             BeginTurn();

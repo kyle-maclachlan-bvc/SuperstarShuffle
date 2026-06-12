@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Controls the overall flow of the game
@@ -37,18 +38,26 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<Player> turnOrder = new();
     public List<Player> Players => players;
     public List<Player> TurnOrder => turnOrder;
+
+    [Header("Minigame Settings")]
+    [SerializeField] private MinigameData currentMinigame;
     
+    public MinigameData CurrentMinigame
+    {
+        get => currentMinigame;
+        set => currentMinigame = value;
+    }
+
     // Initializes the GameManager Singleton, and ensures only one exists
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+
+        Instance = this;
     }
 
     // Starts the first gameplay phase when the scene loads
@@ -84,11 +93,13 @@ public class GameManager : MonoBehaviour
         }
 
         currentTurn++;
-        
-        //Temporary playtest loop
-        ChangeGameState(GameState.PlayerTurn);
 
-        // Transitions into the minigame phase.
-        //ChangeGameState(GameState.MinigameTutorial);
+        //Later this will come from a Minigame Manager
+        CurrentMinigame = MinigameManager.Instance.SelectMinigame();
+        
+        ChangeGameState(GameState.MinigameTutorial);
+
+        SceneManager.LoadScene("MG_Tutorial");
+
     }
 }
