@@ -57502,6 +57502,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2754252332460924517, guid: f3de52436ed2aa848a581866ae9ce4e9, type: 3}
+      propertyPath: GameSetupManager
+      value: 
+      objectReference: {fileID: 1325239269}
+    - target: {fileID: 2754252332460924517, guid: f3de52436ed2aa848a581866ae9ce4e9, type: 3}
+      propertyPath: 'players.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1973659467}
+    - target: {fileID: 2754252332460924517, guid: f3de52436ed2aa848a581866ae9ce4e9, type: 3}
+      propertyPath: 'players.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1938376791}
+    - target: {fileID: 2754252332460924517, guid: f3de52436ed2aa848a581866ae9ce4e9, type: 3}
+      propertyPath: 'players.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2067175822}
+    - target: {fileID: 2754252332460924517, guid: f3de52436ed2aa848a581866ae9ce4e9, type: 3}
+      propertyPath: 'players.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1820263278}
+    - target: {fileID: 2754252332460924517, guid: f3de52436ed2aa848a581866ae9ce4e9, type: 3}
+      propertyPath: 'turnOrder.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1973659467}
+    - target: {fileID: 2754252332460924517, guid: f3de52436ed2aa848a581866ae9ce4e9, type: 3}
+      propertyPath: 'turnOrder.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1938376791}
+    - target: {fileID: 2754252332460924517, guid: f3de52436ed2aa848a581866ae9ce4e9, type: 3}
+      propertyPath: 'turnOrder.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2067175822}
+    - target: {fileID: 2754252332460924517, guid: f3de52436ed2aa848a581866ae9ce4e9, type: 3}
+      propertyPath: 'turnOrder.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1820263278}
     - target: {fileID: 5990425598468212525, guid: f3de52436ed2aa848a581866ae9ce4e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.29798
