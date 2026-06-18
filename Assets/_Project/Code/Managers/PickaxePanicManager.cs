@@ -141,7 +141,7 @@ public class PickaxePanicManager : MonoBehaviour
         Debug.Log($"P4: {player4Score}");
         
         PlayerData winnerData = GameManager.Instance.PlayerDataList[winningPlayerIndex];
-        GameManager.Instance.MinigameWinner = winnerData;
+        GameEvents.OnMinigameWinnerDeclared?.Invoke(winnerData);
     }
 
     private void EnterResultsState()

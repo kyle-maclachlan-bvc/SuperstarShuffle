@@ -94,6 +94,8 @@ public class GameManager : MonoBehaviour
         GameEvents.OnBoardReady += HandleBoardReady;
         GameEvents.OnRoundCompleted += HandleRoundCompleted;
         GameEvents.OnGameStateRequested += HandleGameStateRequested;
+        GameEvents.OnMinigameWinnerDeclared += HandleMinigameWinnerDeclared;
+        GameEvents.OnSpaceLanded += HandleSpaceLanded;
     }
 
     private void OnDisable()
@@ -101,6 +103,8 @@ public class GameManager : MonoBehaviour
         GameEvents.OnBoardReady -= HandleBoardReady;
         GameEvents.OnRoundCompleted -= HandleRoundCompleted;
         GameEvents.OnGameStateRequested -= HandleGameStateRequested;
+        GameEvents.OnMinigameWinnerDeclared -= HandleMinigameWinnerDeclared;
+        GameEvents.OnSpaceLanded -= HandleSpaceLanded;
     }
 
     // Changes the current game state and notifies any subscribers.
@@ -147,6 +151,11 @@ public class GameManager : MonoBehaviour
         ChangeGameState(GameState.PlayerTurn);
     }
 
+    private void HandleSpaceLanded(Player player, BoardSpace space)
+    {
+        Debug.Log($"{player.Data.PlayerName} landed on {space.SpaceIndex}");
+    }
+
     private void HandleRoundCompleted()
     {
         RoundCompleted();
@@ -175,6 +184,12 @@ public class GameManager : MonoBehaviour
         ChangeGameState(GameState.MinigameTutorial);
 
         SceneManager.LoadScene("MG_Tutorial");
+    }
+
+    private void HandleMinigameWinnerDeclared(PlayerData winner)
+    {
+        MinigameWinner = winner;
+        Debug.Log($"Winner Stored: {winner.PlayerName}");
     }
     
     public void NotifyPlayerRestored()

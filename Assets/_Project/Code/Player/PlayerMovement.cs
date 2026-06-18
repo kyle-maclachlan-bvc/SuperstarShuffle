@@ -152,6 +152,8 @@ public class PlayerMovement : MonoBehaviour
             
         }
 
+        GameEvents.OnSpaceLanded?.Invoke(player, currentSpace);
+        
         ResolveProperty(currentSpace);
 
         if (movementState == MovementState.WaitingForPropertyDecision)
