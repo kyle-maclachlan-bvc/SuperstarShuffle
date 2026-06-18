@@ -26,6 +26,21 @@ public class BoardManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        Debug.Log($"Board Loaded - Turn {GameManager.Instance.CurrentTurn}");
+    }
+
+    private void OnEnable()
+    {
+        GameEvents.OnBoardReady += HandleBoardReady;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnBoardReady -= HandleBoardReady;
+    }
+    
     // Retrieves a board space using its index.
     // Returns null if the requested index is invalid.
     public BoardSpace GetSpace(int index)
@@ -37,6 +52,14 @@ public class BoardManager : MonoBehaviour
         }
         
         return boardSpaces[index];
+    }
+
+    private void HandleBoardReady()
+    {
+        Debug.Log("Board Reconstruction Complete");
+
+        GameManager.Instance.RebuildTurnOrder();
+        GameManager.Instance.ChangeGameState(GameState.PlayerTurn);
     }
 
     // Returns the total number of board spaces currently stored by the BoardManager

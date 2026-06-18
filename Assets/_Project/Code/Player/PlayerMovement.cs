@@ -4,21 +4,6 @@ using Unity.Properties;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Controls player movement across the board graph.
-///
-/// Responsibilities:
-/// - Track the player's current board location
-/// - Move the player between connected board spaces.
-/// - Pause movement at intersections
-/// - Store remaining movement after route selection
-/// - Resume movement after a route is confirmed.
-/// - Maintain movement state information.
-///
-/// This script does NOT determine whose turn it is.
-/// TurnManager controls turn order and instructs the player when movement should begin.
-/// </summary>
-
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private BoardSpace currentSpace; // The board node currently occupied by the player.
@@ -31,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private BoardSpace intersectionSpace; // Stores the intersection currently awaiting a route choice.
 
     private PlayerController playerController;
+    private Player player;
     private PathDirection selectedDirection; // Route currently selected by player.
     private bool waitingForConfirmation; // Tracks whether a route has been selected and is waiting for player confirmation.
     private BoardSpace pendingPropertySpace;
@@ -54,11 +40,39 @@ public class PlayerMovement : MonoBehaviour
 
     public MovementState CurrentMovementState => movementState; // Provides read-only access to the player's current movement state.
 
+    private void Awake()
+    {
+        playerController = GetComponent<PlayerController>();
+                player = GetComponent<Player>();
+    }
+    
     private void Start()
     {
-        // Places the player on their assigned starting board space when the scene begins.
-        playerController = GetComponent<PlayerController>();
+        if (player != null)
+        {
+            Debug.Log(
+                $"{player.Data.PlayerName} SAVED DATA BEFORE START = {player.Data.CurrentSpaceIndex}"
+            );
+        }
         
+        BoardSpace[] allSpaces = FindObjectsByType<BoardSpace>(FindObjectsSortMode.None);
+
+        foreach (BoardSpace space in allSpaces)
+        {
+            if (space.SpaceIndex == player.Data.CurrentSpaceIndex)
+            {
+                currentSpace = space;
+                transform.position = space.transform.position;
+                
+                Debug.Log($"{player.Data.PlayerName} loaded onto space {space.SpaceIndex}");
+                
+                if (GameManager.Instance.ReturnFromMinigame)
+                    GameManager.Instance.NotifyPlayerRestored();
+
+                return;
+            }
+        }
+
         if (currentSpace != null)
         {
             transform.position = currentSpace.transform.position;
@@ -106,6 +120,11 @@ public class PlayerMovement : MonoBehaviour
             yield return StartCoroutine(MoveToSpace(destinationSpace));
 
             currentSpace = destinationSpace;
+            
+            if (player != null)
+                player.Data.CurrentSpaceIndex = currentSpace.SpaceIndex;
+            
+            Debug.Log($"{player.Data.PlayerName} saved space {player.Data.CurrentSpaceIndex}");
             
             if (currentSpace.SpaceType != SpaceType.Transit && currentSpace.SpaceType != SpaceType.Intersection)
             {

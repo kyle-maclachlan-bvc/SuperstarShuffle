@@ -3,19 +3,6 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// Controls the overall flow of the game
-///
-/// Responsibilities:
-/// - Track the current GameState
-/// - Manage game progress
-/// - Track completed turns
-/// - Transition between gameplay phases
-/// - Determines when the match ends
-///
-/// GameManager acts as the highest-level controller for the game and coordinates progression between board gameplay, minigames, and result screen
-/// </summary>
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance; // Global reference to the active GameManager. Singleton.
@@ -30,6 +17,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int maxTurns = 10; // The total number of turns that will be played before the game ends.
     // FUTURE, Turns can be adjusted to 15, 20, and 30.
     
+    [SerializeField] private bool matchInitialized;
+    
+    public int CurrentTurn => currentTurn;
+    public bool  MatchInitialized => matchInitialized;
+    
     [Header("Game Managers")]
     [SerializeField] private GameSetupManager GameSetupManager;
     
@@ -39,17 +31,28 @@ public class GameManager : MonoBehaviour
     public List<Player> Players => players;
     public List<Player> TurnOrder => turnOrder;
 
-    [Header("Minigame Settings")]
+    [Header("Minigame Settings")] [SerializeField]
+    private List<PlayerData> playerDataList = new();
     [SerializeField] private MinigameData currentMinigame;
+    [SerializeField] private PlayerData minigameWinner;
+    [SerializeField] private bool returnFromMinigame;
+    
+    [SerializeField] private int playersRestored;
+    
+    public List<PlayerData> PlayerDataList => playerDataList;
 
-    [SerializeField] private Player minigameWinner;
-
-    public Player MinigameWinner
+    public PlayerData MinigameWinner
     {
         get => minigameWinner;
         set => minigameWinner = value;
     }
-    
+
+    public bool ReturnFromMinigame
+    {
+        get => returnFromMinigame;
+        set => returnFromMinigame = value;
+    }
+
     public MinigameData CurrentMinigame
     {
         get => currentMinigame;
@@ -74,6 +77,13 @@ public class GameManager : MonoBehaviour
     {
         if (GameSetupManager == null)
             return;
+
+        if (matchInitialized)
+            return;
+        
+        ResetPlayerData();
+        
+        matchInitialized = true;
         
         ChangeGameState(GameState.GameSetup);
         GameSetupManager.StartGameSetup();
@@ -87,6 +97,28 @@ public class GameManager : MonoBehaviour
         // Notify any systems listening for GameState changes.
         GameEvents.OnGameStateChange?.Invoke(newState);
         //Debug.Log(currentGameState.ToString());
+    }
+
+    public void RebuildTurnOrder()
+    {
+        players.Clear();
+        turnOrder.Clear();
+
+        Player[] scenePlayers = FindObjectsByType<Player>(FindObjectsSortMode.None);
+
+        List<Player> sortedPlayers = new List<Player>(scenePlayers);
+        
+        sortedPlayers.Sort((a,b) => a.Data.TurnOrderPosition.CompareTo(b.Data.TurnOrderPosition));
+
+        foreach (Player player in sortedPlayers)
+        {
+            players.Add(player);
+            turnOrder.Add(player);
+            
+            Debug.Log($"{player.Data.PlayerName} Restored at turn position {player.Data.TurnOrderPosition}");
+        }
+        
+        Debug.Log($"Rebuilt Turn Order with {turnOrder.Count} players");
     }
 
     // Called when all players have completed a round of board play.
@@ -112,6 +144,32 @@ public class GameManager : MonoBehaviour
         ChangeGameState(GameState.MinigameTutorial);
 
         SceneManager.LoadScene("MG_Tutorial");
-
+    }
+    
+    public void NotifyPlayerRestored()
+    {
+        playersRestored++;
+        
+        Debug.Log($"Players Restored: {playersRestored}/{TurnOrder.Count}");
+        
+        if (playersRestored >= TurnOrder.Count)
+            {
+                Debug.Log("All Players Stroed");
+                playersRestored = 0;
+                ReturnFromMinigame = false;
+                GameEvents.OnBoardReady?.Invoke();
+            }
+    }
+    
+    // Short-Term positon fix:
+    private void ResetPlayerData()
+    {
+        foreach (PlayerData data in playerDataList)
+        {
+            data.Coins = 0;
+            data.CurrentSpaceIndex = -1;
+            data.MinigameWins = 0;
+            data.OwnedSpaceIndices.Clear();
+        }
     }
 }

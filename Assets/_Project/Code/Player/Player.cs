@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -26,17 +27,20 @@ public class Player : MonoBehaviour
     // Tracks the player's current turn state.
 
     [SerializeField] private PropertyOwner propertyOwner;
+    [SerializeField] private PlayerData playerData;
     public PropertyOwner PropertyOwner => propertyOwner;
-
+    public PlayerData Data => playerData;
+    
     private void Awake()
     {
-        // Caches references to all player-related components attached to this game object.
-        // Awake is sued so references are available before other systems begin interacting with the player.
-        DontDestroyOnLoad(gameObject);
-        
         Controller = GetComponent<PlayerController>();
         Movement = GetComponent<PlayerMovement>();
         Currency = GetComponent<PlayerCurrency>();
         TurnState = GetComponent<PlayerTurnState>();
+    }
+
+    private void Start()
+    {
+        Debug.Log($"{playerData.PlayerName} Loaded!");
     }
 }

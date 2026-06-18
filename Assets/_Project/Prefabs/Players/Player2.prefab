@@ -291,7 +291,47 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7b980e5c-446a-4894-a7c9-b69b7dd9d2b0
+    m_ActionName: 'BoardGame/Roll[/Keyboard/q,/Keyboard/w,/Keyboard/e,/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a9ee458e-5462-440d-be0c-e25879f3313b
+    m_ActionName: 'BoardGame/Confirm[/Keyboard/enter]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1f4c41a2-210e-4581-9cea-dc11016cc94e
+    m_ActionName: 'BoardGame/Cancel[/Keyboard/backspace]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 08a66dc4-0395-47ad-81cf-e9477bee26f8
+    m_ActionName: 'BoardGame/RouteSelect[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f0dcbf62-a290-4589-9ad8-63632e36f165
+    m_ActionName: 'BoardGame/Pause[/Keyboard/p]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 701a51aa-20ee-46b2-88f4-07afbd10f542
+    m_ActionName: 'GameSetup/Confirm[/Keyboard/enter]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f998454a-a80a-4136-a230-53cbfe57bb39
+    m_ActionName: Minigame - Pickaxe Panic/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d5f4cf27-aa19-44e8-a260-61c4978239c3
+    m_ActionName: Minigame - Mail Call/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 20002be3-2d86-4949-b06e-6f731fe6c54d
+    m_ActionName: Minigame - Copy Cat/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e0935891-1747-4347-91db-39b42a56341d
+    m_ActionName: UI/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: BoardGame
@@ -310,6 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   propertyOwner: 0
+  playerData: {fileID: 11400000, guid: 775e73d220688c84fba7736e6149b2f9, type: 2}
 --- !u!114 &3182221951694178715
 MonoBehaviour:
   m_ObjectHideFlags: 0

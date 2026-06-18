@@ -26,9 +26,11 @@ public class MinigameTutorialManager : MonoBehaviour
     
     private void Start()
     {        
-        Debug.Log($"GameManager = {GameManager.Instance}"); 
-        Debug.Log($"InputManager = {InputManager.Instance}"); 
-        Debug.Log($"MinigameManager = {GameManager.Instance}");
+        //Debug.Log($"GameManager = {GameManager.Instance}"); 
+        //Debug.Log($"InputManager = {InputManager.Instance}"); 
+        //Debug.Log($"MinigameManager = {GameManager.Instance}");
+        
+        GameManager.Instance.ChangeGameState(GameState.MinigameTutorial);
         
         LoadMinigameData();
     }

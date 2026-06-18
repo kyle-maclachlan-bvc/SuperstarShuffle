@@ -24,6 +24,8 @@ public class PickaxePanicManager : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.ChangeGameState(GameState.Minigame);
+        
         EnterSetupState();
     }
     
@@ -77,31 +79,26 @@ public class PickaxePanicManager : MonoBehaviour
     private void UpdateGameplay()
     {
         stateTimer -= Time.deltaTime;
-
-        if (InputManager.Instance == null)
-        {
-            Debug.LogError("InputManager is Null");
-        }
         
         if (InputManager.Instance.PlayerRollPressed(1))
         {
             player1Score++;
-            Debug.Log("Player 1 Score: " + player1Score);
+            //Debug.Log("Player 1 Score: " + player1Score);
         }
         if (InputManager.Instance.PlayerRollPressed(2))
         {
             player2Score++;
-            Debug.Log("Player 2 Score: " + player2Score);
+            //Debug.Log("Player 2 Score: " + player2Score);
         }
         if (InputManager.Instance.PlayerRollPressed(3))
         {
             player3Score++;
-            Debug.Log("Player 3 Score: " + player3Score);
+            //Debug.Log("Player 3 Score: " + player3Score);
         }
         if (InputManager.Instance.PlayerRollPressed(4))
         {
             player4Score++;
-            Debug.Log("Player 4 Score: " + player4Score);
+            //Debug.Log("Player 4 Score: " + player4Score);
         }
 
         if (stateTimer <= 0f)
@@ -137,29 +134,21 @@ public class PickaxePanicManager : MonoBehaviour
         }
         
         
-        Debug.Log($"Player {winningPlayer} Wins!");
+        Debug.Log($"Player {winningPlayerIndex + 1} Wins!");
         Debug.Log($"P1: {player1Score}");
         Debug.Log($"P2: {player2Score}");
         Debug.Log($"P3: {player3Score}");
         Debug.Log($"P4: {player4Score}");
-
-        Debug.Log($"Players count = {GameManager.Instance.Players.Count}");
-        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
-        { Debug.Log($"Player[{i}]: {GameManager.Instance.Players[i]}"); }
         
-        Debug.Log($"Winning Index = {winningPlayerIndex}");
-        Player winner = GameManager.Instance.Players[winningPlayerIndex];
-        Debug.Log($"Winner Object = {winner}");
-        if (winner != null)
-            Debug.Log($"Winner Name = {winner.name}");
-        GameManager.Instance.MinigameWinner = winner;
-        Debug.Log($"Stored Winner = {GameManager.Instance.MinigameWinner}");
+        PlayerData winnerData = GameManager.Instance.PlayerDataList[winningPlayerIndex];
+        GameManager.Instance.MinigameWinner = winnerData;
     }
 
     private void EnterResultsState()
     {
         currentState = PickaxePanicStates.Results;
-        Debug.Log("Showing Results");
+        GameManager.Instance.ChangeGameState(GameState.Results);
+        //Debug.Log("Showing Results");
         stateTimer = resultsDuration;
 
         SceneManager.LoadScene("MG_Results");

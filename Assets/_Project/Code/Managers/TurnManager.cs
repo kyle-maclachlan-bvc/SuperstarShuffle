@@ -2,40 +2,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 
-/// <summary>
-/// Controls player turn order during board gameplay
-///
-/// Responsibilities:
-/// - Track the active player.
-/// Start and end player turns
-/// Enable and disable player controls
-/// Handle dice rolling
-/// Process intersection selections
-/// Advance to the next player
-/// Notify GameManager when a round is complete.
-///
-/// TurnManager manages the flow of turns between players, but does not control the overall match.
-/// GameManager remains responsible for high level game progression
-/// </summary>
 
 public class TurnManager : MonoBehaviour
 {
     [SerializeField] private DiceBlock diceBlock; // Generates movement value used for board traversal
-    //[SerializeField] private List<PlayerMovement> players; // Collection of player movement components. Used to move the players across the board.
-    //[SerializeField] private List<PlayerTurnState> playerStates; // Collection of player state components. Used to determine whose turn is active.
-    //[SerializeField] private List<PlayerController> playerControllers; // Collection of player controller components. Used to enable and disable player input.
     [SerializeField] private CameraController cameraController; // Controls which player the camera follows.
     [SerializeField] private List<Player> players;
     
     private int currentPlayerIndex = 0; // Index of the player whose turn is currently active.
-
-    private void Start()
-    {
-        //Debug.Log("TurnManager Waiting for GameSetup");
-        
-        //foreach (PlayerMovement player in players)
-            //player.OnMovementFinished += EndPlayerTurn;
-    }
 
     private void OnEnable()
     {
@@ -84,18 +58,15 @@ public class TurnManager : MonoBehaviour
         }
         
         // detect dice roll input.
-        if (controller.RollPressed())
+        if (currentPlayer.TurnState.CurrentState == PlayerState.TakingTurn &&
+            controller.RollPressed())
         {
             RollDice();
         }
     }
 
-    // Starts the current player's turn.
-    // Responsibilities:
-        // reset all player states
-        // disable inactive player controls
-        // enable the active player's controls
-        // focus the camera on the active player.
+
+
     public void BeginTurn()
     {
         foreach (Player player in players)
@@ -132,13 +103,18 @@ public class TurnManager : MonoBehaviour
         // The active player transitions from TakingTurn to Moving
         void RollDice()
         {
+            Player currentPlayer = players[currentPlayerIndex];
+
+            if (currentPlayer.TurnState.CurrentState != PlayerState.TakingTurn)
+                return;
+
             int rollValue = diceBlock.Roll();
 
             Debug.Log($"Rolled: {rollValue}");
 
-            players[currentPlayerIndex].TurnState.CurrentState = PlayerState.Moving;
+            currentPlayer.TurnState.CurrentState = PlayerState.Moving;
 
-            players[currentPlayerIndex].Movement.StartMovingSpaces(rollValue);
+            currentPlayer.Movement.StartMovingSpaces(rollValue);
         }
 
         // Processes player input while waiting at an intersection.
@@ -196,13 +172,36 @@ public class TurnManager : MonoBehaviour
 
         private void HandleGameStateChanged(GameState newState)
         {
+            Debug.Log($"HandleGameStateChanged Fired: {newState}");
+            
             if (newState != GameState.PlayerTurn)
                 return;
+            
+            Debug.Log($"Current Turn = {GameManager.Instance.CurrentTurn}");
+
 
             players = GameManager.Instance.TurnOrder;
 
             foreach (Player player in players)
             {
+                Debug.Log($"Player Reference = {player}");
+
+                if (player == null)
+                {
+                    Debug.LogError("PLAYER IS NULL");
+                    continue;
+                }
+
+                Debug.Log($"Movement = {player.Movement}");
+                Debug.Log($"Controller = {player.Controller}");
+                Debug.Log($"TurnState = {player.TurnState}");
+
+                if (player.Movement == null)
+                {
+                    Debug.LogError($"{player.name} MOVEMENT IS NULL");
+                    continue;
+                }
+
                 player.Movement.OnMovementFinished -= EndPlayerTurn;
                 player.Movement.OnMovementFinished += EndPlayerTurn;
             }
@@ -214,4 +213,5 @@ public class TurnManager : MonoBehaviour
             //Debug.Log("TurnManager Loaded Turn Order");
             //Debug.Log($"Game State Changed: {GameManager.Instance.CurrentGameState}");
         }
+    
 }

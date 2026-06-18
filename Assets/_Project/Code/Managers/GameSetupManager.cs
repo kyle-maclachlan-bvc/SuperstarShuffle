@@ -90,6 +90,7 @@ public class GameSetupManager : MonoBehaviour
         playerFourRolled = false;
         
         turnOrderDetermined = false;
+        
         waitingForTurnOrder = true;
     }
 
@@ -159,17 +160,30 @@ public class GameSetupManager : MonoBehaviour
             (GameManager.Instance.Players[2], PlayerThreeRoll),
             (GameManager.Instance.Players[3], PlayerFourRoll)
         };
-        
+
         rollResults.Sort((a, b) => b.roll.CompareTo(a.roll));
 
         GameManager.Instance.TurnOrder.Clear();
-        
-        foreach (var result in rollResults)
-            GameManager.Instance.TurnOrder.Add(result.player);
-        
+
+        for (int i = 0; i < rollResults.Count; i++)
+        {
+            Player player = rollResults[i].player;
+
+            GameManager.Instance.TurnOrder.Add(player);
+
+            // Persist turn order into PlayerData
+            player.Data.TurnOrderPosition = i;
+        }
+
         Debug.Log("Final Turn Order:");
+
         for (int i = 0; i < GameManager.Instance.TurnOrder.Count; i++)
-            Debug.Log($"{i + 1}: {GameManager.Instance.TurnOrder[i].name}");
+        {
+            Debug.Log(
+                $"{i + 1}: {GameManager.Instance.TurnOrder[i].name} " +
+                $"(Position {GameManager.Instance.TurnOrder[i].Data.TurnOrderPosition})"
+            );
+        }
     }
 
     private void GiveStartingCoins()

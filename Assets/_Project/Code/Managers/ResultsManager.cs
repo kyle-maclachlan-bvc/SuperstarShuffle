@@ -7,14 +7,16 @@ public class ResultsManager : MonoBehaviour
     [SerializeField] private int winnerCoinReward = 10;
     [SerializeField] private float minimumDisplayTime = 3f;
     
-    private Player winner;
+    private PlayerData winner;
     private float timer;
     private bool coinsAwarded;
 
     private void Start()
     {
         //Debug.Log($"GameManager In Results = {GameManager.Instance.GetInstanceID()}");
-        Debug.Log($"Winner In Results = {GameManager.Instance.MinigameWinner}");
+        //Debug.Log($"Winner In Results = {GameManager.Instance.MinigameWinner}");
+        
+        GameManager.Instance.ChangeGameState(GameState.Results);
         
         timer = minimumDisplayTime;
         
@@ -44,7 +46,7 @@ public class ResultsManager : MonoBehaviour
             return;
         }
         
-        Debug.Log($"{winner.name} Wins!");
+        Debug.Log($"{winner.PlayerName} Wins!");
     }
 
     private void AwardCoins()
@@ -55,7 +57,7 @@ public class ResultsManager : MonoBehaviour
         if (winner == null)
             return;
         
-        winner.Currency.AddCoins(winnerCoinReward);
+        winner.Coins += winnerCoinReward;
         
         Debug.Log($"{winner.name} recieved {winnerCoinReward} coins!");
         
@@ -65,6 +67,9 @@ public class ResultsManager : MonoBehaviour
     private void ReturnToBoard()
     {
         Debug.Log("Returning to Board");
-        SceneManager.LoadScene("Glitterdeep Mines");
+        
+        GameManager.Instance.ReturnFromMinigame = true;
+        
+        SceneManager.LoadScene("GlitterdeepMines");
     }
 }

@@ -47,6 +47,7 @@ MonoBehaviour:
   currentGameState: 2
   currentTurn: 1
   maxTurns: 10
+  matchInitialized: 0
   GameSetupManager: {fileID: 0}
   players:
   - {fileID: -4401707054129306324, guid: 9808c823f4ba7a74499185bb7b4773b9, type: 3}
@@ -58,5 +59,10 @@ MonoBehaviour:
   - {fileID: 8625631186422170066, guid: bf638acbaf037c54a9be4da8a503e5b9, type: 3}
   - {fileID: 6449729635640151666, guid: f69a0c16c9afc8c408d442caa9ecbc52, type: 3}
   - {fileID: 8012500487493777830, guid: 0994d44005a327741b688954bc5e7011, type: 3}
+  playerDataList:
+  - {fileID: 11400000, guid: 9b0e94f2c8fed314c911ff11ce898441, type: 2}
+  - {fileID: 11400000, guid: 775e73d220688c84fba7736e6149b2f9, type: 2}
+  - {fileID: 11400000, guid: e4d57a5647542a24a8a0302933bb94c3, type: 2}
+  - {fileID: 11400000, guid: 6dd61ef7c194d10479ecb7f950ff26d5, type: 2}
   currentMinigame: {fileID: 0}
   minigameWinner: {fileID: 0}

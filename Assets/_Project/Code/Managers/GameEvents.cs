@@ -1,17 +1,5 @@
 using System;
 
-/// <summary>
-/// Centralized event system used for communication between gameplay systems.
-///
-/// Responsibilities:
-/// - Boradcast major gameplay events.
-/// - Reduce direct dependencies between systems.
-/// - Support event-driven architecture
-///
-/// GameEvents allow systems to react to events without requiring direct references to another one.
-/// GameManager may announce a GameState change, while UI, Audio, and other systems listen and respond independently.
-/// </summary>
-
 public static class GameEvents
 {
     public static Action<GameState> OnGameStateChange;
@@ -32,4 +20,6 @@ public static class GameEvents
     
     //public static Action OnMinigameEnded;
     // planned event for notifying systems when a minigame ends.
+    
+    public static Action OnBoardReady;
 }
