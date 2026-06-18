@@ -92,11 +92,15 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.OnBoardReady += HandleBoardReady;
+        GameEvents.OnRoundCompleted += HandleRoundCompleted;
+        GameEvents.OnGameStateRequested += HandleGameStateRequested;
     }
 
     private void OnDisable()
     {
         GameEvents.OnBoardReady -= HandleBoardReady;
+        GameEvents.OnRoundCompleted -= HandleRoundCompleted;
+        GameEvents.OnGameStateRequested -= HandleGameStateRequested;
     }
 
     // Changes the current game state and notifies any subscribers.
@@ -131,6 +135,11 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Rebuilt Turn Order with {turnOrder.Count} players");
     }
 
+    private void HandleGameStateRequested(GameState requestedState)
+    {
+        ChangeGameState(requestedState);
+    }
+
     private void HandleBoardReady()
     {
         Debug.Log("Board Reconstruction Complete");
@@ -138,6 +147,11 @@ public class GameManager : MonoBehaviour
         ChangeGameState(GameState.PlayerTurn);
     }
 
+    private void HandleRoundCompleted()
+    {
+        RoundCompleted();
+    }
+    
     // Called when all players have completed a round of board play.
     // Determines whether the match should continue, a minigame should begin, and the game has ended.
     public void RoundCompleted()

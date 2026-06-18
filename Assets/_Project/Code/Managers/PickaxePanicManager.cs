@@ -147,7 +147,7 @@ public class PickaxePanicManager : MonoBehaviour
     private void EnterResultsState()
     {
         currentState = PickaxePanicStates.Results;
-        GameManager.Instance.ChangeGameState(GameState.Results);
+        GameEvents.OnGameStateRequested?.Invoke(GameState.Results);
         //Debug.Log("Showing Results");
         stateTimer = resultsDuration;
 

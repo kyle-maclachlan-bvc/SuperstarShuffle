@@ -135,7 +135,7 @@ public class TurnManager : MonoBehaviour
                 foreach(Player player in players)
                     player.Controller.DisableControls();
 
-                GameManager.Instance.RoundCompleted();
+                GameEvents.OnRoundCompleted?.Invoke();
 
                 return;
             }

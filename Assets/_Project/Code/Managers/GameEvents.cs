@@ -4,12 +4,14 @@ public static class GameEvents
 {
     
     // Game Flow
+    public static Action<GameState> OnGameStateRequested;
     public static Action<GameState> OnGameStateChange;
     public static Action OnBoardReady;
     
     // Turn flow
     public static Action<Player> OnTurnStarted;
     public static Action<Player> OnTurnEnded;
+    public static Action OnRoundCompleted;
     
     // Movement
     public static Action<Player, int> OnDiceRolled;

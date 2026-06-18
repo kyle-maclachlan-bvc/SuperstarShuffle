@@ -69,6 +69,7 @@ public class ResultsManager : MonoBehaviour
         Debug.Log("Returning to Board");
         
         GameManager.Instance.ReturnFromMinigame = true;
+        GameEvents.OnGameStateRequested?.Invoke(GameState.PlayerTurn);
         
         SceneManager.LoadScene("GlitterdeepMines");
     }

@@ -197,6 +197,6 @@ public class GameSetupManager : MonoBehaviour
     private void BeginGameplay()
     {
         Debug.Log("Begin Gameplay");
-        GameManager.Instance.ChangeGameState(GameState.PlayerTurn);
+        GameEvents.OnGameStateRequested?.Invoke(GameState.PlayerTurn);
     }
 }

@@ -61,7 +61,7 @@ public class MinigameTutorialManager : MonoBehaviour
     private void StartMinigame()
     {
         MinigameData data = GameManager.Instance.CurrentMinigame;
-        GameManager.Instance.ChangeGameState(GameState.Minigame);
+        GameEvents.OnGameStateRequested?.Invoke(GameState.Minigame);
         SceneManager.LoadScene(data.SceneName);
     }
 }
