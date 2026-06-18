@@ -23,8 +23,6 @@ public class PlayerMovement : MonoBehaviour
     private bool waitingForPropertyDecision;
     
     
-    public Action OnMovementFinished;
-    
     public bool IsWaitingForDirection()
     {
         // Returns true when the player has reached an intersection and is waiting for a route choice.
@@ -98,6 +96,8 @@ public class PlayerMovement : MonoBehaviour
 
         remainingSpaces = spaces;
 
+        GameEvents.OnMovementStarted?.Invoke(player);
+
         StartCoroutine(ContinueMovement());
     }
 
@@ -164,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Current Team: " + currentSpace.TeamColor);
         }
         movementState = MovementState.Idle;
-        OnMovementFinished?.Invoke();
+        GameEvents.OnMovementFinished?.Invoke(player);
     }
 
     private IEnumerator MoveToSpace(BoardSpace targetSpace)
@@ -369,6 +369,6 @@ public class PlayerMovement : MonoBehaviour
         waitingForPropertyDecision = false;
         pendingPropertySpace = null;
         movementState = MovementState.Idle;
-        OnMovementFinished?.Invoke();
+        GameEvents.OnMovementFinished?.Invoke(player);
     }
 }

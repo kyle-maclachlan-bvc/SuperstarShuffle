@@ -38,6 +38,4 @@ public static class GameEvents
 
     //public static Action OnMinigameEnded;
     // planned event for notifying systems when a minigame ends.
-
-
 }
