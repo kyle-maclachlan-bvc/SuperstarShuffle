@@ -89,6 +89,16 @@ public class GameManager : MonoBehaviour
         GameSetupManager.StartGameSetup();
     }
 
+    private void OnEnable()
+    {
+        GameEvents.OnBoardReady += HandleBoardReady;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnBoardReady -= HandleBoardReady;
+    }
+
     // Changes the current game state and notifies any subscribers.
     public void ChangeGameState(GameState newState)
     {
@@ -119,6 +129,13 @@ public class GameManager : MonoBehaviour
         }
         
         Debug.Log($"Rebuilt Turn Order with {turnOrder.Count} players");
+    }
+
+    private void HandleBoardReady()
+    {
+        Debug.Log("Board Reconstruction Complete");
+        RebuildTurnOrder();
+        ChangeGameState(GameState.PlayerTurn);
     }
 
     // Called when all players have completed a round of board play.
