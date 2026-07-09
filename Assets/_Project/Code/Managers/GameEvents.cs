@@ -17,8 +17,18 @@ public static class GameEvents
     public static Action<Player> OnMovementStarted;
     public static Action<Player> OnMovementFinished;
     
-    // board
+    // board flow
     public static Action<Player, BoardSpace> OnSpaceLanded;
+    public static Action<Player, BoardSpace> OnSpaceResolutionStarted;
+    public static Action<Player, BoardSpace> OnSpaceResolutionFinished;
+    
+    // Property
+    public static Action<Player, BoardSpace> OnPropertyPurchaseRequested;
+    public static Action<Player, BoardSpace> OnPropertyPurchased;
+    public static Action<Player, BoardSpace> OnRentPaid;
+    
+    // Special Spaces
+    public static Action<Player, BoardSpace> onHappeningTriggered;
     
     // Minigames
     public static Action<PlayerData> OnMinigameWinnerDeclared;

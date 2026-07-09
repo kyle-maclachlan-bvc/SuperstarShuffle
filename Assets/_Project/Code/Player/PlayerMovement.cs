@@ -19,8 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private Player player;
     private PathDirection selectedDirection; // Route currently selected by player.
     private bool waitingForConfirmation; // Tracks whether a route has been selected and is waiting for player confirmation.
-    private BoardSpace pendingPropertySpace;
-    private bool waitingForPropertyDecision;
+    //private BoardSpace pendingPropertySpace;
+    //private bool waitingForPropertyDecision;
     
     
     public bool IsWaitingForDirection()
@@ -75,18 +75,6 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = currentSpace.transform.position;
         }
-    }
-
-    // Handles intersection input while waiting for route selection.
-    // Route selection logic is gradually being moved into Turn Manager. This method may be removed during refactoring.
-    private void Update()
-    {
-
-        if (movementState == MovementState.WaitingForPropertyDecision)
-        {
-            HandlePropertyDecisionInput();
-        }
-
     }
 
     // Begins a new movement sequence after a dice-block roll.
@@ -149,24 +137,9 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log($"Reached Transit Node {currentSpace.SpaceIndex}");
                 continue;
             }
-            
         }
 
         GameEvents.OnSpaceLanded?.Invoke(player, currentSpace);
-        
-        ResolveProperty(currentSpace);
-
-        if (movementState == MovementState.WaitingForPropertyDecision)
-            yield break;
-        
-        PlayerMinigameTeams playerTeam = GetComponent<PlayerMinigameTeams>();
-        if (playerTeam != null)
-        {
-            playerTeam.CurrentTeam = currentSpace.TeamColor;
-            Debug.Log("Current Team: " + currentSpace.TeamColor);
-        }
-        movementState = MovementState.Idle;
-        GameEvents.OnMovementFinished?.Invoke(player);
     }
 
     private IEnumerator MoveToSpace(BoardSpace targetSpace)
@@ -257,120 +230,19 @@ public class PlayerMovement : MonoBehaviour
         movementState = MovementState.Moving;
         StartCoroutine(ContinueMovement());
     }
-
-    private void ResolveProperty(BoardSpace space)
-    {
-        if (space.SpaceType == SpaceType.Happening)
-        {
-            Debug.Log($"Landed on Happening Space {space.SpaceIndex}. This space cannot be purchased");
-            return;
-        }
-        
-        Player player = GetComponent<Player>();
-        
-        if (space.Owner == PropertyOwner.None)
-        {
-            pendingPropertySpace = space;
-
-            movementState = MovementState.WaitingForPropertyDecision;
-
-            waitingForPropertyDecision = true;
-            
-            Debug.Log($"Purchase Space {space.SpaceIndex} for 5 coins?");
-            //AttemptPurchase(space, player);
-            return;
-        }
-
-        if (space.Owner == player.PropertyOwner)
-        {
-            CollectPropertyIncome(player);
-            return;
-        }
-        
-        PayRent(space, player);
-
-    }
-
-    private void HandlePropertyDecisionInput()
-    {
-        if (!waitingForPropertyDecision)
-            return;
-
-        if (playerController.ConfirmPressed())
-        {
-            AttemptPurchase(pendingPropertySpace, GetComponent<Player>());
-            FinishPropertyDecision();
-        }
-
-        if (playerController.CancelPressed())
-        {
-            Debug.Log("Property Purcahse Declined");
-            FinishPropertyDecision();
-        }
-    }
     
-
-    private void AttemptPurchase(BoardSpace space, Player player)
+    public void FinishMovement()
     {
-        const int propertyCost = 5;
+        PlayerMinigameTeams playerTeam = GetComponent<PlayerMinigameTeams>();
 
-        if (player.Currency.Coins < propertyCost)
+        if (playerTeam != null)
         {
-            Debug.Log($"{player.name} cannot afford this property");
-            return;
-        }
-        
-        player.Currency.RemoveCoins(propertyCost);
-        
-        space.Owner = player.PropertyOwner;
-
-        Debug.Log($"{player.name} purchased Space {space.SpaceIndex}");
-    }
-
-    private void CollectPropertyIncome(Player player)
-    {
-        const int propertyIncome = 5;
-        
-        player.Currency.AddCoins(propertyIncome);
-        
-        Debug.Log($"{player.name} landed on their own property and collected {propertyIncome}");
-        Debug.Log($"{player.name}: {player.Currency.Coins} coins total");
-    }
-
-    private void PayRent(BoardSpace space, Player player)
-    {
-        const int rentCost = 3;
-
-        Player owner = FindOwner(space.Owner);
-
-        if (owner == null)
-            return;
-
-        int coinsPaid = player.Currency.RemoveCoins(rentCost);
-
-        owner.Currency.AddCoins(coinsPaid);
-        
-        Debug.Log($"{player.name} paid {coinsPaid} coins to {owner.name}");
-        Debug.Log($"{player.name}: {player.Currency.Coins} coins remaining");
-        Debug.Log($"{owner.name}: {owner.Currency.Coins} coins total");
-    }
-
-    private Player FindOwner(PropertyOwner owner)
-    {
-        foreach (Player player in GameManager.Instance.Players)
-        {
-            if (player.PropertyOwner == owner)
-                return player;
+            playerTeam.CurrentTeam = currentSpace.TeamColor;
+            Debug.Log("Current Team: " + currentSpace.TeamColor);
         }
 
-        return null;
-    }
-
-    private void FinishPropertyDecision()
-    {
-        waitingForPropertyDecision = false;
-        pendingPropertySpace = null;
         movementState = MovementState.Idle;
+
         GameEvents.OnMovementFinished?.Invoke(player);
     }
 }
