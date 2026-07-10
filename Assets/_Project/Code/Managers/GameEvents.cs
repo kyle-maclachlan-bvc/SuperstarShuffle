@@ -7,6 +7,14 @@ public static class GameEvents
     public static Action<GameState> OnGameStateChange;
     public static Action OnBoardReady;
     
+    // Game Setup
+    public static Action OnGameSetupStarted;
+    public static Action OnTurnOrderDetermined;
+    public static Action OnTurnOrderPresentationRequested;
+    public static Action OnTurnOrderPresentationFinished;
+    public static Action OnStartingCoinsAwarded;
+    
+    
     // Turn flow
     public static Action<Player> OnTurnStarted;
     public static Action<Player> OnTurnEnded;
@@ -28,10 +36,14 @@ public static class GameEvents
     public static Action<Player, BoardSpace> OnRentPaid;
     
     // Special Spaces
-    public static Action<Player, BoardSpace> onHappeningTriggered;
+    public static Action<Player, BoardSpace> OnHappeningTriggered;
     
     // Minigames
     public static Action<PlayerData> OnMinigameWinnerDeclared;
     public static Action OnMinigameStarted;
     public static Action OnMinigameEnded;
+    
+    //UI Events
+    public static Action<string, string[]> OnDialogueRequested;
+    public static Action OnDialogueFinished;
 }

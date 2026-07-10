@@ -7,7 +7,7 @@ public class GameSetupManager : MonoBehaviour
     [SerializeField] private TurnManager turnManager;
 
     [Header("Setup Progress")]
-    [SerializeField] private int currentSetupStep = 0;
+    //[SerializeField] private int currentSetupStep = 0;
 
     [Header("Player Rolls")]
     [SerializeField] private int PlayerOneRoll;
@@ -25,6 +25,20 @@ public class GameSetupManager : MonoBehaviour
     private bool turnOrderDetermined;
     private bool waitingForTurnOrder;
 
+    private void OnEnable()
+    {
+        GameEvents.OnDialogueFinished += HandleDialogueFinished;
+        GameEvents.OnTurnOrderDetermined += GiveStartingCoins;
+        GameEvents.OnStartingCoinsAwarded += BeginGameplay;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnDialogueFinished -= HandleDialogueFinished;
+        GameEvents.OnTurnOrderDetermined -= GiveStartingCoins;
+        GameEvents.OnStartingCoinsAwarded -=  BeginGameplay;
+    }
+    
     private void Update()
     {
         if (GameManager.Instance.CurrentGameState != GameState.GameSetup)
@@ -32,48 +46,25 @@ public class GameSetupManager : MonoBehaviour
 
         if (waitingForTurnOrder)
             HandleTurnOrderInput();
-
-        if (InputManager.Instance.Controls.GameSetup.Confirm.WasPressedThisFrame())
-        {
-            if (currentSetupStep == 2 && !turnOrderDetermined)
-            {
-                Debug.Log("All players must roll first");
-                return;
-            }
-
-            AdvanceSetup();
-        }
     }
 
-    private void AdvanceSetup()
+    private void HandleDialogueFinished()
     {
-        switch (currentSetupStep)
-        {
-            case 0:
-                BeginBoardIntroduction();
-                break;
-            case 1:
-                DetermineTurnOrder();
-                break;
-            case 2:
-                GiveStartingCoins();
-                break;
-            case 3:
-                BeginGameplay();
-                break;
-        }
-        
-        currentSetupStep++;
+        DetermineTurnOrder();
     }
     
     public void StartGameSetup()
     {
-        Debug.Log("Press Confirm to Continue");
-    }
-
-    private void BeginBoardIntroduction()
-    {
-        Debug.Log("Welcome to Glitterdeep Mines!");
+        GameEvents.OnGameSetupStarted?.Invoke();
+        
+        GameEvents.OnDialogueRequested?.Invoke("Mine Foreman", new string[]
+        {
+            "Welcome to Glitterdeep Mines!",
+            "Deep beneath the mountain lies one of the oldest mining operations, famous for its glittering crystal caverns and sprawling network of tunnels.",
+            "For generations, miners searched these caves for rare gems and precious ores.",
+            "Although much of the mine has been abandoned, valuable discovers can still be found throughout its twisting passages.",
+            "Before the expedition begins, we'll determine the order in which everyone takes their turns."
+        });
     }
 
     private void DetermineTurnOrder()
@@ -112,6 +103,7 @@ public class GameSetupManager : MonoBehaviour
         if (!playerOneRolled && InputManager.Instance.PlayerRollPressed(1))
         {
             PlayerOneRoll = RollUniqueNumber();
+            GameEvents.OnDiceRolled?.Invoke(player1, PlayerOneRoll);
             playerOneRolled = true;
             
             Debug.Log($"Player 1 Rolled {PlayerOneRoll}");
@@ -120,6 +112,7 @@ public class GameSetupManager : MonoBehaviour
         if (!playerTwoRolled && InputManager.Instance.PlayerRollPressed(2))
         {
             PlayerTwoRoll = RollUniqueNumber();
+            GameEvents.OnDiceRolled?.Invoke(player2, PlayerTwoRoll);
             playerTwoRolled = true;
             
             Debug.Log($"Player 2 Rolled {PlayerTwoRoll}");
@@ -128,6 +121,7 @@ public class GameSetupManager : MonoBehaviour
         if (!playerThreeRolled && InputManager.Instance.PlayerRollPressed(3))
         {
             PlayerThreeRoll = RollUniqueNumber();
+            GameEvents.OnDiceRolled?.Invoke(player3, PlayerThreeRoll);
             playerThreeRolled = true;
             
             Debug.Log($"Player 3 Rolled {PlayerThreeRoll}");
@@ -136,6 +130,7 @@ public class GameSetupManager : MonoBehaviour
         if (!playerFourRolled && InputManager.Instance.PlayerRollPressed(4))
         {
             PlayerFourRoll = RollUniqueNumber();
+            GameEvents.OnDiceRolled?.Invoke(player4, PlayerFourRoll);
             playerFourRolled = true;
             
             Debug.Log($"Player 4 Rolled {PlayerFourRoll}");
@@ -147,6 +142,7 @@ public class GameSetupManager : MonoBehaviour
             waitingForTurnOrder = false;
 
             BuildTurnOrder();
+            GameEvents.OnTurnOrderDetermined?.Invoke();
             //Debug.Log("All players have rolled");
         }
     }
@@ -192,6 +188,8 @@ public class GameSetupManager : MonoBehaviour
 
         foreach (Player player in GameManager.Instance.Players)
             player.Currency.AddCoins(10);
+
+        GameEvents.OnStartingCoinsAwarded?.Invoke();
     }
 
     private void BeginGameplay()

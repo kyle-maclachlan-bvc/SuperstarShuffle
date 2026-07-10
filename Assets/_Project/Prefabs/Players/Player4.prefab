@@ -38,6 +38,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2668793381566154727}
+  - {fileID: 5341456545853694934}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 120, z: 0}
 --- !u!114 &-8248454151001378567
@@ -431,3 +432,65 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &7271482560590466497
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1264556044569272004}
+    m_Modifications:
+    - target: {fileID: 3371459654763294231, guid: 5d9aa96624fa0b344af64ed6ea127c06, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.1239269
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371459654763294231, guid: 5d9aa96624fa0b344af64ed6ea127c06, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371459654763294231, guid: 5d9aa96624fa0b344af64ed6ea127c06, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.1099973
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371459654763294231, guid: 5d9aa96624fa0b344af64ed6ea127c06, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371459654763294231, guid: 5d9aa96624fa0b344af64ed6ea127c06, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371459654763294231, guid: 5d9aa96624fa0b344af64ed6ea127c06, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371459654763294231, guid: 5d9aa96624fa0b344af64ed6ea127c06, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371459654763294231, guid: 5d9aa96624fa0b344af64ed6ea127c06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371459654763294231, guid: 5d9aa96624fa0b344af64ed6ea127c06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371459654763294231, guid: 5d9aa96624fa0b344af64ed6ea127c06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080845450664789363, guid: 5d9aa96624fa0b344af64ed6ea127c06, type: 3}
+      propertyPath: m_Name
+      value: DiceRollPopup
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5d9aa96624fa0b344af64ed6ea127c06, type: 3}
+--- !u!4 &5341456545853694934 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3371459654763294231, guid: 5d9aa96624fa0b344af64ed6ea127c06, type: 3}
+  m_PrefabInstance: {fileID: 7271482560590466497}
+  m_PrefabAsset: {fileID: 0}

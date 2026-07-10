@@ -97,9 +97,8 @@ public class SpaceResolutionManager : MonoBehaviour
     {
         if (space.SpaceType == SpaceType.Happening)
         {
-            Debug.Log($"Landed on Happening Space {space.SpaceIndex}. This space cannot be purchased");
             GameEvents.OnSpaceResolutionFinished?.Invoke(player, space);
-            player.Movement.FinishMovement();
+            GameEvents.OnHappeningTriggered?.Invoke(player, space);
             return;
         }
         
