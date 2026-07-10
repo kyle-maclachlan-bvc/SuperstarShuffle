@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -20,11 +19,13 @@ public class DiceRollUI : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.OnDiceRolled += HandleDiceRoll;
+        GameEvents.OnTurnOrderConfirmed += HandleTurnOrderConfirmed;
     }
 
     private void OnDisable()
     {
         GameEvents.OnDiceRolled -= HandleDiceRoll;
+        GameEvents.OnTurnOrderConfirmed -= HandleTurnOrderConfirmed;
     }
 
     private void LateUpdate()
@@ -43,19 +44,21 @@ public class DiceRollUI : MonoBehaviour
         ShowRoll(value);
     }
 
+    private void HandleTurnOrderConfirmed(Player confirmedPlayer)
+    {
+        if (confirmedPlayer != player)
+            return;
+
+        canvas.enabled = false;
+    }
+
     public void ShowRoll(int value)
     {
         StopAllCoroutines();
         
         rollText.text = value.ToString();
         canvas.enabled = true;
-
-        StartCoroutine(HideRoutine());
     }
 
-    private IEnumerator HideRoutine()
-    {
-        yield return new WaitForSeconds(1.5f);
-        canvas.enabled = false;
-    }
+
 }

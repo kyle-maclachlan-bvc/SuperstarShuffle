@@ -9,10 +9,11 @@ public static class GameEvents
     
     // Game Setup
     public static Action OnGameSetupStarted;
-    public static Action OnTurnOrderDetermined;
     public static Action OnTurnOrderPresentationRequested;
     public static Action OnTurnOrderPresentationFinished;
-    public static Action OnStartingCoinsAwarded;
+    public static Action<Player> OnTurnOrderConfirmed;
+    public static Action OnStartingCoinsPresentationRequested;
+    public static Action OnStartingCoinsPresentationFinished;
     
     
     // Turn flow

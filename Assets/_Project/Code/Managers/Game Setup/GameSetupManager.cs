@@ -24,19 +24,21 @@ public class GameSetupManager : MonoBehaviour
 
     private bool turnOrderDetermined;
     private bool waitingForTurnOrder;
+    private bool waitingForCoinPresentation;
+    private bool waitingForFinalDialogue;
 
     private void OnEnable()
     {
         GameEvents.OnDialogueFinished += HandleDialogueFinished;
-        GameEvents.OnTurnOrderDetermined += GiveStartingCoins;
-        GameEvents.OnStartingCoinsAwarded += BeginGameplay;
+        GameEvents.OnTurnOrderPresentationFinished += PresentStartingCoins;
+        GameEvents.OnStartingCoinsPresentationFinished += HandleCoinsFinished;
     }
 
     private void OnDisable()
     {
         GameEvents.OnDialogueFinished -= HandleDialogueFinished;
-        GameEvents.OnTurnOrderDetermined -= GiveStartingCoins;
-        GameEvents.OnStartingCoinsAwarded -=  BeginGameplay;
+        GameEvents.OnTurnOrderPresentationFinished -= PresentStartingCoins;
+        GameEvents.OnStartingCoinsPresentationFinished -=  HandleCoinsFinished;
     }
     
     private void Update()
@@ -47,14 +49,40 @@ public class GameSetupManager : MonoBehaviour
         if (waitingForTurnOrder)
             HandleTurnOrderInput();
     }
-
     private void HandleDialogueFinished()
     {
-        DetermineTurnOrder();
+        // Initial introduction finished.
+        if (!turnOrderDetermined)
+        {
+            DetermineTurnOrder();
+            return;
+        }
+
+        // "Take these 10 coins." dialogue acknowledged.
+        if (waitingForCoinPresentation)
+        {
+            waitingForCoinPresentation = false;
+
+            GameEvents.OnStartingCoinsPresentationRequested?.Invoke();
+            return;
+        }
+
+        // Final "Good luck" dialogue acknowledged.
+        if (waitingForFinalDialogue)
+        {
+            waitingForFinalDialogue = false;
+
+            BeginGameplay();
+        }
     }
     
     public void StartGameSetup()
     {
+        foreach (Player player in GameManager.Instance.Players)
+        {
+            player.Data.CurrentSpaceIndex = player.Data.StartingSpaceIndex;
+        }
+        
         GameEvents.OnGameSetupStarted?.Invoke();
         
         GameEvents.OnDialogueRequested?.Invoke("Mine Foreman", new string[]
@@ -142,7 +170,7 @@ public class GameSetupManager : MonoBehaviour
             waitingForTurnOrder = false;
 
             BuildTurnOrder();
-            GameEvents.OnTurnOrderDetermined?.Invoke();
+            GameEvents.OnTurnOrderPresentationRequested?.Invoke();
             //Debug.Log("All players have rolled");
         }
     }
@@ -182,14 +210,28 @@ public class GameSetupManager : MonoBehaviour
         }
     }
 
-    private void GiveStartingCoins()
+    private void PresentStartingCoins()
     {
-        Debug.Log("Give Starting 10 Coins");
+        waitingForCoinPresentation = true;
 
-        foreach (Player player in GameManager.Instance.Players)
-            player.Currency.AddCoins(10);
+        GameEvents.OnDialogueRequested?.Invoke(
+            "Mine Foreman",
+            new string[]
+            {
+                "Every explorer needs a little spending money before heading into the mines. Take these 10 coins."
+            });
+    }
 
-        GameEvents.OnStartingCoinsAwarded?.Invoke();
+    private void HandleCoinsFinished()
+    {
+        waitingForFinalDialogue = true;
+
+        GameEvents.OnDialogueRequested?.Invoke(
+            "Mine Foreman",
+            new string[]
+            {
+                "Good luck in Glitterdeep Mines!"
+            });
     }
 
     private void BeginGameplay()

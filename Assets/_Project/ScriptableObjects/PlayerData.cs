@@ -13,9 +13,13 @@ public class PlayerData : ScriptableObject
 
     [Header("BoardProgress")]
     public int CurrentSpaceIndex;
+    
+    [Header("BoardSetup")]
+    public int StartingSpaceIndex;
 
     [Header("Properties")]
     public List<int> OwnedSpaceIndices = new();
+    public int OwnedSpaceCount => OwnedSpaceIndices.Count;
 
     [Header("Statistics")]
     public int MinigameWins;

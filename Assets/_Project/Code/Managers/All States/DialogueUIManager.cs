@@ -11,6 +11,7 @@ public class DialogueUIManager : MonoBehaviour
     private Queue<string> dialogueQueue = new();
 
     private bool dialogueActive;
+    private bool ignoreConfirmThisFrame;
 
     public bool DialogueActive => dialogueActive;
 
@@ -23,11 +24,13 @@ public class DialogueUIManager : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.OnDialogueRequested += StartDialogue;
+
     }
 
     private void OnDisable()
     {
         GameEvents.OnDialogueRequested -= StartDialogue;
+
     }
     
 
@@ -35,6 +38,12 @@ public class DialogueUIManager : MonoBehaviour
     {
         if (!dialogueActive)
             return;
+
+        if (ignoreConfirmThisFrame)
+        {
+            ignoreConfirmThisFrame = false;
+            return;
+        }
 
         if (InputManager.Instance.Controls.GameSetup.Confirm.WasPressedThisFrame())
         {
@@ -55,6 +64,7 @@ public class DialogueUIManager : MonoBehaviour
         dialoguePanel.SetActive(true);
 
         dialogueActive = true;
+        ignoreConfirmThisFrame = true;
 
         ShowNextMessage();
     }
