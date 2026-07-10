@@ -27,6 +27,13 @@ public class GameSetupManager : MonoBehaviour
     private bool waitingForCoinPresentation;
     private bool waitingForFinalDialogue;
 
+    private StateMachine setupStateMachine;
+
+    private void Awake()
+    {
+        setupStateMachine = new StateMachine();
+    }
+    
     private void OnEnable()
     {
         GameEvents.OnDialogueFinished += HandleDialogueFinished;
@@ -43,6 +50,8 @@ public class GameSetupManager : MonoBehaviour
     
     private void Update()
     {
+        setupStateMachine.Update();
+        
         if (GameManager.Instance.CurrentGameState != GameState.GameSetup)
             return;
 
@@ -84,15 +93,8 @@ public class GameSetupManager : MonoBehaviour
         }
         
         GameEvents.OnGameSetupStarted?.Invoke();
-        
-        GameEvents.OnDialogueRequested?.Invoke("Mine Foreman", new string[]
-        {
-            "Welcome to Glitterdeep Mines!",
-            "Deep beneath the mountain lies one of the oldest mining operations, famous for its glittering crystal caverns and sprawling network of tunnels.",
-            "For generations, miners searched these caves for rare gems and precious ores.",
-            "Although much of the mine has been abandoned, valuable discovers can still be found throughout its twisting passages.",
-            "Before the expedition begins, we'll determine the order in which everyone takes their turns."
-        });
+
+        setupStateMachine.ChangeState(new SetupIntroState(this));
     }
 
     private void DetermineTurnOrder()
