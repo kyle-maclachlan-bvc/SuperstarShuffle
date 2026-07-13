@@ -117,6 +117,8 @@ public class PlayerMovement : MonoBehaviour
             if (currentSpace.SpaceType != SpaceType.Transit && currentSpace.SpaceType != SpaceType.Intersection)
             {
                 remainingSpaces--;
+
+                GameEvents.OnMovementStepCompleted?.Invoke(player, remainingSpaces);
             }
 
             Debug.Log($"Space: {currentSpace.SpaceIndex} | Type: {currentSpace.SpaceType} | Remaining: {remainingSpaces}");

@@ -20,12 +20,16 @@ public class DiceRollUI : MonoBehaviour
     {
         GameEvents.OnDiceRolled += HandleDiceRoll;
         GameEvents.OnTurnOrderConfirmed += HandleTurnOrderConfirmed;
+        GameEvents.OnMovementStepCompleted += HandleMovementStep;
+        GameEvents.OnMovementFinished += HandleMovementFinished;
     }
 
     private void OnDisable()
     {
         GameEvents.OnDiceRolled -= HandleDiceRoll;
         GameEvents.OnTurnOrderConfirmed -= HandleTurnOrderConfirmed;
+        GameEvents.OnMovementStepCompleted -= HandleMovementStep;
+        GameEvents.OnMovementFinished -= HandleMovementFinished;
     }
 
     private void LateUpdate()
@@ -44,6 +48,22 @@ public class DiceRollUI : MonoBehaviour
         ShowRoll(value);
     }
 
+    private void HandleMovementStep(Player movedPlayer, int remainingSpaces)
+    {
+        if (movedPlayer != player)
+            return;
+        
+        rollText.text = remainingSpaces.ToString();
+    }
+
+    private void HandleMovementFinished(Player movedPlayer)
+    {
+        if (movedPlayer != player)
+            return;
+        
+        canvas.enabled = false;
+    }
+
     private void HandleTurnOrderConfirmed(Player confirmedPlayer)
     {
         if (confirmedPlayer != player)
@@ -54,8 +74,6 @@ public class DiceRollUI : MonoBehaviour
 
     public void ShowRoll(int value)
     {
-        StopAllCoroutines();
-        
         rollText.text = value.ToString();
         canvas.enabled = true;
     }

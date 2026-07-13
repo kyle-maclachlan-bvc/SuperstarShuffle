@@ -25,6 +25,7 @@ public static class GameEvents
     public static Action<Player, int> OnDiceRolled;
     public static Action<Player> OnMovementStarted;
     public static Action<Player> OnMovementFinished;
+    public static Action<Player, int> OnMovementStepCompleted;
     
     // board flow
     public static Action<Player, BoardSpace> OnSpaceLanded;

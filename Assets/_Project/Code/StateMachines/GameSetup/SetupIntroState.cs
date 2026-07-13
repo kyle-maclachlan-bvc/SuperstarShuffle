@@ -16,4 +16,9 @@ public class SetupIntroState : SetupState
                 "Before the expedition begins, we'll determine the order in which everyone takes their turns."
             });
     }
+
+    public override void DialogueFinished()
+    {
+        setup.EnterRollState();
+    }
 }

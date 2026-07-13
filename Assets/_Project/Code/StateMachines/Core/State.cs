@@ -8,5 +8,8 @@ public abstract class State
     
     public virtual void Tick()
     { }
+
+    public virtual void DialogueFinished()
+    { }
     
 }
