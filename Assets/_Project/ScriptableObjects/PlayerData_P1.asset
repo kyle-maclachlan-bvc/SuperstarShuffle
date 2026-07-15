@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   PlayerID: 1
   PlayerName: Player 1
-  Coins: 0
-  CurrentSpaceIndex: 0
+  Coins: 10
+  CurrentSpaceIndex: 8
+  StartingSpaceIndex: -1
   OwnedSpaceIndices: 
   MinigameWins: 0
+  TurnOrderPosition: 3
