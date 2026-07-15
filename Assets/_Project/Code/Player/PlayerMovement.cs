@@ -94,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
         remainingSpaces--;
         GameEvents.OnMovementStepCompleted?.Invoke(player, remainingSpaces);
     }
-
+    
     // continues movement along the board graph until:
     // - movement is exhausted.
     // - an intersection is reached.
