@@ -1,20 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-/// <summary>
-/// Represents a single node on the game board.
-///
-/// Responsibilities:
-/// - Store board space information
-/// - Maintain connections to other board spaces
-/// - Define the type of space
-/// - Store intersection rout options
-/// - Provide board graph data used by PlayerMovement
-///
-/// Every traversable location on the board is represented by a BoardSpace, including:
-/// Start, Blue, Red, Happening, Intersections
-/// BoardSpaces form a graph structure by connecting to other board spaces through the NextSpace list.
-/// </summary>
 
 public class BoardSpace : MonoBehaviour
 {
@@ -41,6 +27,15 @@ public class BoardSpace : MonoBehaviour
         get => owner;
         set => owner = value;
     }
+    
+    public void RestoreOwnership()
+    {
+        if (GameManager.Instance.BoardData == null)
+            return;
+    
+        Owner = GameManager.Instance.BoardData.GetOwner(spaceIndex);
+    }
+        
     public bool IsPurchaseable =>
         spaceType != SpaceType.Happening &&
         spaceType != SpaceType.Transit &&

@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
         get => currentMinigame;
         set => currentMinigame = value;
     }
+    
+    public BoardData BoardData { get; private set; }
 
     // Initializes the GameManager Singleton, and ensures only one exists
     private void Awake()
@@ -82,6 +84,8 @@ public class GameManager : MonoBehaviour
             return;
         
         ResetPlayerData();
+
+        BoardData = new BoardData(83);
         
         matchInitialized = true;
         

@@ -1,18 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-
-/// <summary>
-/// Stores and provides access to all board spaces.
-///
-/// Responsibilities:
-/// - Maintain a collection of board spaces.
-/// - Provide access to Spaces by Index
-/// - Validate board space requests
-/// - Serve as the central board reference point.
-///
-/// BoardManager does NOT control player movement.
-/// It simply provides access to board data used by other systems such as PlayerMovement.
-/// </summary>
+using Unity.Properties;
 
 public class BoardManager : MonoBehaviour
 {
@@ -28,21 +16,9 @@ public class BoardManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log($"Board Loaded - Turn {GameManager.Instance.CurrentTurn}");
+        RestoreOwnedProperties();
     }
-
-    /*private void OnEnable()
-    {
-        GameEvents.OnBoardReady += HandleBoardReady;
-    }
-
-    private void OnDisable()
-    {
-        GameEvents.OnBoardReady -= HandleBoardReady;
-    }*/
     
-    // Retrieves a board space using its index.
-    // Returns null if the requested index is invalid.
     public BoardSpace GetSpace(int index)
     {
         if (index < 0 || index >= boardSpaces.Count)
@@ -54,14 +30,26 @@ public class BoardManager : MonoBehaviour
         return boardSpaces[index];
     }
 
-    /*private void HandleBoardReady()
+    private void RestoreOwnedProperties()
     {
-        Debug.Log("Board Reconstruction Complete");
+        foreach (BoardSpace space in boardSpaces)
+        {
+            space.Owner = PropertyOwner.None;
+        }
+        
+        foreach (Player player in GameManager.Instance.Players)
+        {
+            foreach (int spaceIndex in player.Data.OwnedSpaceIndices)
+            {
+                BoardSpace space = GetSpace(spaceIndex);
 
-        GameManager.Instance.RebuildTurnOrder();
-        GameManager.Instance.ChangeGameState(GameState.PlayerTurn);
-    }*/
-
-    // Returns the total number of board spaces currently stored by the BoardManager
+                if (space != null)
+                {
+                    space.Owner = player.PropertyOwner;
+                }
+            }
+        }
+    }
+    
     public int SpaceCount => boardSpaces.Count;
 }

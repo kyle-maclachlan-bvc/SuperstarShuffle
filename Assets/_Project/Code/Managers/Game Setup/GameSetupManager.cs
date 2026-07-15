@@ -41,6 +41,8 @@ public class GameSetupManager : MonoBehaviour
         foreach (Player player in GameManager.Instance.Players)
         {
             player.Data.CurrentSpaceIndex = player.Data.StartingSpaceIndex;
+            player.Data.Coins = 0;
+            player.Data.OwnedSpaceIndices.Clear();
         }
         
         GameEvents.OnGameSetupStarted?.Invoke();
