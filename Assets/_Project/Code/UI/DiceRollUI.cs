@@ -52,6 +52,12 @@ public class DiceRollUI : MonoBehaviour
     {
         if (movedPlayer != player)
             return;
+
+        if (remainingSpaces <= 0)
+        {
+            canvas.enabled = false;
+            return;
+        }
         
         rollText.text = remainingSpaces.ToString();
     }

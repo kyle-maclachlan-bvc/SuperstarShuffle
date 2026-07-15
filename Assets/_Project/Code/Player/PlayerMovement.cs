@@ -89,6 +89,12 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(ContinueMovement());
     }
 
+    private void ConsumeMovement()
+    {
+        remainingSpaces--;
+        GameEvents.OnMovementStepCompleted?.Invoke(player, remainingSpaces);
+    }
+    
     // continues movement along the board graph until:
     // - movement is exhausted.
     // - an intersection is reached.
@@ -116,9 +122,7 @@ public class PlayerMovement : MonoBehaviour
             
             if (currentSpace.SpaceType != SpaceType.Transit && currentSpace.SpaceType != SpaceType.Intersection)
             {
-                remainingSpaces--;
-
-                GameEvents.OnMovementStepCompleted?.Invoke(player, remainingSpaces);
+                ConsumeMovement();
             }
 
             Debug.Log($"Space: {currentSpace.SpaceIndex} | Type: {currentSpace.SpaceType} | Remaining: {remainingSpaces}");
@@ -226,7 +230,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (currentSpace.SpaceType != SpaceType.Transit && currentSpace.SpaceType != SpaceType.Intersection)
         {
-            remainingSpaces--;
+            ConsumeMovement();
         }
         
         movementState = MovementState.Moving;
