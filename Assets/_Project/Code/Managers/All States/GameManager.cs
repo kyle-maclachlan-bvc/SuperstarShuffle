@@ -35,10 +35,10 @@ public class GameManager : MonoBehaviour
     private List<PlayerData> playerDataList = new();
     [SerializeField] private MinigameData currentMinigame;
     [SerializeField] private PlayerData minigameWinner;
-    [SerializeField] private List<PlayerData> minigamePlacements = new();
+    [SerializeField] private List<MinigamePlacement> minigamePlacements = new();
     [SerializeField] private bool returnFromMinigame;
-
-    public List<PlayerData> MinigamePlacements => minigamePlacements;
+    
+    public List<MinigamePlacement> MinigamePlacements => minigamePlacements;
     
     [SerializeField] private int playersRestored;
     
@@ -199,7 +199,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MG_Tutorial");
     }
 
-    public void SetMinigamePlacements(List<PlayerData> placements)
+    public void SetMinigamePlacements(List<MinigamePlacement> placements)
     {
         minigamePlacements = placements;
     }

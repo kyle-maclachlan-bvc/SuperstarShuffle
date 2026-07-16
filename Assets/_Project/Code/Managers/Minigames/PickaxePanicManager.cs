@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -21,9 +21,19 @@ public class PickaxePanicManager : MonoBehaviour
     [SerializeField] private int player2Score;
     [SerializeField] private int player3Score;
     [SerializeField] private int player4Score;
+    [SerializeField] private float scoreTickTime = 0.1f;
+    [SerializeField] private int scoreIncrement = 3;
 
+    [Header("Winner Camera")]
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private float cameraMoveSpeed = 5f;
+    [SerializeField] private Vector3 cameraOffset = new Vector3(0f, 1.75f, 3.5f);
+    private Player winnerPlayer;
+    private List<Player> firstPlacePlayers = new();
+    
     [Header("UI")]
     [SerializeField] private MinigameStartUI startUI;
+    [SerializeField] private WinnerAnnouncementUI winnerUI;
 
     [SerializeField] private TMP_Text countdownText;
     [SerializeField] private TMP_Text player1HitText;
@@ -58,7 +68,6 @@ public class PickaxePanicManager : MonoBehaviour
                 break;
             
             case PickaxePanicStates.Results:
-                UpdateResults ();
                 break;
         }
     }
@@ -147,52 +156,203 @@ public class PickaxePanicManager : MonoBehaviour
 
         results.Sort((a, b) => b.score.CompareTo(a.score));
 
-        List<PlayerData> placements = new();
+        List<MinigamePlacement> placements = new();
 
         foreach (var result in results)
         {
-            placements.Add(result.player);
+            MinigamePlacement existing =
+                placements.Find(p => p.Score == result.score);
+
+            if (existing != null)
+            {
+                existing.Players.Add(result.player);
+                continue;
+            }
+
+            int place = 1;
+
+            foreach (MinigamePlacement p in placements)
+                place += p.Players.Count;
+
+            MinigamePlacement placement = new MinigamePlacement
+            {
+                Place = place,
+                Score = result.score
+            };
+
+            placement.Players.Add(result.player);
+
+            placements.Add(placement);
         }
 
         GameManager.Instance.SetMinigamePlacements(placements);
 
-        GameEvents.OnMinigameWinnerDeclared?.Invoke(placements[0]);
+        GameEvents.OnMinigameWinnerDeclared?.Invoke(placements[0].Players[0]);
+
+        firstPlacePlayers.Clear();
+
+        foreach (Player player in FindObjectsByType<Player>(FindObjectsSortMode.None))
+        {
+            if (placements[0].Players.Contains(player.Data))
+            {
+                firstPlacePlayers.Add(player);
+            }
+        }
 
         Debug.Log("Final Placements");
 
-        for (int i = 0; i < placements.Count; i++)
+        foreach (MinigamePlacement placement in placements)
         {
-            Debug.Log($"{i + 1}. {placements[i].PlayerName}");
+            string playerNames = "";
+
+            foreach (PlayerData player in placement.Players)
+            {
+                if (playerNames.Length > 0)
+                    playerNames += ", ";
+
+                playerNames += player.PlayerName;
+            }
+
+            Debug.Log(
+                $"{placement.Place}: {playerNames} ({placement.Score} Hits)");
         }
     }
 
     private void EnterResultsState()
     {
         currentState = PickaxePanicStates.Results;
-        stateTimer = resultsDuration;
+        
+        StartCoroutine(ResultSequence());
+    }
+    
+    private IEnumerator AnimateScores()
+    {
+        int displayP1 = 0;
+        int displayP2 = 0;
+        int displayP3 = 0;
+        int displayP4 = 0;
 
         player1HitText.gameObject.SetActive(true);
         player2HitText.gameObject.SetActive(true);
         player3HitText.gameObject.SetActive(true);
         player4HitText.gameObject.SetActive(true);
 
-        player1HitText.text = $"{player1Score}";
-        player2HitText.text = $"{player2Score}";
-        player3HitText.text = $"{player3Score}";
-        player4HitText.text = $"{player4Score}";
+        bool finished = false;
 
-        Debug.Log("Showing Results");
+        while (!finished)
+        {
+            finished = true;
+
+            if (displayP1 < player1Score)
+            {
+                displayP1 = Mathf.Min(displayP1 + scoreIncrement, player1Score);
+                finished = false;
+            }
+
+            if (displayP2 < player2Score)
+            {
+                displayP2 = Mathf.Min(displayP2 + scoreIncrement, player2Score);
+                finished = false;
+            }
+
+            if (displayP3 < player3Score)
+            {
+                displayP3 = Mathf.Min(displayP3 + scoreIncrement, player3Score);
+                finished = false;
+            }
+
+            if (displayP4 < player4Score)
+            {
+                displayP4 = Mathf.Min(displayP4 + scoreIncrement, player4Score);
+                finished = false;
+            }
+
+            player1HitText.text = displayP1.ToString();
+            player2HitText.text = displayP2.ToString();
+            player3HitText.text = displayP3.ToString();
+            player4HitText.text = displayP4.ToString();
+
+            yield return new WaitForSeconds(scoreTickTime);
+        }
     }
-
-    private void UpdateResults()
+    
+    private IEnumerator ResultSequence()
     {
-        stateTimer -= Time.deltaTime;
+        // Leave the 0 on screen for one second.
+        yield return new WaitForSeconds(1f);
 
-        if (stateTimer > 0f)
-            return;
+        // Remove the timer.
+        countdownText.gameObject.SetActive(false);
 
-        GameEvents.OnGameStateRequested?.Invoke(GameState.Results);
+        // Let the empty screen breathe.
+        yield return new WaitForSeconds(1f);
+
+        // Count everyone's score upward.
+        yield return AnimateScores();
+
+        // Let players admire the finished scores.
+        yield return new WaitForSeconds(2f);
+
+        player1HitText.gameObject.SetActive(false);
+        player2HitText.gameObject.SetActive(false);
+        player3HitText.gameObject.SetActive(false);
+        player4HitText.gameObject.SetActive(false);
+
+        FocusWinner();
+
+        // Give the camera a moment to finish moving.
+        yield return new WaitForSeconds(1f);
+
+        // Show the winner banner.
+        yield return winnerUI.Show(GameManager.Instance.MinigamePlacements[0]);
 
         SceneManager.LoadScene("MG_Results");
+    }
+
+    private void FocusWinner()
+    {
+        // If multiple players tied for first,
+        // don't focus anyone.
+        if (firstPlacePlayers.Count != 1)
+        {
+            Debug.Log("Tie for first place. No winner camera.");
+            return;
+        }
+
+        winnerPlayer = firstPlacePlayers[0];
+
+        StartCoroutine(FocusWinnerRoutine());
+    }
+
+    private IEnumerator FocusWinnerRoutine()
+    {
+        Vector3 startPos = mainCamera.transform.position;
+
+        Vector3 targetPos =
+            winnerPlayer.transform.position +
+            winnerPlayer.transform.TransformDirection(cameraOffset);
+
+        Quaternion targetRot =
+            Quaternion.LookRotation(
+                winnerPlayer.transform.position - targetPos,
+                Vector3.up);
+
+        float t = 0f;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime * cameraMoveSpeed;
+
+            mainCamera.transform.position =
+                Vector3.Lerp(startPos, targetPos, t);
+
+            mainCamera.transform.rotation =
+                Quaternion.Slerp(
+                    mainCamera.transform.rotation,
+                    targetRot,
+                    t);
+
+            yield return null;
+        }
     }
 }

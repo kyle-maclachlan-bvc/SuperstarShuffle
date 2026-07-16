@@ -60,20 +60,36 @@ public class ResultsManager : MonoBehaviour
         if (coinsAwarded)
             return;
 
-        var placements = GameManager.Instance.MinigamePlacements;
+        foreach (MinigamePlacement placement in GameManager.Instance.MinigamePlacements)
+        {
+            int reward = 0;
 
-        if (placements.Count < 4)
-            return;
+            switch (placement.Place)
+            {
+                case 1:
+                    reward = firstPlaceReward;
+                    break;
 
-        placements[0].Coins += firstPlaceReward;
-        placements[1].Coins += secondPlaceReward;
-        placements[2].Coins += thirdPlaceReward;
-        placements[3].Coins += fourthPlaceReward;
+                case 2:
+                    reward = secondPlaceReward;
+                    break;
 
-        Debug.Log($"{placements[0].PlayerName} received {firstPlaceReward} coins.");
-        Debug.Log($"{placements[1].PlayerName} received {secondPlaceReward} coins.");
-        Debug.Log($"{placements[2].PlayerName} received {thirdPlaceReward} coins.");
-        Debug.Log($"{placements[3].PlayerName} received {fourthPlaceReward} coins.");
+                case 3:
+                    reward = thirdPlaceReward;
+                    break;
+
+                case 4:
+                    reward = fourthPlaceReward;
+                    break;
+            }
+
+            foreach (PlayerData player in placement.Players)
+            {
+                player.Coins += reward;
+
+                Debug.Log($"{player.PlayerName} received {reward} coins.");
+            }
+        }
 
         coinsAwarded = true;
     }
