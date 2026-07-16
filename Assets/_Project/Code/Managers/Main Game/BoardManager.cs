@@ -13,24 +13,19 @@ public class BoardManager : MonoBehaviour
     {
         Instance = this;
     }
-
-    private void Start()
-    {
-        RestoreOwnedProperties();
-    }
     
     public BoardSpace GetSpace(int index)
     {
-        if (index < 0 || index >= boardSpaces.Count)
+        foreach (BoardSpace space in boardSpaces)
         {
-            Debug.LogWarning($"Space {index} does not exist.");
-            return null;
+            if (space.SpaceIndex == index)
+                return space;
         }
         
-        return boardSpaces[index];
+        return null;
     }
 
-    private void RestoreOwnedProperties()
+    public void RestoreOwnedProperties()
     {
         foreach (BoardSpace space in boardSpaces)
         {

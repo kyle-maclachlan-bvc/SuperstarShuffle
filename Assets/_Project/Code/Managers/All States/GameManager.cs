@@ -35,7 +35,10 @@ public class GameManager : MonoBehaviour
     private List<PlayerData> playerDataList = new();
     [SerializeField] private MinigameData currentMinigame;
     [SerializeField] private PlayerData minigameWinner;
+    [SerializeField] private List<PlayerData> minigamePlacements = new();
     [SerializeField] private bool returnFromMinigame;
+
+    public List<PlayerData> MinigamePlacements => minigamePlacements;
     
     [SerializeField] private int playersRestored;
     
@@ -77,6 +80,8 @@ public class GameManager : MonoBehaviour
     // Starts the first gameplay phase when the scene loads
     private void Start()
     {
+        Debug.Log($"Match Initialized: {matchInitialized}");
+        
         if (GameSetupManager == null)
             return;
 
@@ -91,6 +96,9 @@ public class GameManager : MonoBehaviour
         
         ChangeGameState(GameState.GameSetup);
         GameSetupManager.StartGameSetup();
+
+        Debug.Log("GameManager.Start()");
+        Debug.Log($"Match Initialized: {matchInitialized}");
     }
 
     private void OnEnable()
@@ -152,6 +160,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Board Reconstruction Complete");
         RebuildTurnOrder();
+        BoardManager.Instance.RestoreOwnedProperties();
         ChangeGameState(GameState.PlayerTurn);
     }
 
@@ -190,6 +199,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MG_Tutorial");
     }
 
+    public void SetMinigamePlacements(List<PlayerData> placements)
+    {
+        minigamePlacements = placements;
+    }
+    
     private void HandleMinigameWinnerDeclared(PlayerData winner)
     {
         MinigameWinner = winner;

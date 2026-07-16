@@ -18,7 +18,6 @@ public class DialogueUIManager : MonoBehaviour
     private void Awake()
     {
         dialoguePanel.SetActive(false);
-        
     }
 
     private void OnEnable()

@@ -1,10 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class ResultsManager : MonoBehaviour
 {
+    [FormerlySerializedAs("winnerCoinReward")]
     [Header("Results Settings")]
-    [SerializeField] private int winnerCoinReward = 10;
+    [SerializeField] private int firstPlaceReward = 10;
+    [SerializeField] private int secondPlaceReward = 5;
+    [SerializeField] private int thirdPlaceReward = 3;
+    [SerializeField] private int fourthPlaceReward = 0;
+    
     [SerializeField] private float minimumDisplayTime = 3f;
     
     private PlayerData winner;
@@ -54,19 +60,30 @@ public class ResultsManager : MonoBehaviour
         if (coinsAwarded)
             return;
 
-        if (winner == null)
+        var placements = GameManager.Instance.MinigamePlacements;
+
+        if (placements.Count < 4)
             return;
-        
-        winner.Coins += winnerCoinReward;
-        
-        Debug.Log($"{winner.name} recieved {winnerCoinReward} coins!");
-        
+
+        placements[0].Coins += firstPlaceReward;
+        placements[1].Coins += secondPlaceReward;
+        placements[2].Coins += thirdPlaceReward;
+        placements[3].Coins += fourthPlaceReward;
+
+        Debug.Log($"{placements[0].PlayerName} received {firstPlaceReward} coins.");
+        Debug.Log($"{placements[1].PlayerName} received {secondPlaceReward} coins.");
+        Debug.Log($"{placements[2].PlayerName} received {thirdPlaceReward} coins.");
+        Debug.Log($"{placements[3].PlayerName} received {fourthPlaceReward} coins.");
+
         coinsAwarded = true;
     }
 
     private void ReturnToBoard()
     {
-        Debug.Log("Returning to Board");
+        Debug.Log($"P1 Coins Before Reload: {GameManager.Instance.PlayerDataList[0].Coins}");
+        Debug.Log($"P2 Coins Before Reload: {GameManager.Instance.PlayerDataList[1].Coins}");
+        Debug.Log($"P3 Coins Before Reload: {GameManager.Instance.PlayerDataList[2].Coins}");
+        Debug.Log($"P4 Coins Before Reload: {GameManager.Instance.PlayerDataList[3].Coins}");
         
         GameManager.Instance.ReturnFromMinigame = true;
         GameEvents.OnGameStateRequested?.Invoke(GameState.PlayerTurn);

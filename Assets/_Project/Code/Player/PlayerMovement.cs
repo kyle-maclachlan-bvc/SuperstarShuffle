@@ -227,6 +227,7 @@ public class PlayerMovement : MonoBehaviour
         yield return StartCoroutine(MoveToSpace(selectedSpace));
 
         currentSpace = selectedSpace;
+        player.Data.CurrentSpaceIndex = currentSpace.SpaceIndex;
 
         if (currentSpace.SpaceType != SpaceType.Transit && currentSpace.SpaceType != SpaceType.Intersection)
         {

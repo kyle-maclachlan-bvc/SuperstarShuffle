@@ -1,4 +1,6 @@
-using Unity.VisualScripting;
+using System;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +10,7 @@ public class PickaxePanicManager : MonoBehaviour
     [SerializeField] private PickaxePanicStates currentState;
 
     [Header("Timers")]
-    [SerializeField] private float setupDuration = 5f;
+    [SerializeField] private float setupDuration = 2f;
     [SerializeField] private float playDuration = 10f;
     [SerializeField] private float resultsDuration = 5f;
 
@@ -20,11 +22,25 @@ public class PickaxePanicManager : MonoBehaviour
     [SerializeField] private int player3Score;
     [SerializeField] private int player4Score;
 
+    [Header("UI")]
+    [SerializeField] private MinigameStartUI startUI;
+
+    [SerializeField] private TMP_Text countdownText;
+    [SerializeField] private TMP_Text player1HitText;
+    [SerializeField] private TMP_Text player2HitText;
+    [SerializeField] private TMP_Text player3HitText;
+    [SerializeField] private TMP_Text player4HitText;
+    
     private int winningPlayer;
 
     private void Start()
     {
         GameManager.Instance.ChangeGameState(GameState.Minigame);
+        
+        player1HitText.gameObject.SetActive(false);
+        player2HitText.gameObject.SetActive(false);
+        player3HitText.gameObject.SetActive(false);
+        player4HitText.gameObject.SetActive(false);
         
         EnterSetupState();
     }
@@ -52,6 +68,9 @@ public class PickaxePanicManager : MonoBehaviour
         currentState = PickaxePanicStates.Setup;
         stateTimer = setupDuration;
         
+        countdownText.text = "";
+        startUI.ShowReady();
+        
         Debug.Log("Pickaxe Panic Setup Started");
     }
 
@@ -68,6 +87,10 @@ public class PickaxePanicManager : MonoBehaviour
         currentState = PickaxePanicStates.Playing;
         stateTimer = playDuration;
         
+        countdownText.text = Mathf.CeilToInt(stateTimer).ToString();
+        
+        startUI.ShowGo();
+        
         player1Score = 0;
         player2Score = 0;
         player3Score = 0;
@@ -79,6 +102,8 @@ public class PickaxePanicManager : MonoBehaviour
     private void UpdateGameplay()
     {
         stateTimer -= Time.deltaTime;
+        
+        countdownText.text = Mathf.Max(0, Mathf.CeilToInt(stateTimer)).ToString();
         
         if (InputManager.Instance.PlayerRollPressed(1))
         {
@@ -103,6 +128,8 @@ public class PickaxePanicManager : MonoBehaviour
 
         if (stateTimer <= 0f)
         {
+            countdownText.text = "0";
+            
             DetermineWinner();
             EnterResultsState();
         }
@@ -110,55 +137,62 @@ public class PickaxePanicManager : MonoBehaviour
 
     private void DetermineWinner()
     {
-        
-        
-        int winningPlayerIndex = 0;
-        int highestScore = player1Score;
-
-        if (player2Score > highestScore)
+        List<(PlayerData player, int score)> results = new()
         {
-            highestScore = player2Score;
-            winningPlayerIndex = 1;
+            (GameManager.Instance.PlayerDataList[0], player1Score),
+            (GameManager.Instance.PlayerDataList[1], player2Score),
+            (GameManager.Instance.PlayerDataList[2], player3Score),
+            (GameManager.Instance.PlayerDataList[3], player4Score)
+        };
+
+        results.Sort((a, b) => b.score.CompareTo(a.score));
+
+        List<PlayerData> placements = new();
+
+        foreach (var result in results)
+        {
+            placements.Add(result.player);
         }
 
-        if (player3Score > highestScore)
-        {
-            highestScore = player3Score;
-            winningPlayerIndex = 2;
-        }
+        GameManager.Instance.SetMinigamePlacements(placements);
 
-        if (player4Score > highestScore)
+        GameEvents.OnMinigameWinnerDeclared?.Invoke(placements[0]);
+
+        Debug.Log("Final Placements");
+
+        for (int i = 0; i < placements.Count; i++)
         {
-            highestScore = player4Score;
-            winningPlayerIndex = 3;
+            Debug.Log($"{i + 1}. {placements[i].PlayerName}");
         }
-        
-        
-        Debug.Log($"Player {winningPlayerIndex + 1} Wins!");
-        Debug.Log($"P1: {player1Score}");
-        Debug.Log($"P2: {player2Score}");
-        Debug.Log($"P3: {player3Score}");
-        Debug.Log($"P4: {player4Score}");
-        
-        PlayerData winnerData = GameManager.Instance.PlayerDataList[winningPlayerIndex];
-        GameEvents.OnMinigameWinnerDeclared?.Invoke(winnerData);
     }
 
     private void EnterResultsState()
     {
         currentState = PickaxePanicStates.Results;
-        GameEvents.OnGameStateRequested?.Invoke(GameState.Results);
-        //Debug.Log("Showing Results");
         stateTimer = resultsDuration;
 
-        SceneManager.LoadScene("MG_Results");
+        player1HitText.gameObject.SetActive(true);
+        player2HitText.gameObject.SetActive(true);
+        player3HitText.gameObject.SetActive(true);
+        player4HitText.gameObject.SetActive(true);
+
+        player1HitText.text = $"{player1Score}";
+        player2HitText.text = $"{player2Score}";
+        player3HitText.text = $"{player3Score}";
+        player4HitText.text = $"{player4Score}";
+
+        Debug.Log("Showing Results");
     }
 
     private void UpdateResults()
     {
-        // FUTURE:
-        // Move Camera to Winner
-        // Play celebration animation
-        // load result screen
+        stateTimer -= Time.deltaTime;
+
+        if (stateTimer > 0f)
+            return;
+
+        GameEvents.OnGameStateRequested?.Invoke(GameState.Results);
+
+        SceneManager.LoadScene("MG_Results");
     }
 }

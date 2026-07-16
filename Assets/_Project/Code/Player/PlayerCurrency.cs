@@ -3,13 +3,18 @@ using UnityEngine;
 
 public class PlayerCurrency : MonoBehaviour
 {
-    [SerializeField] private int coins = 0;
+    private Player player;
+    
+    public int Coins => player.Data.Coins;
 
-    public int Coins => coins;
-
+    private void Awake()
+    {
+        player = GetComponent<Player>();
+    }
+    
     public void AddCoins(int amount)
     {
-        coins += amount;
+        player.Data.Coins += amount;
     }
 
     /*public void RemoveCoins(int amount)
@@ -20,9 +25,9 @@ public class PlayerCurrency : MonoBehaviour
 
     public int RemoveCoins(int amount)
     {
-        int coinsRemoved = Mathf.Min(coins, amount);
+        int coinsRemoved = Mathf.Min(player.Data.Coins, amount);
 
-        coins -= coinsRemoved;
+        player.Data.Coins -= coinsRemoved;
 
         return coinsRemoved;
     }
