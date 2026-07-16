@@ -30,7 +30,8 @@ public class MinigameTutorialManager : MonoBehaviour
         //Debug.Log($"InputManager = {InputManager.Instance}"); 
         //Debug.Log($"MinigameManager = {GameManager.Instance}");
         
-        GameManager.Instance.ChangeGameState(GameState.MinigameTutorial);
+        //GameManager.Instance.ChangeGameState(GameState.MinigameTutorial);
+        GameManager.Instance.StateMachine.ChangeState(new MinigameTutorialState(GameManager.Instance));
         
         LoadMinigameData();
     }
@@ -61,7 +62,7 @@ public class MinigameTutorialManager : MonoBehaviour
     private void StartMinigame()
     {
         MinigameData data = GameManager.Instance.CurrentMinigame;
-        GameEvents.OnGameStateRequested?.Invoke(GameState.Minigame);
+        GameEvents.OnGameStateRequested?.Invoke(new MinigameState(GameManager.Instance));
         SceneManager.LoadScene(data.SceneName);
     }
 }

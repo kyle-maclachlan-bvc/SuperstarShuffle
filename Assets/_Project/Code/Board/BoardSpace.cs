@@ -27,14 +27,6 @@ public class BoardSpace : MonoBehaviour
         get => owner;
         set => owner = value;
     }
-    
-    public void RestoreOwnership()
-    {
-        if (GameManager.Instance.BoardData == null)
-            return;
-    
-        Owner = GameManager.Instance.BoardData.GetOwner(spaceIndex);
-    }
         
     public bool IsPurchaseable =>
         spaceType != SpaceType.Happening &&

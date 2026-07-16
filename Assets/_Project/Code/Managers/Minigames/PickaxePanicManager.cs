@@ -24,8 +24,6 @@ public class PickaxePanicManager : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.ChangeGameState(GameState.Minigame);
-        
         EnterSetupState();
     }
     
@@ -147,11 +145,12 @@ public class PickaxePanicManager : MonoBehaviour
     private void EnterResultsState()
     {
         currentState = PickaxePanicStates.Results;
-        GameEvents.OnGameStateRequested?.Invoke(GameState.Results);
+
+        GameEvents.OnGameStateRequested?.Invoke(new ResultsState(GameManager.Instance));
         //Debug.Log("Showing Results");
         stateTimer = resultsDuration;
 
-        SceneManager.LoadScene("MG_Results");
+        GameEvents.OnSceneLoadRequested?.Invoke("MG_Results");
     }
 
     private void UpdateResults()

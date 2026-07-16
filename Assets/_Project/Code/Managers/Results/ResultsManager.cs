@@ -16,7 +16,8 @@ public class ResultsManager : MonoBehaviour
         //Debug.Log($"GameManager In Results = {GameManager.Instance.GetInstanceID()}");
         //Debug.Log($"Winner In Results = {GameManager.Instance.MinigameWinner}");
         
-        GameManager.Instance.ChangeGameState(GameState.Results);
+        //GameManager.Instance.ChangeGameState(GameState.Results);
+        GameManager.Instance.StateMachine.ChangeState(new ResultsState(GameManager.Instance));
         
         timer = minimumDisplayTime;
         
@@ -69,8 +70,8 @@ public class ResultsManager : MonoBehaviour
         Debug.Log("Returning to Board");
         
         GameManager.Instance.ReturnFromMinigame = true;
-        GameEvents.OnGameStateRequested?.Invoke(GameState.PlayerTurn);
+        GameEvents.OnGameStateRequested?.Invoke(new BoardGameplayState(GameManager.Instance));
         
-        SceneManager.LoadScene("GlitterdeepMines");
+        GameEvents.OnSceneLoadRequested?.Invoke("GlitterdeepMines");
     }
 }

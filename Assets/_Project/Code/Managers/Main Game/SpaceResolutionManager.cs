@@ -85,7 +85,6 @@ public class SpaceResolutionManager : MonoBehaviour
         player.Currency.RemoveCoins(propertyCost);
         
         space.Owner = player.PropertyOwner;
-        GameManager.Instance.BoardData.SetOwner(space.SpaceIndex, player.PropertyOwner);
 
         if (!player.Data.OwnedSpaceIndices.Contains(space.SpaceIndex))
         {

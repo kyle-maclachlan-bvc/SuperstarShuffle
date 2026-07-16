@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -8,14 +9,16 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance; // Global reference to the active GameManager. Singleton.
 
     [Header("Game State")]
-    [SerializeField] private GameState currentGameState; // The current phase of the game.
+    //[SerializeField] private GameState currentGameState; // The current phase of the game.
+    private StateMachine gameStateMachine;
+    public StateMachine StateMachine => gameStateMachine;
     
-    public GameState CurrentGameState => currentGameState; // Provides read-only access to the current game state
+    //public GameState CurrentGameState => currentGameState; // Provides read-only access to the current game state
 
     [Header("Match Settings")]
     [SerializeField] private int currentTurn = 1; // Tracks the current turn of the match. Turn is completed when every player has taken their movement
     [SerializeField] private int maxTurns = 10; // The total number of turns that will be played before the game ends.
-    // FUTURE, Turns can be adjusted to 15, 20, and 30.
+    // FUTURE, Turns can be adjusted to 15, 20, and 30
     
     [SerializeField] private bool matchInitialized;
     
@@ -23,7 +26,8 @@ public class GameManager : MonoBehaviour
     public bool  MatchInitialized => matchInitialized;
     
     [Header("Game Managers")]
-    [SerializeField] private GameSetupManager GameSetupManager;
+    [SerializeField] private GameSetupManager gameSetupManager;
+    public GameSetupManager GameSetupManager => gameSetupManager;
     
     [Header("Turn Order")]
     [SerializeField] private List<Player> players;
@@ -58,8 +62,6 @@ public class GameManager : MonoBehaviour
         get => currentMinigame;
         set => currentMinigame = value;
     }
-    
-    public BoardData BoardData { get; private set; }
 
     // Initializes the GameManager Singleton, and ensures only one exists
     private void Awake()
@@ -72,6 +74,8 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        gameStateMachine = new StateMachine();
     }
 
     // Starts the first gameplay phase when the scene loads
@@ -84,13 +88,16 @@ public class GameManager : MonoBehaviour
             return;
         
         ResetPlayerData();
-
-        BoardData = new BoardData(83);
         
         matchInitialized = true;
         
-        ChangeGameState(GameState.GameSetup);
-        GameSetupManager.StartGameSetup();
+        //ChangeGameState(GameState.GameSetup);
+        gameStateMachine.ChangeState(new GameSetupState(this));
+    }
+
+    private void Update()
+    {
+        gameStateMachine.Update();
     }
 
     private void OnEnable()
@@ -112,15 +119,15 @@ public class GameManager : MonoBehaviour
     }
 
     // Changes the current game state and notifies any subscribers.
-    public void ChangeGameState(GameState newState)
+    /*public void ChangeGameState(GameState newState)
     {
         currentGameState = newState;
         
-        // Notify any systems listening for GameState changes.
-        GameEvents.OnGameStateChange?.Invoke(newState);
-        //Debug.Log(currentGameState.ToString());
-    }
-
+        Debug.Log($"Game State: {newState}");
+        
+        GameEvents.OnGameStateChanged?.Invoke(newState);
+    }*/
+    
     public void RebuildTurnOrder()
     {
         players.Clear();
@@ -143,16 +150,20 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Rebuilt Turn Order with {turnOrder.Count} players");
     }
 
-    private void HandleGameStateRequested(GameState requestedState)
+    private void HandleGameStateRequested(GameFlowState newState)
     {
-        ChangeGameState(requestedState);
+        gameStateMachine.ChangeState(newState);
+
+        Debug.Log($"Game State -> {newState.GetType().Name}");
+
+        GameEvents.OnGameStateChanged?.Invoke(newState);
     }
 
     private void HandleBoardReady()
     {
         Debug.Log("Board Reconstruction Complete");
         RebuildTurnOrder();
-        ChangeGameState(GameState.PlayerTurn);
+        gameStateMachine.ChangeState(new BoardGameplayState(this));
     }
 
     private void HandleSpaceLanded(Player player, BoardSpace space)
@@ -174,8 +185,8 @@ public class GameManager : MonoBehaviour
         if (currentTurn >= maxTurns)
         {
             Debug.Log($"Game Over");
-            
-            ChangeGameState(GameState.Results);
+
+            gameStateMachine.ChangeState(new ResultsState(this));
 
             return;
         }
@@ -185,9 +196,9 @@ public class GameManager : MonoBehaviour
         //Later this will come from a Minigame Manager
         CurrentMinigame = MinigameManager.Instance.SelectMinigame();
         
-        ChangeGameState(GameState.MinigameTutorial);
+        gameStateMachine.ChangeState(new MinigameTutorialState(this));
 
-        SceneManager.LoadScene("MG_Tutorial");
+        GameEvents.OnSceneLoadRequested?.Invoke("MG_Tutorial");
     }
 
     private void HandleMinigameWinnerDeclared(PlayerData winner)

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class SetupIntroState : SetupState
 {
     public SetupIntroState(GameSetupManager setup) : base(setup)
@@ -6,6 +8,8 @@ public class SetupIntroState : SetupState
 
     public override void Enter()
     {
+        Debug.Log("Setup Intro State Enter()");
+        
         GameEvents.OnDialogueRequested?.Invoke(
             "Mine Foreman", new string[]
             {

@@ -27,9 +27,6 @@ public class GameSetupManager : MonoBehaviour
     private void Update()
     {
         setupStateMachine.Update();
-        
-        if (GameManager.Instance.CurrentGameState != GameState.GameSetup)
-            return;
     }
     private void HandleDialogueFinished()
     {
@@ -38,6 +35,8 @@ public class GameSetupManager : MonoBehaviour
     
     public void StartGameSetup()
     {
+        Debug.Log("StartGameSetup()");
+        
         foreach (Player player in GameManager.Instance.Players)
         {
             player.Data.CurrentSpaceIndex = player.Data.StartingSpaceIndex;
@@ -69,6 +68,6 @@ public class GameSetupManager : MonoBehaviour
     public void BeginGameplay()
     {
         Debug.Log("Begin Gameplay");
-        GameEvents.OnGameStateRequested?.Invoke(GameState.PlayerTurn);
+        GameEvents.OnGameStateRequested?.Invoke(new BoardGameplayState(GameManager.Instance));
     }
 }

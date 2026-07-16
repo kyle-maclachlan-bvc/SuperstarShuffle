@@ -54,6 +54,8 @@ public class DialogueUIManager : MonoBehaviour
 
     public void StartDialogue(string speaker, string[] messages)
     {
+        Debug.Log("StartDialogue()");
+        
         dialogueQueue.Clear();
 
         foreach (string message in messages)

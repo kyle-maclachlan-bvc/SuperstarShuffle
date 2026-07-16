@@ -13,19 +13,19 @@ public class TurnManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEvents.OnGameStateChange += HandleGameStateChanged;
+        GameEvents.OnGameStateChanged += HandleGameStateChanged;
         GameEvents.OnMovementFinished += HandleMovementFinished;
     }
 
     private void OnDisable()
     {
-        GameEvents.OnGameStateChange -= HandleGameStateChanged;
+        GameEvents.OnGameStateChanged -= HandleGameStateChanged;
         GameEvents.OnMovementFinished -= HandleMovementFinished;
     }
     
     private void Update()
     {
-        if (GameManager.Instance.CurrentGameState != GameState.PlayerTurn)
+        if (GameManager.Instance.StateMachine.CurrentState is not BoardGameplayState)
             return;
         
         Player currentPlayer = players[currentPlayerIndex];
@@ -143,11 +143,11 @@ public class TurnManager : MonoBehaviour
             BeginTurn();
         }
 
-        private void HandleGameStateChanged(GameState newState)
+        private void HandleGameStateChanged(GameFlowState newState)
         {
             Debug.Log($"HandleGameStateChanged Fired: {newState}");
             
-            if (newState != GameState.PlayerTurn)
+            if (newState is not BoardGameplayState)
                 return;
             
             Debug.Log($"Current Turn = {GameManager.Instance.CurrentTurn}");
