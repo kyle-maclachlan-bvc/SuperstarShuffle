@@ -27,14 +27,23 @@ public class MinigameStartUI : MonoBehaviour
         if (displayRoutine != null)
             StopCoroutine(displayRoutine);
 
-        displayRoutine = StartCoroutine(ShowGoRoutine());
+        displayRoutine = StartCoroutine(ShowMessageRoutine("GO!", 0.5f));
     }
 
-    private IEnumerator ShowGoRoutine()
+    public void ShowFinished()
     {
-        readyText.text = "GO!";
+        if (displayRoutine != null)
+            StopCoroutine(displayRoutine);
 
-        yield return new WaitForSeconds(0.5f);
+        displayRoutine = StartCoroutine(ShowMessageRoutine("FINISHED!", 1f));
+    }
+
+    private IEnumerator ShowMessageRoutine(string message, float duration)
+    {
+        readyText.text = message;
+        readyText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(duration);
 
         readyText.gameObject.SetActive(false);
 

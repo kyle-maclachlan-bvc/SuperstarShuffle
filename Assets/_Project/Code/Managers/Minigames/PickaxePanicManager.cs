@@ -139,6 +139,8 @@ public class PickaxePanicManager : MonoBehaviour
         {
             countdownText.text = "0";
             
+            startUI.ShowFinished();
+            
             DetermineWinner();
             EnterResultsState();
         }
