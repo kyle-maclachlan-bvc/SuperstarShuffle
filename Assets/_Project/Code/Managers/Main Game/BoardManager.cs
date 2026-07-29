@@ -2,17 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using Unity.Properties;
 
-public class BoardManager : MonoBehaviour
+public class BoardManager : Singleton<BoardManager>
 {
-    public static BoardManager Instance; // Global reference to the active BoardManager. Singleton.
-    
     [SerializeField] private List<BoardSpace> boardSpaces; // Collection of all board spaces on the board; Spaces are assigned through the Inspector
-
-    // Initialize the singleton reference when the scene loads
-    private void Awake()
-    {
-        Instance = this;
-    }
     
     public BoardSpace GetSpace(int index)
     {

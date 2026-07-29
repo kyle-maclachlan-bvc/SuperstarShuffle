@@ -392,7 +392,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc9d3b7289a78c439e40951315a31bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCurrency
-  coins: 0
 --- !u!114 &4216979606488517638
 MonoBehaviour:
   m_ObjectHideFlags: 0

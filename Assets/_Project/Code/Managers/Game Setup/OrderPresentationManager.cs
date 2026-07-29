@@ -21,20 +21,6 @@ public class OrderPresentationManager : MonoBehaviour
         GameEvents.OnDialogueFinished -= HandleDialogueFinished;
     }
 
-    /*private void Update()
-    {
-        if (!presenting)
-            return;
-
-        if (waitingForDialogue)
-            return;
-
-        if (InputManager.Instance.Controls.GameSetup.Confirm.WasPressedThisFrame())
-        {
-            ShowNextPlayer();
-        }
-    }*/
-
     private void BeginPresentation()
     {
         presentationQueue.Clear();

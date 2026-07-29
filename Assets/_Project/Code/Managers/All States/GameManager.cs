@@ -3,10 +3,8 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager Instance; // Global reference to the active GameManager. Singleton.
-
     [Header("Game State")]
     [SerializeField] private GameState currentGameState; // The current phase of the game.
     
@@ -65,23 +63,16 @@ public class GameManager : MonoBehaviour
     public BoardData BoardData { get; private set; }
 
     // Initializes the GameManager Singleton, and ensures only one exists
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
+        base.Awake();
+        
         DontDestroyOnLoad(gameObject);
     }
 
     // Starts the first gameplay phase when the scene loads
     private void Start()
     {
-        Debug.Log($"Match Initialized: {matchInitialized}");
-        
         if (GameSetupManager == null)
             return;
 
@@ -96,9 +87,6 @@ public class GameManager : MonoBehaviour
         
         ChangeGameState(GameState.GameSetup);
         GameSetupManager.StartGameSetup();
-
-        Debug.Log("GameManager.Start()");
-        Debug.Log($"Match Initialized: {matchInitialized}");
     }
 
     private void OnEnable()
@@ -126,7 +114,6 @@ public class GameManager : MonoBehaviour
         
         // Notify any systems listening for GameState changes.
         GameEvents.OnGameStateChange?.Invoke(newState);
-        //Debug.Log(currentGameState.ToString());
     }
 
     public void RebuildTurnOrder()

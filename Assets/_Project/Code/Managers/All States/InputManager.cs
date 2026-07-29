@@ -15,10 +15,8 @@ using UnityEngine.InputSystem;
 /// Other systems can access input actions through InputManager.Instance.Control
 /// </summary>
 
-public class InputManager : MonoBehaviour
+public class InputManager : Singleton<InputManager>
 {
-    public static InputManager Instance { get; private set; } // Global reference to the input manager. Singleton.
-
     private MarioPartyControls controls; // The generated Input Actions asset created from MarioPartyControls.inputactions.
 
     public MarioPartyControls Controls => controls; // provides read-only access to the active Input Actions asset
@@ -26,17 +24,10 @@ public class InputManager : MonoBehaviour
     private readonly Dictionary<int, Gamepad> playerGamepads = new();
     
     // Initializes the Input Manager singleton and creates the Input Actions asset.
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
+        base.Awake();
         DontDestroyOnLoad(gameObject);
-        
         controls = new MarioPartyControls();
     }
 

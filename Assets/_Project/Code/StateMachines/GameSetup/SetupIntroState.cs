@@ -10,9 +10,9 @@ public class SetupIntroState : SetupState
             "Mine Foreman", new string[]
             {
                 "Welcome to Glitterdeep Mines!",
-                "Deep beneath the mountain lies one of the oldest mining operations, famous for its glittering crystal caverns and sprawling network of tunnels.",
+                "Deep beneath the mountain lies one of the oldest mining operations, famous for its crystal caverns.",
                 "For generations, miners searched these caves for rare gems and precious ores.",
-                "Although much of the mine has been abandoned, valuable discoveries can still be found throughout its twisting passages.",
+                "Although much of the mine has been abandoned, discoveries can still be found in these chambers.",
                 "Before the expedition begins, we'll determine the order in which everyone takes their turns."
             });
     }

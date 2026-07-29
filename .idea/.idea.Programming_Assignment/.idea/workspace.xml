@@ -12,9 +12,88 @@
   <component name="ChangeListManager">
     <list default="true" id="bcf9275f-730f-4b09-8c6b-0dba461ebbb7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Programming_Assignment/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Programming_Assignment/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Main Game/MinigameStartUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Main Game/MinigameStartUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Minigames/PickaxePanicManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Minigames/PickaxePanicManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/DefaultVolumeProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/DefaultVolumeProfile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Materials/PLAYERS/Player1_Red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Materials/PLAYERS/Player1_Red.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Materials/PLAYERS/Player2_Blue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Materials/PLAYERS/Player2_Blue.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Materials/PLAYERS/Player3_Yellow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Materials/PLAYERS/Player3_Yellow.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Materials/PLAYERS/Player4_Green.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Materials/PLAYERS/Player4_Green.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Materials/TrimSheets - Substance/UVMap_2.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Materials/TrimSheets - Substance/UVMap_2.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Materials/TrimSheets - Substance/UVMap_3.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Materials/TrimSheets - Substance/UVMap_3.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Materials/TrimSheets - Substance/UVMappingModel_1_UVMap_2_BaseMap.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Materials/TrimSheets - Substance/UVMappingModel_1_UVMap_2_BaseMap.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Materials/TrimSheets - Substance/UVMappingModel_1_UVMap_2_MaskMap.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Materials/TrimSheets - Substance/UVMappingModel_1_UVMap_2_MaskMap.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Materials/TrimSheets - Substance/UVMappingModel_1_UVMap_2_MaskMap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Materials/TrimSheets - Substance/UVMappingModel_1_UVMap_2_MaskMap.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Materials/TrimSheets - Substance/UVMappingModel_1_UVMap_2_Normal.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Materials/TrimSheets - Substance/UVMappingModel_1_UVMap_2_Normal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/Boardwalk_Suspended.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/Boardwalk_Suspended.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/CrystalFormation.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/CrystalFormation.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonTile_2Piece.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonTile_2Piece.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonTile_4Piece.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonTile_4Piece.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonTile_Full.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonTile_Full.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonTile_Half.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonTile_Half.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonTile_Rectangle.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonTile_Rectangle.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonWall_Internal_120.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonWall_Internal_120.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonWall_Internal_120.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonWall_Internal_120.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonWall_Internal_180.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonWall_Internal_180.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonWall_Internal_240.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonWall_Internal_240.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonWall_Internal_Mineshaft.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/HexagonWall_Internal_Mineshaft.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/MP_Space.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/MP_Space.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/MinecartTracks180Degree.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/MinecartTracks180Degree.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/MinecartTracks_120Degree.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/MinecartTracks_120Degree.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/MinecartTracks_120Split.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/MinecartTracks_120Split.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/MinecartTracks_180Split.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/MinecartTracks_180Split.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/MinecartTracks_3Split.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/MinecartTracks_3Split.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/Stalagmites.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/Stalagmites.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/StonePillarPost.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/StonePillarPost.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/StonePillarPost.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/StonePillarPost.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/StonePillars.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/StonePillars.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WallPlane_90Degree_Inner.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WallPlane_90Degree_Inner.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WallPlane_90Degree_Outer.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WallPlane_90Degree_Outer.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WallPlane_Cliff_2x3.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WallPlane_Cliff_2x3.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WallPlane_Cliff_2x3.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WallPlane_Cliff_2x3.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WallPlane_Opening.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WallPlane_Opening.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WallPlane_Opening.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WallPlane_Opening.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WallPlane_SupportStructure.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WallPlane_SupportStructure.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WallPlane_SupportStructure.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WallPlane_SupportStructure.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WoodenStructure_Base.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WoodenStructure_Base.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WoodenStructure_Top.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Models/Refinements/WoodenStructure_Top.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Managers/All States/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/Managers/All States/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Managers/All States/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/Managers/All States/InputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Game Setup/OrderPresentationManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Game Setup/OrderPresentationManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Main Game/BoardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Main Game/BoardManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Minigames/MinigameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Minigames/MinigameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/StateMachines/GameSetup/SetupIntroState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/StateMachines/GameSetup/SetupIntroState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/HexagonTiles/HexagonTile_2Piece.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/HexagonTiles/HexagonTile_2Piece.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/HexagonTiles/HexagonTile_4Piece.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/HexagonTiles/HexagonTile_4Piece.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/HexagonTiles/HexagonTile_Full.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/HexagonTiles/HexagonTile_Full.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/HexagonTiles/HexagonTile_Half.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/HexagonTiles/HexagonTile_Half.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/HexagonTiles/HexagontTile_Rectangle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/HexagonTiles/HexagontTile_Rectangle.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/MinecartTracks/MinecartTrack_120degree.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/MinecartTracks/MinecartTrack_120degree.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/MinecartTracks/MinecartTrack_180Split.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/MinecartTracks/MinecartTrack_180Split.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/MinecartTracks/MinecartTrack_180degree.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/MinecartTracks/MinecartTrack_180degree.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Props/Boardwalk_Suspended.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Props/Boardwalk_Suspended.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Props/Prop_CrystalFormation.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Props/Prop_CrystalFormation.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Props/Prop_PartySpace.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Props/Prop_PartySpace.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Props/Prop_Stalagmites.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Props/Prop_Stalagmites.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Props/Prop_StonePillarPost.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Props/Prop_StonePillarPost.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/SupportStructure/SupportStructure_Base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/SupportStructure/SupportStructure_Base.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/SupportStructure/SupportStructure_Mid.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/SupportStructure/SupportStructure_Mid.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/SupportStructure/SupportStructure_Top.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/SupportStructure/SupportStructure_Top.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/UI/DialogueBoxPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/UI/DialogueBoxPanel.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_90degree_Inner.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_90degree_Inner.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_90degree_Outer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_90degree_Outer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Cliff.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Cliff.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_120.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_120.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_180.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_180.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_180_Ladder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_180_Ladder.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_180_Mineshaft.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_180_Mineshaft.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_240.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_240.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Mineshaft.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Mineshaft.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_SupportStructure.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_SupportStructure.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/MG_Results.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/MG_Results.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,25 +116,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "cidr.known.project.marker": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.3.15f1\Editor\Unity.exe" />
@@ -103,6 +182,8 @@
       <updated>1782660568321</updated>
       <workItem from="1782660573114" duration="1000" />
       <workItem from="1784241259536" duration="1942000" />
+      <workItem from="1785349677440" duration="2485000" />
+      <workItem from="1785354253664" duration="346000" />
     </task>
     <servers />
   </component>

@@ -1,23 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MinigameManager : MonoBehaviour
+public class MinigameManager : Singleton<MinigameManager>
 {
-    public static MinigameManager Instance;
-    
     [SerializeField] private List<MinigameData> fourPlayerMinigames;
     [SerializeField] private List<MinigameData> twoVsTwoMinigames;
     [SerializeField] private List<MinigameData> oneVsThreeMinigames;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        
-        Instance = this;
+        base.Awake();
         DontDestroyOnLoad(gameObject);
     }
 
