@@ -15,7 +15,6 @@ public static class GameEvents
     public static Action OnStartingCoinsPresentationRequested;
     public static Action OnStartingCoinsPresentationFinished;
     
-    
     // Turn flow
     public static Action<Player> OnTurnStarted;
     public static Action<Player> OnTurnEnded;

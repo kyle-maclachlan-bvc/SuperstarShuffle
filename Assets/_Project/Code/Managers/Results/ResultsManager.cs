@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -10,18 +12,26 @@ public class ResultsManager : MonoBehaviour
     [SerializeField] private int secondPlaceReward = 5;
     [SerializeField] private int thirdPlaceReward = 3;
     [SerializeField] private int fourthPlaceReward = 0;
+
+    [SerializeField] private ResultsUIManager[] rows;
     
     [SerializeField] private float minimumDisplayTime = 3f;
+    
     
     private PlayerData winner;
     private float timer;
     private bool coinsAwarded;
 
+    private class CoinRewardData
+    {
+        public PlayerData Player;
+        public ResultsUIManager Row;
+        public int RewardRemaining;
+    }
+
     private void Start()
     {
-        //Debug.Log($"GameManager In Results = {GameManager.Instance.GetInstanceID()}");
-        //Debug.Log($"Winner In Results = {GameManager.Instance.MinigameWinner}");
-        
+       
         GameManager.Instance.ChangeGameState(GameState.Results);
         
         timer = minimumDisplayTime;
@@ -29,8 +39,8 @@ public class ResultsManager : MonoBehaviour
         winner = GameManager.Instance.MinigameWinner;
         
         LoadResults();
-        AwardCoins();
-    }
+        PopulateResults();
+        StartCoroutine(AnimateCoinReward());    }
 
     private void Update()
     {
@@ -55,7 +65,80 @@ public class ResultsManager : MonoBehaviour
         Debug.Log($"{winner.PlayerName} Wins!");
     }
 
-    private void AwardCoins()
+    private void PopulateResults()
+    {
+        int rowIndex = 0;
+
+        foreach (MinigamePlacement placement in GameManager.Instance.MinigamePlacements)
+        {
+            foreach (PlayerData player in placement.Players)
+            {
+                rows[rowIndex].Initialize(player, placement.Place);
+                rowIndex++;
+            }
+        }
+    }
+
+    private int GetRewardForPlace(int place)
+    {
+        switch (place)
+        {
+            case 1: return firstPlaceReward;
+            case 2: return secondPlaceReward;
+            case 3: return thirdPlaceReward;
+            case 4: return fourthPlaceReward;
+            default: return 0;
+        }
+    }
+
+    private IEnumerator AnimateCoinReward()
+    {
+        yield return new WaitForSeconds(2f);
+        
+        List<CoinRewardData> rewards = new();
+        
+        int rowIndex = 0;
+
+        foreach (MinigamePlacement placement in GameManager.Instance.MinigamePlacements)
+        {
+            int reward = GetRewardForPlace(placement.Place);
+
+            foreach (PlayerData player in placement.Players)
+            {
+                rewards.Add(new CoinRewardData
+                {
+                    Player = player,
+                    Row = rows[rowIndex],
+                    RewardRemaining = reward
+                });
+
+                rowIndex++;
+            }
+        }
+
+        bool animating = true;
+
+        while (animating)
+        {
+            animating = false;
+            foreach (CoinRewardData reward in rewards)
+            {
+                if (reward.RewardRemaining <= 0)
+                    continue;
+
+                reward.Player.Coins++;
+                reward.Row.SetCoinText(reward.Player.Coins);
+                
+                reward.RewardRemaining--;
+                animating = true;
+            }
+
+            if (animating)
+                yield return new WaitForSeconds(0.08f);
+        }
+    }
+    
+    /*private void AwardCoins()
     {
         if (coinsAwarded)
             return;
@@ -92,7 +175,7 @@ public class ResultsManager : MonoBehaviour
         }
 
         coinsAwarded = true;
-    }
+    }*/
 
     private void ReturnToBoard()
     {
