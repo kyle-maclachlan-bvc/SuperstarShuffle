@@ -43,6 +43,9 @@ public class GameSetupManager : MonoBehaviour
             player.Data.CurrentSpaceIndex = player.Data.StartingSpaceIndex;
             player.Data.Coins = 0;
             player.Data.OwnedSpaceIndices.Clear();
+            
+            player.Movement.CurrentSpace = BoardManager.Instance.GetSpace(player.Data.StartingSpaceIndex);
+            player.Movement.transform.position = player.Movement.CurrentSpace.transform.position;
         }
         
         GameEvents.OnGameSetupStarted?.Invoke();

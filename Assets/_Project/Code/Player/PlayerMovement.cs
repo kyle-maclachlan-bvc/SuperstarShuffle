@@ -46,13 +46,20 @@ public class PlayerMovement : MonoBehaviour
     
     private void Start()
     {
-        if (player != null)
+        if (GameManager.Instance.ReturnFromMinigame)
         {
-            Debug.Log(
-                $"{player.Data.PlayerName} SAVED DATA BEFORE START = {player.Data.CurrentSpaceIndex}"
-            );
+            RestoreBoardPosition();
+            return;
         }
-        
+
+        if (currentSpace != null)
+        {
+            transform.position = currentSpace.transform.position;
+        }
+    }
+    
+    public void RestoreBoardPosition()
+    {
         BoardSpace[] allSpaces = FindObjectsByType<BoardSpace>(FindObjectsSortMode.None);
 
         foreach (BoardSpace space in allSpaces)
@@ -61,19 +68,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 currentSpace = space;
                 transform.position = space.transform.position;
-                
-                Debug.Log($"{player.Data.PlayerName} loaded onto space {space.SpaceIndex}");
-                
+
+                Debug.Log($"{player.Data.PlayerName} restored to Space {space.SpaceIndex}");
+
                 if (GameManager.Instance.ReturnFromMinigame)
                     GameManager.Instance.NotifyPlayerRestored();
 
                 return;
             }
-        }
-
-        if (currentSpace != null)
-        {
-            transform.position = currentSpace.transform.position;
         }
     }
 
