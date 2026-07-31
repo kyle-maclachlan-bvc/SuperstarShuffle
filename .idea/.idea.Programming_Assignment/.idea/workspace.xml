@@ -12,13 +12,115 @@
   <component name="ChangeListManager">
     <list default="true" id="bcf9275f-730f-4b09-8c6b-0dba461ebbb7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Programming_Assignment/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Programming_Assignment/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Managers.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Managers.zip.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Managers/GameEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/Managers/GameEvents.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Results/ResultsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Results/ResultsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Materials/New folder.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Art/Materials/TrimSheet/TrimSheet.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Art/Materials/TrimSheet/TrimSheet.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Fonts/Spidle-woDR8 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Fonts/Spidle-woDR8 SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Fonts/biome SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Fonts/biome SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/MG_Results.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/MG_Results.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/HexagonTiles/HexagonTile_2Piece.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/HexagonTiles/HexagonTile_2Piece.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/HexagonTiles/HexagonTile_4Piece.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/HexagonTiles/HexagonTile_4Piece.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/HexagonTiles/HexagonTile_Full.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/HexagonTiles/HexagonTile_Full.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/HexagonTiles/HexagonTile_Half.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/HexagonTiles/HexagonTile_Half.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Props/Prop_CrystalFormation.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Props/Prop_CrystalFormation.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Props/Prop_StonePillarPost.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Props/Prop_StonePillarPost.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_90degree_Outer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_90degree_Outer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Cliff.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Cliff.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_120.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_120.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_180.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_180.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_180_Ladder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_180_Ladder.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_180_Mineshaft.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_180_Mineshaft.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_240.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Internal_240.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Mineshaft.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Wall/WallPlane_Mineshaft.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/LightingData.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/LightingData.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-0_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-0_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-0_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-0_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-10_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-10_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-10_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-10_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-11_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-11_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-11_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-11_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-12_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-12_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-12_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-12_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-13_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-13_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-13_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-13_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-14_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-14_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-14_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-14_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-15_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-15_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-15_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-15_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-16_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-16_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-16_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-16_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-17_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-17_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-17_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-17_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-18_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-18_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-18_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-18_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-19_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-19_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-19_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-19_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-1_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-1_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-1_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-1_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-20_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-20_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-20_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-20_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-21_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-21_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-21_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-21_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-2_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-2_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-2_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-2_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-3_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-3_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-3_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-3_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-4_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-4_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-4_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-4_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-5_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-5_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-5_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-5_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-6_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-6_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-6_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-6_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-7_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-7_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-7_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-7_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-8_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-8_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-8_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-8_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-9_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-9_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-9_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-9_comp_light.exr.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +214,7 @@
       <workItem from="1784241259536" duration="1942000" />
       <workItem from="1785349677440" duration="2485000" />
       <workItem from="1785354253664" duration="951000" />
-      <workItem from="1785442836365" duration="6867000" />
+      <workItem from="1785442836365" duration="9142000" />
     </task>
     <servers />
   </component>
