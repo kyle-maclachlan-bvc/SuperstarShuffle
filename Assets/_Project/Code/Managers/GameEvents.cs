@@ -47,4 +47,11 @@ public static class GameEvents
     //UI Events
     public static Action<string, string[]> OnDialogueRequested;
     public static Action OnDialogueFinished;
+    
+    // End Game
+    public static Action OnEndGameStarted;
+    public static Action OnEndGamePropertiesRevealStarted;
+    public static Action OnEndGameCoinRevealStarted;
+    public static Action OnEndGameWinnerRevealStarted;
+    public static Action<PlayerData> OnGameWinnerDeclared;
 }

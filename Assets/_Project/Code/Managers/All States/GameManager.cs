@@ -35,6 +35,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private PlayerData minigameWinner;
     [SerializeField] private List<MinigamePlacement> minigamePlacements = new();
     [SerializeField] private bool returnFromMinigame;
+
+    [SerializeField] private bool finalRound;
+    public bool FinalRound => finalRound;
     
     public List<MinigamePlacement> MinigamePlacements => minigamePlacements;
     
@@ -148,6 +151,15 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("Board Reconstruction Complete");
         RebuildTurnOrder();
         BoardManager.Instance.RestoreOwnedProperties();
+
+        if (finalRound)
+        {
+            finalRound = false;
+            ChangeGameState(GameState.GameEnd);
+            GameEvents.OnEndGameStarted?.Invoke();
+            return;
+        }
+        
         ChangeGameState(GameState.PlayerTurn);
     }
 
@@ -165,19 +177,16 @@ public class GameManager : Singleton<GameManager>
     // Determines whether the match should continue, a minigame should begin, and the game has ended.
     public void RoundCompleted()
     {
-        Debug.Log($"Turn {currentTurn} completed");
-
         if (currentTurn >= maxTurns)
         {
-            Debug.Log($"Game Over");
-            
-            ChangeGameState(GameState.Results);
-
-            return;
+            finalRound = true;
         }
+        else
+        {
+            currentTurn++;
 
-        currentTurn++;
-
+        }
+        
         //Later this will come from a Minigame Manager
         CurrentMinigame = MinigameManager.Instance.SelectMinigame();
         

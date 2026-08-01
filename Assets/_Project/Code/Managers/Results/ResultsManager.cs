@@ -185,7 +185,6 @@ public class ResultsManager : MonoBehaviour
         Debug.Log($"P4 Coins Before Reload: {GameManager.Instance.PlayerDataList[3].Coins}");
         
         GameManager.Instance.ReturnFromMinigame = true;
-        GameEvents.OnGameStateRequested?.Invoke(GameState.PlayerTurn);
         
         SceneManager.LoadScene("GlitterdeepMines");
     }

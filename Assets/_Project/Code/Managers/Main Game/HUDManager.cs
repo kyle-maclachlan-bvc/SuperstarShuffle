@@ -16,6 +16,8 @@ public class HUDManager : MonoBehaviour
 
     private void OnEnable()
     {
+        GameEvents.OnGameStateChange += HandleGameStateChanged;
+        
         GameEvents.OnGameSetupStarted += ResetHUD;
         GameEvents.OnBoardReady += RebuildHUD;
 
@@ -28,6 +30,8 @@ public class HUDManager : MonoBehaviour
 
     private void OnDisable()
     {
+        GameEvents.OnGameStateChange -= HandleGameStateChanged;
+        
         GameEvents.OnGameSetupStarted -= ResetHUD;
         GameEvents.OnBoardReady -= RebuildHUD;
 
@@ -36,6 +40,29 @@ public class HUDManager : MonoBehaviour
         GameEvents.OnPropertyPurchased -= HandleHUDUpdate;
         GameEvents.OnRentPaid -= HandleHUDUpdate;
 
+    }
+    
+    private void HandleGameStateChanged(GameState state)
+    {
+        if (state == GameState.GameEnd)
+        {
+            HideHUD();
+        }
+        else if (state == GameState.PlayerTurn)
+        {
+            RebuildHUD();
+        }
+    }
+    
+    private void HideHUD()
+    {
+        foreach (HUDPlayerPanel panel in panels)
+        {
+            if (panel == null)
+                continue;
+
+            panel.gameObject.SetActive(false);
+        }
     }
 
     private void HandleTurnOrderConfirmed(Player player)
@@ -84,19 +111,22 @@ public class HUDManager : MonoBehaviour
 
     private void RebuildHUD()
     {
+        if (GameManager.Instance.CurrentGameState != GameState.PlayerTurn)
+            return;
+
         if (panels == null || panels.Length == 0)
             return;
-        
+
         ResetHUD();
 
         foreach (Player player in GameManager.Instance.TurnOrder)
         {
             if (player == null)
                 continue;
-            
+
             HandleTurnOrderConfirmed(player);
         }
-        
+
         RefreshHUD();
     }
 }

@@ -79,6 +79,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void MoveToStartingSpace()
+    {
+        player.Data.CurrentSpaceIndex = player.Data.StartingSpaceIndex;
+        RestoreBoardPosition();
+    }
+
     // Begins a new movement sequence after a dice-block roll.
     public void StartMovingSpaces(int spaces)
     {
