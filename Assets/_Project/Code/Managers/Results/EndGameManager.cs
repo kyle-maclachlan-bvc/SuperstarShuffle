@@ -3,6 +3,7 @@ using UnityEngine;
 public class EndGameManager : MonoBehaviour
 {
     private Transform ceremonyCameraPoint;
+    private int propertyValue = 5;
     
     private void Awake()
     {
@@ -12,11 +13,13 @@ public class EndGameManager : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.OnEndGameStarted += BeginCeremony;
+        GameEvents.OnEndGamePropertiesRevealStarted += RevealProperties;
     }
 
     private void OnDisable()
     {
         GameEvents.OnEndGameStarted -= BeginCeremony;
+        GameEvents.OnEndGamePropertiesRevealStarted -= RevealProperties;
     }
 
     private void BeginCeremony()
@@ -24,6 +27,8 @@ public class EndGameManager : MonoBehaviour
         RestorePlayers();
 
         RestoreCamera();
+        
+        CalculatePropertyBonuses();
 
         GameEvents.OnDialogueRequested?.Invoke(
             "Mine Foreman",
@@ -32,6 +37,8 @@ public class EndGameManager : MonoBehaviour
                 "Well done, miners! The expedition has finally come to an end.",
                 "Let's see how everyone performed!"
             });
+        
+        GameEvents.OnEndGamePropertiesRevealStarted?.Invoke();
     }
 
     private void RestorePlayers()
@@ -54,5 +61,33 @@ public class EndGameManager : MonoBehaviour
 
         Camera.main.transform.rotation =
             ceremonyCameraPoint.rotation;
+    }
+
+    private void CalculatePropertyBonuses()
+    {
+        foreach (Player player in GameManager.Instance.Players)
+        {
+            player.Data.PropertyBonusCoins = player.Data.OwnedSpaceCount * propertyValue;
+        }
+    }
+
+    private void RevealProperties()
+    {
+        int highestPropertyCount = 0;
+
+        foreach (Player player in GameManager.Instance.Players)
+        {
+            highestPropertyCount = Mathf.Max(highestPropertyCount, player.Data.OwnedSpaceCount);
+
+            player.DiceUI.ShowValue(player.Data.OwnedSpaceCount);
+        }
+
+        foreach (Player player in GameManager.Instance.Players)
+        {
+            if (player.Data.OwnedSpaceCount == highestPropertyCount)
+                player.DiceUI.StartPulse();
+            else
+                player.DiceUI.StopPulse();
+        }
     }
 }

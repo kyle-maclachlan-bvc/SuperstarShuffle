@@ -26,4 +26,7 @@ public class PlayerData : ScriptableObject
 
     [Header("Turn Order")]
     public int TurnOrderPosition;
+
+    [Header("End Game")]
+    public int PropertyBonusCoins;
 }

@@ -28,6 +28,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] private PropertyOwner propertyOwner;
     [SerializeField] private PlayerData playerData;
+    [SerializeField] private DiceRollUI diceRollUI;
+
+    public DiceRollUI DiceUI => diceRollUI;
     public PropertyOwner PropertyOwner => propertyOwner;
     public PlayerData Data => playerData;
     

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using System.Collections;
 
 public class DiceRollUI : MonoBehaviour
 {
@@ -8,12 +9,17 @@ public class DiceRollUI : MonoBehaviour
 
     private Camera mainCamera;
     private Player player;
+    
+    private Coroutine pulseRoutine;
+    private Vector3 originalScale;
 
     private void Awake()
     {
         mainCamera = Camera.main;
         player = GetComponentInParent<Player>();
         canvas.enabled = false;
+        
+        originalScale = rollText.transform.localScale;
     }
 
     private void OnEnable()
@@ -84,5 +90,50 @@ public class DiceRollUI : MonoBehaviour
         canvas.enabled = true;
     }
 
+    public void StartPulse()
+    {
+        if (pulseRoutine != null)
+            StopCoroutine(pulseRoutine);
 
+        pulseRoutine = StartCoroutine(PulseRoutine());
+    }
+
+    public void StopPulse()
+    {
+        if (pulseRoutine != null)
+            StopCoroutine(pulseRoutine);
+        
+        rollText.transform.localScale = originalScale;
+    }
+
+    public IEnumerator PulseRoutine()
+    {
+        while (true)
+        {
+            float t = 0f;
+
+            while (t < 1f)
+            {
+                t += Time.deltaTime * 4f;
+                
+                float scale = Mathf.Lerp(1f, 1.25f, Mathf.PingPong(t, 0.5f) * 2f);
+
+                rollText.transform.localScale = originalScale * scale;
+                
+                yield return null;
+            }
+        }
+        
+    }
+
+    public void ShowValue(int value)
+    {
+        rollText.text = value.ToString();
+        canvas.enabled = true;
+    }
+
+    public void Hide()
+    {
+        canvas.enabled = false;
+    }
 }
