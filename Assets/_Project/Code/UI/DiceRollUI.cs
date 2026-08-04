@@ -43,6 +43,12 @@ public class DiceRollUI : MonoBehaviour
         if (!canvas.enabled)
             return;
 
+        if (mainCamera == null)
+            mainCamera = Camera.main;
+
+        if (mainCamera == null)
+            return;
+
         canvas.transform.forward = mainCamera.transform.forward;
     }
 
