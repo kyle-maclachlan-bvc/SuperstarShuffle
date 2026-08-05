@@ -427,7 +427,7 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
             ""id"": ""5fefd6e7-ceac-4416-bfbe-029991b5d9fe"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Pickaxe"",
                     ""type"": ""Button"",
                     ""id"": ""f998454a-a80a-4136-a230-53cbfe57bb39"",
                     ""expectedControlType"": """",
@@ -439,12 +439,56 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""ad0369ac-a862-4906-a5a8-904ff45555b1"",
-                    ""path"": """",
+                    ""id"": ""c5e55c80-fdac-436d-baa7-8c4139ef5c53"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Pickaxe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e32f0d7d-1dd1-4764-8309-781d5cd04340"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pickaxe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe40d7c2-c098-41ea-ac0b-3cba35607e5d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pickaxe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b768e9d3-4c1e-45e7-add2-303e44a25d28"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pickaxe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ad0369ac-a862-4906-a5a8-904ff45555b1"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pickaxe"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -549,7 +593,7 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
         m_GameSetup_Confirm = m_GameSetup.FindAction("Confirm", throwIfNotFound: true);
         // Minigame - Pickaxe Panic
         m_MinigamePickaxePanic = asset.FindActionMap("Minigame - Pickaxe Panic", throwIfNotFound: true);
-        m_MinigamePickaxePanic_Newaction = m_MinigamePickaxePanic.FindAction("New action", throwIfNotFound: true);
+        m_MinigamePickaxePanic_Pickaxe = m_MinigamePickaxePanic.FindAction("Pickaxe", throwIfNotFound: true);
         // Minigame - Mail Call
         m_MinigameMailCall = asset.FindActionMap("Minigame - Mail Call", throwIfNotFound: true);
         m_MinigameMailCall_Newaction = m_MinigameMailCall.FindAction("New action", throwIfNotFound: true);
@@ -880,7 +924,7 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
     // Minigame - Pickaxe Panic
     private readonly InputActionMap m_MinigamePickaxePanic;
     private List<IMinigamePickaxePanicActions> m_MinigamePickaxePanicActionsCallbackInterfaces = new List<IMinigamePickaxePanicActions>();
-    private readonly InputAction m_MinigamePickaxePanic_Newaction;
+    private readonly InputAction m_MinigamePickaxePanic_Pickaxe;
     /// <summary>
     /// Provides access to input actions defined in input action map "Minigame - Pickaxe Panic".
     /// </summary>
@@ -893,9 +937,9 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
         /// </summary>
         public MinigamePickaxePanicActions(@MarioPartyControls wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "MinigamePickaxePanic/Newaction".
+        /// Provides access to the underlying input action "MinigamePickaxePanic/Pickaxe".
         /// </summary>
-        public InputAction @Newaction => m_Wrapper.m_MinigamePickaxePanic_Newaction;
+        public InputAction @Pickaxe => m_Wrapper.m_MinigamePickaxePanic_Pickaxe;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -922,9 +966,9 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_MinigamePickaxePanicActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_MinigamePickaxePanicActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @Pickaxe.started += instance.OnPickaxe;
+            @Pickaxe.performed += instance.OnPickaxe;
+            @Pickaxe.canceled += instance.OnPickaxe;
         }
 
         /// <summary>
@@ -936,9 +980,9 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
         /// <seealso cref="MinigamePickaxePanicActions" />
         private void UnregisterCallbacks(IMinigamePickaxePanicActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @Pickaxe.started -= instance.OnPickaxe;
+            @Pickaxe.performed -= instance.OnPickaxe;
+            @Pickaxe.canceled -= instance.OnPickaxe;
         }
 
         /// <summary>
@@ -1326,12 +1370,12 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
     public interface IMinigamePickaxePanicActions
     {
         /// <summary>
-        /// Method invoked when associated input action "New action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Pickaxe" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnPickaxe(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Minigame - Mail Call" which allows adding and removing callbacks.

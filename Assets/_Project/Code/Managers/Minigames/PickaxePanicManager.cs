@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PickaxePanicManager : MonoBehaviour
@@ -54,6 +55,18 @@ public class PickaxePanicManager : MonoBehaviour
         
         EnterSetupState();
     }
+
+    private void OnEnable()
+    {
+        InputManager.Instance.Controls.MinigamePickaxePanic.Pickaxe.performed += HandleGameplayInteraction;
+    }
+
+    private void OnDisable()
+    {
+        InputManager.Instance.Controls.MinigamePickaxePanic.Pickaxe.performed -= HandleGameplayInteraction;
+    }
+    
+    private void HandleGameplayInteraction(InputAction.CallbackContext ctx) => UpdateGameplayInteraction(ctx.ReadValue<int>());
     
     private void Update()
     {
@@ -93,6 +106,8 @@ public class PickaxePanicManager : MonoBehaviour
 
     private void EnterGameplayState()
     {
+        
+        
         currentState = PickaxePanicStates.Playing;
         stateTimer = playDuration;
         
@@ -111,38 +126,35 @@ public class PickaxePanicManager : MonoBehaviour
     private void UpdateGameplay()
     {
         stateTimer -= Time.deltaTime;
-        
         countdownText.text = Mathf.Max(0, Mathf.CeilToInt(stateTimer)).ToString();
         
-        if (InputManager.Instance.PlayerRollPressed(1))
-        {
-            player1Score++;
-            //Debug.Log("Player 1 Score: " + player1Score);
-        }
-        if (InputManager.Instance.PlayerRollPressed(2))
-        {
-            player2Score++;
-            //Debug.Log("Player 2 Score: " + player2Score);
-        }
-        if (InputManager.Instance.PlayerRollPressed(3))
-        {
-            player3Score++;
-            //Debug.Log("Player 3 Score: " + player3Score);
-        }
-        if (InputManager.Instance.PlayerRollPressed(4))
-        {
-            player4Score++;
-            //Debug.Log("Player 4 Score: " + player4Score);
-        }
-
         if (stateTimer <= 0f)
         {
             countdownText.text = "0";
-            
+                    
             startUI.ShowFinished();
-            
+                    
             DetermineWinner();
             EnterResultsState();
+        }
+    }
+
+    private void UpdateGameplayInteraction(int playerID)
+    {
+        switch (playerID)
+        {
+            case 1:
+                player1Score++;
+                break;
+            case 2:
+                player2Score++;
+                break;
+            case 3:
+                player3Score++;
+                break;
+            case 4:
+                player4Score++;
+                break;
         }
     }
 

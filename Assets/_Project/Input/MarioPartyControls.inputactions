@@ -341,7 +341,7 @@
             "id": "5fefd6e7-ceac-4416-bfbe-029991b5d9fe",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Pickaxe",
                     "type": "Button",
                     "id": "f998454a-a80a-4136-a230-53cbfe57bb39",
                     "expectedControlType": "",
@@ -353,12 +353,56 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "ad0369ac-a862-4906-a5a8-904ff45555b1",
-                    "path": "",
+                    "id": "c5e55c80-fdac-436d-baa7-8c4139ef5c53",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Pickaxe",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e32f0d7d-1dd1-4764-8309-781d5cd04340",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pickaxe",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe40d7c2-c098-41ea-ac0b-3cba35607e5d",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pickaxe",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b768e9d3-4c1e-45e7-add2-303e44a25d28",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pickaxe",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ad0369ac-a862-4906-a5a8-904ff45555b1",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pickaxe",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

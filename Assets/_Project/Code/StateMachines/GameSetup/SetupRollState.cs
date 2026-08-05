@@ -23,8 +23,11 @@ public class SetupRollState : SetupState
 
     public override void Enter()
     {
-        Debug.Log("DetermineTurnOrder");
+        //Debug.Log("DetermineTurnOrder");
+        
+        InputManager.Instance.Controls.BoardGame.Roll.performed +=  ctx => HandleTurnOrderInput(ctx.ReadValue<int>());
 
+        
         availableRolls.Clear();
         
         for (int i = 1; i <= 10; i++)
@@ -37,11 +40,6 @@ public class SetupRollState : SetupState
         
         turnOrderDetermined = false;
     }
-
-    public override void Tick()
-    {
-        HandleTurnOrderInput();
-    }
     
     private int RollUniqueNumber()
     {
@@ -51,47 +49,39 @@ public class SetupRollState : SetupState
         return roll;
     }
 
-    private void HandleTurnOrderInput()
+    private void HandleTurnOrderInput(int playerID)
     {
         Player player1 = GameManager.Instance.Players[0];
         Player player2 = GameManager.Instance.Players[1];
         Player player3 = GameManager.Instance.Players[2];
         Player player4 = GameManager.Instance.Players[3];
-        
-        if (!playerOneRolled && InputManager.Instance.PlayerRollPressed(1))
+
+        switch (playerID)
         {
-            PlayerOneRoll = RollUniqueNumber();
-            GameEvents.OnDiceRolled?.Invoke(player1, PlayerOneRoll);
-            playerOneRolled = true;
-            
-            Debug.Log($"Player 1 Rolled {PlayerOneRoll}");
-        }
-        
-        if (!playerTwoRolled && InputManager.Instance.PlayerRollPressed(2))
-        {
-            PlayerTwoRoll = RollUniqueNumber();
-            GameEvents.OnDiceRolled?.Invoke(player2, PlayerTwoRoll);
-            playerTwoRolled = true;
-            
-            Debug.Log($"Player 2 Rolled {PlayerTwoRoll}");
-        }
-        
-        if (!playerThreeRolled && InputManager.Instance.PlayerRollPressed(3))
-        {
-            PlayerThreeRoll = RollUniqueNumber();
-            GameEvents.OnDiceRolled?.Invoke(player3, PlayerThreeRoll);
-            playerThreeRolled = true;
-            
-            Debug.Log($"Player 3 Rolled {PlayerThreeRoll}");
-        }
-        
-        if (!playerFourRolled && InputManager.Instance.PlayerRollPressed(4))
-        {
-            PlayerFourRoll = RollUniqueNumber();
-            GameEvents.OnDiceRolled?.Invoke(player4, PlayerFourRoll);
-            playerFourRolled = true;
-            
-            Debug.Log($"Player 4 Rolled {PlayerFourRoll}");
+            case 1:
+                PlayerOneRoll = RollUniqueNumber();
+                GameEvents.OnDiceRolled?.Invoke(player1, PlayerOneRoll);
+                playerOneRolled = true;
+                Debug.Log($"Player 1 Rolled {PlayerOneRoll}");
+                break;
+            case 2:
+                PlayerTwoRoll = RollUniqueNumber();
+                GameEvents.OnDiceRolled?.Invoke(player2, PlayerTwoRoll);
+                playerTwoRolled = true;
+                Debug.Log($"Player 2 Rolled {PlayerTwoRoll}");
+                break;
+            case 3:
+                PlayerThreeRoll = RollUniqueNumber();
+                GameEvents.OnDiceRolled?.Invoke(player3, PlayerThreeRoll);
+                playerThreeRolled = true;
+                Debug.Log($"Player 3 Rolled {PlayerThreeRoll}");
+                break;
+            case 4:
+                PlayerFourRoll = RollUniqueNumber();
+                GameEvents.OnDiceRolled?.Invoke(player4, PlayerFourRoll);
+                playerFourRolled = true;
+                Debug.Log($"Player 4 Rolled {PlayerFourRoll}");
+                break;
         }
 
         if (!turnOrderDetermined && playerOneRolled && playerTwoRolled && playerThreeRolled && playerFourRolled)

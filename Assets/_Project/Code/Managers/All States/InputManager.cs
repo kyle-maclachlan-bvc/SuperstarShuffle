@@ -68,7 +68,12 @@ public class InputManager : Singleton<InputManager>
             controls.Disable();
     }
 
-    public bool PlayerRollPressed(int playerID)
+    public void PlayerRollPressed(int playerID)
+    {
+        
+    }
+
+    /*public bool PlayerRollPressed(int playerID)
     {
         Gamepad gamepad = GetGamepad(playerID);
         bool controllerPressed = gamepad != null && gamepad.buttonSouth.wasPressedThisFrame;
@@ -107,5 +112,5 @@ public class InputManager : Singleton<InputManager>
 
         return false;
 
-    }
+    }*/
 }
