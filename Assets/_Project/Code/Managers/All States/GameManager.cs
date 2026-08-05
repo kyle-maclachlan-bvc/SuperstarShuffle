@@ -117,6 +117,36 @@ public class GameManager : Singleton<GameManager>
         
         // Notify any systems listening for GameState changes.
         GameEvents.OnGameStateChange?.Invoke(newState);
+
+        switch (newState)
+        {
+            case GameState.GameSetup:
+                InputManager.Instance.Controls.BoardGame.Enable();
+                InputManager.Instance.Controls.MinigamePickaxePanic.Disable();
+                break;
+            case GameState.PlayerTurn:
+                InputManager.Instance.Controls.BoardGame.Enable();
+                InputManager.Instance.Controls.MinigamePickaxePanic.Disable();
+                break;
+            case GameState.MinigameTutorial:
+                InputManager.Instance.Controls.BoardGame.Enable();
+                InputManager.Instance.Controls.MinigamePickaxePanic.Disable();
+                break;
+            case GameState.Minigame:
+                InputManager.Instance.Controls.BoardGame.Disable();
+                InputManager.Instance.Controls.MinigamePickaxePanic.Enable();
+                break;
+            case GameState.Results:
+                InputManager.Instance.Controls.BoardGame.Enable();
+                InputManager.Instance.Controls.MinigamePickaxePanic.Disable();
+                break;
+            case GameState.GameEnd:
+                InputManager.Instance.Controls.BoardGame.Enable();
+                InputManager.Instance.Controls.MinigamePickaxePanic.Disable();
+                break;
+        }
+        
+        
     }
 
     public void RebuildTurnOrder()

@@ -46,11 +46,6 @@ public class PlayerController : MonoBehaviour
         cancelAction = playerInput.actions["Cancel"];
         routeSelectAction = playerInput.actions["RouteSelect"];
     }
-
-    private void Start()
-    {
-        //Debug.Log($"{gameObject.name} PlayerInputFound = {playerInput != null}");
-    }
     
     public void EnableControls()
     {
@@ -179,13 +174,13 @@ public class PlayerController : MonoBehaviour
         switch (playerID)
         {
             case 1:
-                return Keyboard.current.backspaceKey.wasPressedThisFrame
-                       || controllerPressed;
-
+                return Keyboard.current.backspaceKey.wasPressedThisFrame || controllerPressed;
             case 2:
+                return Keyboard.current.backspaceKey.wasPressedThisFrame || controllerPressed;
             case 3:
+                return Keyboard.current.backspaceKey.wasPressedThisFrame || controllerPressed;
             case 4:
-                return Keyboard.current.backspaceKey.wasPressedThisFrame;
+                return Keyboard.current.backspaceKey.wasPressedThisFrame || controllerPressed;
         }
 
         return false;

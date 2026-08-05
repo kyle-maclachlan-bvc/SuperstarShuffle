@@ -12,60 +12,16 @@
   <component name="ChangeListManager">
     <list default="true" id="bcf9275f-730f-4b09-8c6b-0dba461ebbb7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Programming_Assignment/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Programming_Assignment/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Managers/All States/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/Managers/All States/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Managers/All States/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/Managers/All States/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Minigames/PickaxePanicManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Minigames/PickaxePanicManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Results/ResultsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Results/ResultsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/Player/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/StateMachines/GameSetup/SetupRollState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/StateMachines/GameSetup/SetupRollState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Fonts/Spidle-woDR8 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Fonts/Spidle-woDR8 SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Fonts/biome SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Fonts/biome SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Input/MarioPartyControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Input/MarioPartyControls.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Input/MarioPartyControls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Input/MarioPartyControls.inputactions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/LightingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/LightingData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-0_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-0_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-0_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-0_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-10_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-10_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-10_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-10_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-11_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-11_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-11_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-11_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-12_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-12_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-12_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-12_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-13_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-13_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-13_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-13_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-14_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-14_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-14_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-14_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-15_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-15_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-15_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-15_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-16_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-16_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-16_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-16_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-17_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-17_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-17_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-17_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-18_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-18_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-18_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-18_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-19_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-19_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-19_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-19_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-1_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-1_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-1_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-1_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-20_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-20_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-20_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-20_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-21_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-21_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-21_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-21_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-2_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-2_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-2_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-2_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-3_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-3_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-3_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-3_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-4_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-4_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-4_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-4_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-5_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-5_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-5_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-5_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-6_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-6_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-6_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-6_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-7_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-7_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-7_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-7_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-8_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-8_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-8_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-8_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-9_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-9_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-9_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/GlitterdeepMines/Lightmap-9_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/Levels/MainMenu.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +33,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Code/Managers/Main Game/BoardInitializer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@21a28c3a6c83/InputSystem/Actions/InputActionState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@21a28c3a6c83/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -163,7 +121,7 @@
       <workItem from="1785519046340" duration="367000" />
       <workItem from="1785866194462" duration="3530000" />
       <workItem from="1785952925582" duration="863000" />
-      <workItem from="1785953874829" duration="6041000" />
+      <workItem from="1785953874829" duration="8410000" />
     </task>
     <servers />
   </component>

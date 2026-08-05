@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
@@ -29,6 +30,18 @@ public class ResultsManager : MonoBehaviour
         public int RewardRemaining;
     }
 
+    private void OnEnable()
+    {
+        InputManager.Instance.Controls.BoardGame.Confirm.performed += HandleInput;
+    }
+
+    private void OnDisable()
+    {
+        InputManager.Instance.Controls.BoardGame.Confirm.performed -= HandleInput;
+    }
+
+    private void HandleInput(InputAction.CallbackContext ctx) => ConfirmResults(ctx.ReadValue<int>());
+
     private void Start()
     {
        
@@ -49,9 +62,12 @@ public class ResultsManager : MonoBehaviour
         if (timer > 0f)
             return;
 
-        if (InputManager.Instance.PlayerRollPressed(1) || InputManager.Instance.PlayerRollPressed(2) ||
-            InputManager.Instance.PlayerRollPressed(3) || InputManager.Instance.PlayerRollPressed(4))
-            ReturnToBoard();
+        ConfirmResults(0);
+    }
+
+    private void ConfirmResults(int playerID)
+    {
+        ReturnToBoard();
     }
     
     private void LoadResults()

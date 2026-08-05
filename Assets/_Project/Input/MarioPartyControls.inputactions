@@ -409,62 +409,6 @@
             ]
         },
         {
-            "name": "Minigame - Mail Call",
-            "id": "474fc636-b392-49dc-a821-ed4b98b16a55",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "d5f4cf27-aa19-44e8-a260-61c4978239c3",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "18055209-fd93-41a5-9ee5-6252e07d9b65",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Minigame - Copy Cat",
-            "id": "fc188643-e841-404c-99d7-a6efa3087ed2",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "20002be3-2d86-4949-b06e-6f731fe6c54d",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "a264bb76-67c4-4a54-aed2-70b151a23b9b",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
             "name": "UI",
             "id": "ccaf735d-d6ad-48f8-8167-7d67adbd726a",
             "actions": [

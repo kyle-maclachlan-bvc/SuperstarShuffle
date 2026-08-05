@@ -495,62 +495,6 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Minigame - Mail Call"",
-            ""id"": ""474fc636-b392-49dc-a821-ed4b98b16a55"",
-            ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""d5f4cf27-aa19-44e8-a260-61c4978239c3"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""18055209-fd93-41a5-9ee5-6252e07d9b65"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Minigame - Copy Cat"",
-            ""id"": ""fc188643-e841-404c-99d7-a6efa3087ed2"",
-            ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""20002be3-2d86-4949-b06e-6f731fe6c54d"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""a264bb76-67c4-4a54-aed2-70b151a23b9b"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
             ""name"": ""UI"",
             ""id"": ""ccaf735d-d6ad-48f8-8167-7d67adbd726a"",
             ""actions"": [
@@ -594,12 +538,6 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
         // Minigame - Pickaxe Panic
         m_MinigamePickaxePanic = asset.FindActionMap("Minigame - Pickaxe Panic", throwIfNotFound: true);
         m_MinigamePickaxePanic_Pickaxe = m_MinigamePickaxePanic.FindAction("Pickaxe", throwIfNotFound: true);
-        // Minigame - Mail Call
-        m_MinigameMailCall = asset.FindActionMap("Minigame - Mail Call", throwIfNotFound: true);
-        m_MinigameMailCall_Newaction = m_MinigameMailCall.FindAction("New action", throwIfNotFound: true);
-        // Minigame - Copy Cat
-        m_MinigameCopyCat = asset.FindActionMap("Minigame - Copy Cat", throwIfNotFound: true);
-        m_MinigameCopyCat_Newaction = m_MinigameCopyCat.FindAction("New action", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
@@ -610,8 +548,6 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_BoardGame.enabled, "This will cause a leak and performance issues, MarioPartyControls.BoardGame.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_GameSetup.enabled, "This will cause a leak and performance issues, MarioPartyControls.GameSetup.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_MinigamePickaxePanic.enabled, "This will cause a leak and performance issues, MarioPartyControls.MinigamePickaxePanic.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_MinigameMailCall.enabled, "This will cause a leak and performance issues, MarioPartyControls.MinigameMailCall.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_MinigameCopyCat.enabled, "This will cause a leak and performance issues, MarioPartyControls.MinigameCopyCat.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, MarioPartyControls.UI.Disable() has not been called.");
     }
 
@@ -1017,198 +953,6 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
     /// </summary>
     public MinigamePickaxePanicActions @MinigamePickaxePanic => new MinigamePickaxePanicActions(this);
 
-    // Minigame - Mail Call
-    private readonly InputActionMap m_MinigameMailCall;
-    private List<IMinigameMailCallActions> m_MinigameMailCallActionsCallbackInterfaces = new List<IMinigameMailCallActions>();
-    private readonly InputAction m_MinigameMailCall_Newaction;
-    /// <summary>
-    /// Provides access to input actions defined in input action map "Minigame - Mail Call".
-    /// </summary>
-    public struct MinigameMailCallActions
-    {
-        private @MarioPartyControls m_Wrapper;
-
-        /// <summary>
-        /// Construct a new instance of the input action map wrapper class.
-        /// </summary>
-        public MinigameMailCallActions(@MarioPartyControls wrapper) { m_Wrapper = wrapper; }
-        /// <summary>
-        /// Provides access to the underlying input action "MinigameMailCall/Newaction".
-        /// </summary>
-        public InputAction @Newaction => m_Wrapper.m_MinigameMailCall_Newaction;
-        /// <summary>
-        /// Provides access to the underlying input action map instance.
-        /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_MinigameMailCall; }
-        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
-        public void Enable() { Get().Enable(); }
-        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
-        public void Disable() { Get().Disable(); }
-        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
-        public bool enabled => Get().enabled;
-        /// <summary>
-        /// Implicitly converts an <see ref="MinigameMailCallActions" /> to an <see ref="InputActionMap" /> instance.
-        /// </summary>
-        public static implicit operator InputActionMap(MinigameMailCallActions set) { return set.Get(); }
-        /// <summary>
-        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
-        /// </summary>
-        /// <param name="instance">Callback instance.</param>
-        /// <remarks>
-        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
-        /// </remarks>
-        /// <seealso cref="MinigameMailCallActions" />
-        public void AddCallbacks(IMinigameMailCallActions instance)
-        {
-            if (instance == null || m_Wrapper.m_MinigameMailCallActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_MinigameMailCallActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
-        }
-
-        /// <summary>
-        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
-        /// </summary>
-        /// <remarks>
-        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
-        /// </remarks>
-        /// <seealso cref="MinigameMailCallActions" />
-        private void UnregisterCallbacks(IMinigameMailCallActions instance)
-        {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
-        }
-
-        /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="MinigameMailCallActions.UnregisterCallbacks(IMinigameMailCallActions)" />.
-        /// </summary>
-        /// <seealso cref="MinigameMailCallActions.UnregisterCallbacks(IMinigameMailCallActions)" />
-        public void RemoveCallbacks(IMinigameMailCallActions instance)
-        {
-            if (m_Wrapper.m_MinigameMailCallActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        /// <summary>
-        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
-        /// </summary>
-        /// <remarks>
-        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
-        /// </remarks>
-        /// <seealso cref="MinigameMailCallActions.AddCallbacks(IMinigameMailCallActions)" />
-        /// <seealso cref="MinigameMailCallActions.RemoveCallbacks(IMinigameMailCallActions)" />
-        /// <seealso cref="MinigameMailCallActions.UnregisterCallbacks(IMinigameMailCallActions)" />
-        public void SetCallbacks(IMinigameMailCallActions instance)
-        {
-            foreach (var item in m_Wrapper.m_MinigameMailCallActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_MinigameMailCallActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    /// <summary>
-    /// Provides a new <see cref="MinigameMailCallActions" /> instance referencing this action map.
-    /// </summary>
-    public MinigameMailCallActions @MinigameMailCall => new MinigameMailCallActions(this);
-
-    // Minigame - Copy Cat
-    private readonly InputActionMap m_MinigameCopyCat;
-    private List<IMinigameCopyCatActions> m_MinigameCopyCatActionsCallbackInterfaces = new List<IMinigameCopyCatActions>();
-    private readonly InputAction m_MinigameCopyCat_Newaction;
-    /// <summary>
-    /// Provides access to input actions defined in input action map "Minigame - Copy Cat".
-    /// </summary>
-    public struct MinigameCopyCatActions
-    {
-        private @MarioPartyControls m_Wrapper;
-
-        /// <summary>
-        /// Construct a new instance of the input action map wrapper class.
-        /// </summary>
-        public MinigameCopyCatActions(@MarioPartyControls wrapper) { m_Wrapper = wrapper; }
-        /// <summary>
-        /// Provides access to the underlying input action "MinigameCopyCat/Newaction".
-        /// </summary>
-        public InputAction @Newaction => m_Wrapper.m_MinigameCopyCat_Newaction;
-        /// <summary>
-        /// Provides access to the underlying input action map instance.
-        /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_MinigameCopyCat; }
-        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
-        public void Enable() { Get().Enable(); }
-        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
-        public void Disable() { Get().Disable(); }
-        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
-        public bool enabled => Get().enabled;
-        /// <summary>
-        /// Implicitly converts an <see ref="MinigameCopyCatActions" /> to an <see ref="InputActionMap" /> instance.
-        /// </summary>
-        public static implicit operator InputActionMap(MinigameCopyCatActions set) { return set.Get(); }
-        /// <summary>
-        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
-        /// </summary>
-        /// <param name="instance">Callback instance.</param>
-        /// <remarks>
-        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
-        /// </remarks>
-        /// <seealso cref="MinigameCopyCatActions" />
-        public void AddCallbacks(IMinigameCopyCatActions instance)
-        {
-            if (instance == null || m_Wrapper.m_MinigameCopyCatActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_MinigameCopyCatActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
-        }
-
-        /// <summary>
-        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
-        /// </summary>
-        /// <remarks>
-        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
-        /// </remarks>
-        /// <seealso cref="MinigameCopyCatActions" />
-        private void UnregisterCallbacks(IMinigameCopyCatActions instance)
-        {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
-        }
-
-        /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="MinigameCopyCatActions.UnregisterCallbacks(IMinigameCopyCatActions)" />.
-        /// </summary>
-        /// <seealso cref="MinigameCopyCatActions.UnregisterCallbacks(IMinigameCopyCatActions)" />
-        public void RemoveCallbacks(IMinigameCopyCatActions instance)
-        {
-            if (m_Wrapper.m_MinigameCopyCatActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        /// <summary>
-        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
-        /// </summary>
-        /// <remarks>
-        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
-        /// </remarks>
-        /// <seealso cref="MinigameCopyCatActions.AddCallbacks(IMinigameCopyCatActions)" />
-        /// <seealso cref="MinigameCopyCatActions.RemoveCallbacks(IMinigameCopyCatActions)" />
-        /// <seealso cref="MinigameCopyCatActions.UnregisterCallbacks(IMinigameCopyCatActions)" />
-        public void SetCallbacks(IMinigameCopyCatActions instance)
-        {
-            foreach (var item in m_Wrapper.m_MinigameCopyCatActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_MinigameCopyCatActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    /// <summary>
-    /// Provides a new <see cref="MinigameCopyCatActions" /> instance referencing this action map.
-    /// </summary>
-    public MinigameCopyCatActions @MinigameCopyCat => new MinigameCopyCatActions(this);
-
     // UI
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
@@ -1376,36 +1120,6 @@ public partial class @MarioPartyControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPickaxe(InputAction.CallbackContext context);
-    }
-    /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Minigame - Mail Call" which allows adding and removing callbacks.
-    /// </summary>
-    /// <seealso cref="MinigameMailCallActions.AddCallbacks(IMinigameMailCallActions)" />
-    /// <seealso cref="MinigameMailCallActions.RemoveCallbacks(IMinigameMailCallActions)" />
-    public interface IMinigameMailCallActions
-    {
-        /// <summary>
-        /// Method invoked when associated input action "New action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnNewaction(InputAction.CallbackContext context);
-    }
-    /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Minigame - Copy Cat" which allows adding and removing callbacks.
-    /// </summary>
-    /// <seealso cref="MinigameCopyCatActions.AddCallbacks(IMinigameCopyCatActions)" />
-    /// <seealso cref="MinigameCopyCatActions.RemoveCallbacks(IMinigameCopyCatActions)" />
-    public interface IMinigameCopyCatActions
-    {
-        /// <summary>
-        /// Method invoked when associated input action "New action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnNewaction(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

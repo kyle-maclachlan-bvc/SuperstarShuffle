@@ -26,7 +26,7 @@ public class SetupRollState : SetupState
         //Debug.Log("DetermineTurnOrder");
         
         InputManager.Instance.Controls.BoardGame.Roll.performed +=  ctx => HandleTurnOrderInput(ctx.ReadValue<int>());
-
+        InputManager.Instance.Controls.BoardGame.Confirm.performed += ctx => HandleTurnOrderInput(ctx.ReadValue<int>());
         
         availableRolls.Clear();
         
