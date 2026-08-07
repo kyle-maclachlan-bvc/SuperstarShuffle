@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   propertyOwner: 0
   playerData: {fileID: 11400000, guid: 9b0e94f2c8fed314c911ff11ce898441, type: 2}
+  diceRollUI: {fileID: 0}
 --- !u!114 &-8882282311344192978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc9d3b7289a78c439e40951315a31bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCurrency
-  coins: 0
 --- !u!114 &-367320907992379887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +272,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -386,6 +387,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9aa5acc99e1a41a48b5cc76869b2378c, type: 2}
+  - {fileID: 2100000, guid: 1e869aca715d20a409f8836eedabbb26, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

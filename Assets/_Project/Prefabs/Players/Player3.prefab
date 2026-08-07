@@ -69,6 +69,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a92cf87d059b9a048b0273c4d11e1bda, type: 2}
+  - {fileID: 2100000, guid: 1e869aca715d20a409f8836eedabbb26, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -211,14 +212,6 @@ MonoBehaviour:
     m_ActionName: Minigame - Pickaxe Panic/New action
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: d5f4cf27-aa19-44e8-a260-61c4978239c3
-    m_ActionName: Minigame - Mail Call/New action
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 20002be3-2d86-4949-b06e-6f731fe6c54d
-    m_ActionName: Minigame - Copy Cat/New action
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: e0935891-1747-4347-91db-39b42a56341d
     m_ActionName: UI/New action
   m_NeverAutoSwitchControlSchemes: 0
@@ -240,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   propertyOwner: 0
   playerData: {fileID: 11400000, guid: e4d57a5647542a24a8a0302933bb94c3, type: 2}
+  diceRollUI: {fileID: 0}
 --- !u!114 &8221750117817634109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,7 +274,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc9d3b7289a78c439e40951315a31bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCurrency
-  coins: 0
 --- !u!114 &3466279697443349022
 MonoBehaviour:
   m_ObjectHideFlags: 0
