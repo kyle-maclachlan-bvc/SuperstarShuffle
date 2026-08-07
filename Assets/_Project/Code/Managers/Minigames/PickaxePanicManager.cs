@@ -66,7 +66,7 @@ public class PickaxePanicManager : MonoBehaviour
         InputManager.Instance.Controls.MinigamePickaxePanic.Pickaxe.performed -= HandleGameplayInteraction;
     }
     
-    private void HandleGameplayInteraction(InputAction.CallbackContext ctx) => UpdateGameplayInteraction(ctx.ReadValue<int>());
+    private void HandleGameplayInteraction(InputAction.CallbackContext ctx) => UpdateGameplayInteraction(ctx);
     
     private void Update()
     {
@@ -139,9 +139,26 @@ public class PickaxePanicManager : MonoBehaviour
         }
     }
 
-    private void UpdateGameplayInteraction(int playerID)
+    private void UpdateGameplayInteraction(InputAction.CallbackContext context)
     {
-        switch (playerID)
+        Player player1 = GameManager.Instance.Players[0];
+        Player player2 = GameManager.Instance.Players[1];
+        Player player3 = GameManager.Instance.Players[2];
+        Player player4 = GameManager.Instance.Players[3];
+
+        int playerIndex = context.control.name switch
+        {
+            "q" => 0,
+            "w" => 1,
+            "e" => 2,
+            "r" => 3,
+            _ => -1
+        };
+
+        if (playerIndex < 0)
+            return;
+
+        switch (playerIndex)
         {
             case 1:
                 player1Score++;

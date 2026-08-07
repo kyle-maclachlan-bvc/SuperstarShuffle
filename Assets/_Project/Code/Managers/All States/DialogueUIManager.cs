@@ -1,12 +1,23 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class DialogueUIManager : MonoBehaviour
+public class DialogueUIManager : Singleton<DialogueUIManager>
 {
     [SerializeField] private GameObject dialoguePanel;
-    [SerializeField] private TMP_Text dialogueText;
-    [SerializeField] private TMP_Text speakerName;
+    [SerializeField] private GameObject dialogueTextObject;
+    [SerializeField] private GameObject speakerNameObject;
+    
+    private TMP_Text dialogueText;
+    private TMP_Text speakerName;
+    
+    private GameObject dialoguePanelInstance;
+    private GameObject dialogueTextInstance;
+    private GameObject speakerNameInstance;
+    
+    private GameObject dialogueBoxCanvas;
+    
 
     private Queue<string> dialogueQueue = new();
 
@@ -15,21 +26,44 @@ public class DialogueUIManager : MonoBehaviour
 
     public bool DialogueActive => dialogueActive;
 
-    private void Awake()
+    protected override void Awake()
     {
-        dialoguePanel.SetActive(false);
+        base.Awake();
+
+        dialogueBoxCanvas = FindFirstObjectByType<DialogueBoxCanvas>().GameObject();
+
+        dialoguePanel = Resources.Load<GameObject>("IndexedPrefabs/DialogueBoxPanel");
+        dialogueTextObject = Resources.Load<GameObject>("IndexedPrefabs/DialogueText");
+        speakerNameObject = Resources.Load<GameObject>("IndexedPrefabs/CharacterName");
+
+        if (dialogueBoxCanvas == null)
+            return;
+        
+        dialoguePanelInstance = Instantiate(dialoguePanel, dialogueBoxCanvas.transform);
+        dialogueTextInstance = Instantiate(dialogueTextObject, dialoguePanelInstance.transform);
+        speakerNameInstance = Instantiate(speakerNameObject, dialoguePanelInstance.transform);
+        
+        
+        
+        dialogueText = dialogueTextInstance.GetComponent<TMP_Text>();
+        speakerName = speakerNameInstance.GetComponent<TMP_Text>();
+        
+        //DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        
     }
 
     private void OnEnable()
     {
         GameEvents.OnDialogueRequested += StartDialogue;
-
     }
 
     private void OnDisable()
     {
         GameEvents.OnDialogueRequested -= StartDialogue;
-
     }
     
 
@@ -58,9 +92,10 @@ public class DialogueUIManager : MonoBehaviour
         foreach (string message in messages)
             dialogueQueue.Enqueue(message);
 
-        speakerName.text = speaker;
+        if(speakerName != null)speakerName.text = speaker;
         
-        dialoguePanel.SetActive(true);
+        
+        dialoguePanelInstance.SetActive(true);
 
         dialogueActive = true;
         ignoreConfirmThisFrame = true;
@@ -81,7 +116,7 @@ public class DialogueUIManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        dialoguePanel.SetActive(false);
+        dialoguePanelInstance.SetActive(false);
 
         dialogueActive = false;
 
