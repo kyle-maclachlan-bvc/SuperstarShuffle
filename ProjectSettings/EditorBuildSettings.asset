@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Levels/MainMenu.unity
     guid: c3247941429dfc84c8bdf91a8dd37e0a
   - enabled: 1
-    path: Assets/_Project/Scenes/Levels/GlitterdeepMines.unity
+    path: Assets/_Project/Scenes/Levels/GlitterdeepMinesOld.unity
     guid: 17efe2c9522544746bb34b9b1cb6cadb
   - enabled: 1
     path: Assets/_Project/Scenes/Levels/MG_Tutorial.unity
