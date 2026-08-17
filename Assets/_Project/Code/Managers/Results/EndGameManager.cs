@@ -13,12 +13,14 @@ public class EndGameManager : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.OnEndGameStarted += BeginCeremony;
+        GameEvents.OnDialogueFinished += HandleDialogueFinished;
         GameEvents.OnEndGamePropertiesRevealStarted += RevealProperties;
     }
 
     private void OnDisable()
     {
         GameEvents.OnEndGameStarted -= BeginCeremony;
+        GameEvents.OnDialogueFinished -= HandleDialogueFinished;
         GameEvents.OnEndGamePropertiesRevealStarted -= RevealProperties;
     }
 
@@ -37,10 +39,13 @@ public class EndGameManager : MonoBehaviour
                 "Well done, miners! The expedition has finally come to an end.",
                 "Let's see how everyone performed!"
             });
-        
-        GameEvents.OnEndGamePropertiesRevealStarted?.Invoke();
     }
 
+    private void HandleDialogueFinished()
+    {
+        GameEvents.OnEndGamePropertiesRevealStarted?.Invoke();
+    }
+    
     private void RestorePlayers()
     {
         foreach (Player player in GameManager.Instance.Players)
@@ -75,15 +80,16 @@ public class EndGameManager : MonoBehaviour
     {
         int highestPropertyCount = 0;
 
+        // find the highest number of properties owned
         foreach (Player player in GameManager.Instance.Players)
         {
             highestPropertyCount = Mathf.Max(highestPropertyCount, player.Data.OwnedSpaceCount);
-
-            player.DiceUI.ShowValue(player.Data.OwnedSpaceCount);
         }
 
         foreach (Player player in GameManager.Instance.Players)
         {
+            player.DiceUI.ShowValue(player.Data.OwnedSpaceCount);
+            
             if (player.Data.OwnedSpaceCount == highestPropertyCount)
                 player.DiceUI.StartPulse();
             else

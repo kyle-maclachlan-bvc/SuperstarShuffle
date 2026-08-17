@@ -9,6 +9,8 @@ public class DiceRollUI : MonoBehaviour
 
     private Camera mainCamera;
     private Player player;
+
+    private bool isEndGame => GameManager.Instance != null && GameManager.Instance.CurrentGameState == GameState.GameEnd;
     
     private Coroutine pulseRoutine;
     private Vector3 originalScale;
@@ -18,6 +20,7 @@ public class DiceRollUI : MonoBehaviour
         mainCamera = Camera.main;
         player = GetComponentInParent<Player>();
         canvas.enabled = false;
+        StopPulse();
         
         originalScale = rollText.transform.localScale;
     }
@@ -40,8 +43,7 @@ public class DiceRollUI : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!canvas.enabled)
-            return;
+        if (!canvas.enabled) return;
 
         if (mainCamera == null)
             mainCamera = Camera.main;
@@ -54,8 +56,7 @@ public class DiceRollUI : MonoBehaviour
 
     private void HandleDiceRoll(Player rolledPlayer, int value)
     {
-        if (rolledPlayer != player)
-            return;
+        if (rolledPlayer != player) return;
         
         ShowRoll(value);
     }
@@ -92,6 +93,9 @@ public class DiceRollUI : MonoBehaviour
 
     public void ShowRoll(int value)
     {
+        if (GameManager.Instance == null) return;
+        if (GameManager.Instance.CurrentGameState != GameState.GameEnd) return;
+        
         rollText.text = value.ToString();
         canvas.enabled = true;
     }
@@ -107,8 +111,11 @@ public class DiceRollUI : MonoBehaviour
     public void StopPulse()
     {
         if (pulseRoutine != null)
+        {
             StopCoroutine(pulseRoutine);
-        
+            pulseRoutine = null;
+        }
+
         rollText.transform.localScale = originalScale;
     }
 
@@ -134,6 +141,9 @@ public class DiceRollUI : MonoBehaviour
 
     public void ShowValue(int value)
     {
+        if (GameManager.Instance == null) return;
+        if (GameManager.Instance.CurrentGameState != GameState.GameEnd) return;
+        
         rollText.text = value.ToString();
         canvas.enabled = true;
     }
