@@ -13,8 +13,6 @@
     <list default="true" id="bcf9275f-730f-4b09-8c6b-0dba461ebbb7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Programming_Assignment/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Programming_Assignment/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Results/EndGameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Results/EndGameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/Player/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/UI/DiceRollUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/UI/DiceRollUI.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +23,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Code/Managers/Enums/EndGameState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Code/Managers/Main Game/BoardInitializer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Code/UI/DialogueBoxCanvas.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@21a28c3a6c83/InputSystem/Actions/InputActionState.cs" root0="SKIP_HIGHLIGHTING" />
@@ -117,7 +116,7 @@
       <workItem from="1785952925582" duration="863000" />
       <workItem from="1785953874829" duration="8410000" />
       <workItem from="1786116118254" duration="5208000" />
-      <workItem from="1787025264382" duration="1636000" />
+      <workItem from="1787025264382" duration="3537000" />
     </task>
     <servers />
   </component>
