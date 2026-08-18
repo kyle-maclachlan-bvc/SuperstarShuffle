@@ -78,12 +78,12 @@ public class EndGameManager : MonoBehaviour
         foreach (Player player in GameManager.Instance.Players)
         {
             highestPropertyCount = Mathf.Max(highestPropertyCount, player.Data.OwnedSpaceCount);
-
-            player.DiceUI.ShowValue(player.Data.OwnedSpaceCount);
         }
 
         foreach (Player player in GameManager.Instance.Players)
         {
+            player.DiceUI.ShowValue(player.Data.OwnedSpaceCount);
+            
             if (player.Data.OwnedSpaceCount == highestPropertyCount)
                 player.DiceUI.StartPulse();
             else
