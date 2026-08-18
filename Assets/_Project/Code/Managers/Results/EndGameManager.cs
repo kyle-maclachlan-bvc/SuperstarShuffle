@@ -1,7 +1,14 @@
+using System.Collections;
 using UnityEngine;
 
 public class EndGameManager : MonoBehaviour
 {
+    [SerializeField] private float cameraMoveSpeed = 5f;
+    [SerializeField] private Vector3 cameraOffset = new Vector3(0f, 1.75f, 3.5f);
+
+    private Player winnerPlayer;
+    private Coroutine winnerCameraRoutine;
+    
     private Transform ceremonyCameraPoint;
     private int propertyValue = 5;
     private EndGameState currentEndGameState;
@@ -9,6 +16,7 @@ public class EndGameManager : MonoBehaviour
 
     private PlayerData winningPlayer;
     private int winningScore;
+    private bool endGameActive;
     
     private void Awake()
     {
@@ -29,6 +37,7 @@ public class EndGameManager : MonoBehaviour
 
     private void BeginCeremony()
     {
+        endGameActive = true;
         currentEndGameState = EndGameState.EndGameStarted;
         
         RestorePlayers();
@@ -77,6 +86,8 @@ public class EndGameManager : MonoBehaviour
 
     private void HandleDialogueFinished()
     {
+        if (!endGameActive) return;
+        
         switch (currentEndGameState)
         {
             case EndGameState.EndGameStarted:
@@ -149,14 +160,14 @@ public class EndGameManager : MonoBehaviour
             //int finalCoinValue = player.Data.Coins + player.Data.PropertyBonusCoins;
             //highestCoinTotal = Mathf.Max(highestCoinTotal, finalCoinValue);
             
-            highestCoinTotal = Mathf.Max(highestCoinTotal, player.Data.OwnedSpaceCount);
+            highestCoinTotal = Mathf.Max(highestCoinTotal, player.Data.Coins);
         }
 
         foreach (Player player in GameManager.Instance.Players)
         {
             //int finalCoinValue = player.Data.Coins + player.Data.PropertyBonusCoins;
             
-            player.DiceUI.ShowValue(player.Data.OwnedSpaceCount);
+            player.DiceUI.ShowValue(player.Data.Coins);
             
             if (player.Data.Coins == highestCoinTotal)
                 player.DiceUI.StartPulse();
@@ -174,22 +185,28 @@ public class EndGameManager : MonoBehaviour
             "Mine Foreman",
             new[]
             {
-                "And the winner is..."
+                "And the winner is...",
+                winningPlayer.PlayerName + "!"
             });
+        FocusWinner();
     }
 
     private void DetermineWinner()
     {
         winningPlayer = null;
+        winnerPlayer = null;
         winningScore = 0;
 
         foreach (Player player in GameManager.Instance.Players)
         {
-            int finalScore = player.Data.Coins + player.Data.PropertyBonusCoins;
+            int finalScore =
+                player.Data.Coins +
+                player.Data.PropertyBonusCoins;
 
             if (winningPlayer == null || finalScore > winningScore)
             {
                 winningPlayer = player.Data;
+                winnerPlayer = player;
                 winningScore = finalScore;
             }
         }
@@ -200,9 +217,47 @@ public class EndGameManager : MonoBehaviour
         }
     }
 
+    private void FocusWinner()
+    {
+        if (winnerPlayer == null) return;
+        if (winnerCameraRoutine != null)
+            StopCoroutine(winnerCameraRoutine);
+
+        winnerCameraRoutine = StartCoroutine(FocusWinnerRoutine());
+    }
+
+    private IEnumerator FocusWinnerRoutine()
+    {
+        Camera mainCamera = Camera.main;
+
+        if (mainCamera == null) yield break;
+        
+        Vector3 startPos = mainCamera.transform.position;
+
+        Vector3 targetPos = winnerPlayer.transform.position + winnerPlayer.transform.TransformDirection(cameraOffset);
+        Quaternion targetRot = Quaternion.LookRotation(winnerPlayer.transform.position - targetPos, Vector3.up);
+
+        float t = 0f;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime * cameraMoveSpeed;
+
+            mainCamera.transform.position = Vector3.Lerp(startPos, targetPos, t);
+            mainCamera.transform.rotation = Quaternion.Slerp(mainCamera.transform.rotation, targetRot, t);
+
+            yield return null;
+        }
+        
+        mainCamera.transform.position = targetPos;
+        mainCamera.transform.rotation = targetRot;
+        
+        winnerCameraRoutine = null;
+    }
+
     private void EndGame()
     {
-        currentEndGameState = EndGameState.EndGameStarted;
+        currentEndGameState = EndGameState.EndTheGame;
 
         foreach (Player player in GameManager.Instance.Players)
         {

@@ -13,6 +13,8 @@
     <list default="true" id="bcf9275f-730f-4b09-8c6b-0dba461ebbb7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Programming_Assignment/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Programming_Assignment/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Results/EndGameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Code/Managers/Results/EndGameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Fonts/Spidle-woDR8 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Fonts/Spidle-woDR8 SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Fonts/biome SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Fonts/biome SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +118,8 @@
       <workItem from="1785952925582" duration="863000" />
       <workItem from="1785953874829" duration="8410000" />
       <workItem from="1786116118254" duration="5208000" />
-      <workItem from="1787025264382" duration="3537000" />
+      <workItem from="1787025264382" duration="3706000" />
+      <workItem from="1787089258141" duration="2393000" />
     </task>
     <servers />
   </component>
