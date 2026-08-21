@@ -8,12 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Project/Scenes/Levels/MainMenu.unity
     guid: c3247941429dfc84c8bdf91a8dd37e0a
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Project/Scenes/Levels/GlitterdeepMinesOld.unity
     guid: 17efe2c9522544746bb34b9b1cb6cadb
+  - enabled: 1
+    path: Assets/_Project/Scenes/Levels/GlitterdeepMines.unity
+    guid: f881cc4075b318c41bd30c72a73108a1
   - enabled: 1
     path: Assets/_Project/Scenes/Levels/MG_Tutorial.unity
     guid: e91e8c69e87510c4799ab454a4005083
