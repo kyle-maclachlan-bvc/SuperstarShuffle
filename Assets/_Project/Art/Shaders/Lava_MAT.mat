@@ -59,7 +59,7 @@ Material:
     - _Speed: 3
     - _Strength: 0.2
     - _TextureSpeedX: 0.05
-    - _TextureSpeedY: 0.2
+    - _TextureSpeedY: -0.02
     m_Colors:
     - _Color: {r: 0.06132078, g: 0.021718292, b: 0, a: 1}
     - _LavaColor: {r: 0, g: 0, b: 0, a: 1}

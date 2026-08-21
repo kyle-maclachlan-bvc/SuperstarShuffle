@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
         Movement = GetComponent<PlayerMovement>();
         Currency = GetComponent<PlayerCurrency>();
         TurnState = GetComponent<PlayerTurnState>();
+        diceRollUI = GetComponentInChildren<DiceRollUI>();
     }
 
     private void Start()

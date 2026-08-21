@@ -90,6 +90,7 @@ public class DiceRollUI : MonoBehaviour
         canvas.enabled = false;
     }
 
+    // For Dice Rolling
     public void ShowRoll(int value)
     {
         rollText.text = value.ToString();
@@ -107,8 +108,11 @@ public class DiceRollUI : MonoBehaviour
     public void StopPulse()
     {
         if (pulseRoutine != null)
+        {
             StopCoroutine(pulseRoutine);
-        
+            pulseRoutine = null;
+        }
+
         rollText.transform.localScale = originalScale;
     }
 
@@ -132,6 +136,7 @@ public class DiceRollUI : MonoBehaviour
         
     }
 
+    // For Endgame Statistics
     public void ShowValue(int value)
     {
         rollText.text = value.ToString();
