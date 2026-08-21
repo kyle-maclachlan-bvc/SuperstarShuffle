@@ -75502,14 +75502,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2489305989842743764, guid: f3de52436ed2aa848a581866ae9ce4e9, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2754252332460924517, guid: f3de52436ed2aa848a581866ae9ce4e9, type: 3}
-      propertyPath: currentTurn
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 2754252332460924517, guid: f3de52436ed2aa848a581866ae9ce4e9, type: 3}
       propertyPath: GameSetupManager
       value: 
@@ -75586,14 +75578,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7335485617403511210, guid: f3de52436ed2aa848a581866ae9ce4e9, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335485617403511210, guid: f3de52436ed2aa848a581866ae9ce4e9, type: 3}
-      propertyPath: ceremonyCameraPoint
-      value: 
-      objectReference: {fileID: 330585546}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
